@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="ReturnButton"
+         >
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Invited Places "
+            android:textSize="20sp"
+            android:background="#FFFFFF"
+            android:textColor="#000000"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/imageView4"
+            android:src="@drawable/returnbutton"
+            android:cropToPadding="false"
+            android:background="#FFFFFF"
+            android:adjustViewBounds="false"
+            android:layout_gravity="right"
+            android:paddingRight="10dp" />
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView2" >
+
+        <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="60px"
+        android:stretchColumns="*"
+            android:background="#b3ff96">
+
+
+        <TableRow android:minHeight="40dp">
+            <TextView
+                android:padding="3dip"
+                android:text="Location"
+                android:layout_span="1"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:padding="3dip"
+                android:text="Last Visited Time"
+                android:layout_span="1"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:padding="3dip"
+                android:text="Pending Tasks"
+                android:layout_span="8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"/>
+
+
+
+        </TableRow>
+
+        <TableRow android:minHeight="90dp" >
+            <TextView
+                android:padding="3dip"
+                android:id="@+id/location0"/>
+
+            <TextView
+                android:padding="3dip"
+                android:id="@+id/location0_time" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/TableRow0">
+
+            </LinearLayout>
+
+
+        </TableRow>
+
+        <TableRow android:minHeight="90dp">
+            <TextView
+                android:padding="3dip"
+                android:id="@+id/location1"/>
+            <TextView android:padding="3dip"
+                android:id="@+id/location1_time" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/TableRow1">
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow android:minHeight="90dp"   >
+            <TextView
+                android:padding="3dip"
+                android:id="@+id/location2"/>
+            <TextView android:padding="3dip"
+                android:id="@+id/location2_time" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/TableRow2">
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow  android:minHeight="90dp"  >
+            <TextView
+                android:padding="3dip"
+                android:id="@+id/location3"/>
+
+            <TextView android:padding="3dip"
+                android:id="@+id/location3_time" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/TableRow3">
+            </LinearLayout>
+
+
+
+        </TableRow >
+
+        <TableRow android:minHeight="90dp"  >
+            <TextView
+                android:padding="3dip"
+                android:id="@+id/location4" />
+            <TextView android:padding="3dip"
+                android:id="@+id/location4_time" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/TableRow4">
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow android:minHeight="90dp"  >
+            <TextView
+                android:padding="3dip"
+                android:id="@+id/location5" />
+            <TextView android:padding="3dip"
+                android:id="@+id/location5_time"  />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/TableRow5">
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow android:minHeight="90dp"  >
+            <TextView
+                android:padding="3dip"
+                android:id="@+id/Location6" />
+            <TextView android:padding="3dip"
+                android:id="@+id/location6_time" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/TableRow6">
+            </LinearLayout>
+
+        </TableRow>
+
+        </TableLayout>
+    </ScrollView>
+
+</LinearLayout>
