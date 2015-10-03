@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.i2r.xue.rate_this_place.mapview.MapsActivity;
@@ -46,17 +45,18 @@ public class AsyncTaskUploadActivity extends AsyncTask {
 
     @Override
     protected void onPreExecute() {
+
+        super.onPreExecute();
         barProgressDialog = new ProgressDialog(context);
         barProgressDialog.setTitle("Uploading");
         barProgressDialog.setMessage("Upload in progress ...");
-        barProgressDialog.setProgressStyle(barProgressDialog.STYLE_HORIZONTAL);
+        barProgressDialog.setProgressStyle(barProgressDialog.STYLE_SPINNER);
 
-        barProgressDialog.setProgress(0);
-        barProgressDialog.setMax(10);
+       // barProgressDialog.setProgress(0);
+       // barProgressDialog.setMax(10);
         barProgressDialog.show();
 
 
-        super.onPreExecute();
         userid=context.getSharedPreferences("UserInfo", context.MODE_PRIVATE).getString("UserID","unknown");
     }
 
@@ -80,7 +80,7 @@ public class AsyncTaskUploadActivity extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-        Toast.makeText(this.context, "File is uploaded successfully", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this.context, "The data is uploaded successfully", Toast.LENGTH_SHORT).show();
         barProgressDialog.dismiss();
     }
 
@@ -109,7 +109,7 @@ public class AsyncTaskUploadActivity extends AsyncTask {
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {
-            Log.i("php",  "network is not available");
+            //Log.i("php",  "network is not available");
             DataLogger.writeSimpleRatingTolog(url.toString());
             e.printStackTrace();
         }
@@ -133,7 +133,7 @@ public class AsyncTaskUploadActivity extends AsyncTask {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.i("php", total.toString());
+       // Log.i("php", total.toString());
 
 
         context.startActivity(new Intent(context, MapsActivity.class));

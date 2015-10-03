@@ -2,7 +2,7 @@ package com.i2r.xue.rate_this_place.myrewards;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
+//import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -69,7 +69,7 @@ public class AsyncTaskGetDataToMyReward extends AsyncTask {
         try {
 
             url = new URL("http://www.ratethisplace.co/getMyRewards.php?MyRewardsJson="+JsonGenerator_basicrating.toString().replaceAll(" ", "%20"));
-            Log.i(AsyncTaskGetDataToMyReward_TAG, "http://www.ratethisplace.co/getMyRewards.php?MyRewardsJson="+JsonGenerator_basicrating.toString().replaceAll(" ", "%20"));
+           // Log.i(AsyncTaskGetDataToMyReward_TAG, "http://www.ratethisplace.co/getMyRewards.php?MyRewardsJson="+JsonGenerator_basicrating.toString().replaceAll(" ", "%20"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

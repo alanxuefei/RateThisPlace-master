@@ -48,7 +48,7 @@ public class RateThisPlaceFromVistitedplaceActivity extends TabActivity implemen
         Intent intent = getIntent();
         String From= intent.getStringExtra("From");
         if (From!=null){
-            Log.i("LoactionName", From);
+          //  Log.i("LoactionName", From);
             if (From.equals("MainActivity")){
 
                 LocationManager lm=(LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -57,12 +57,12 @@ public class RateThisPlaceFromVistitedplaceActivity extends TabActivity implemen
 
                 if(gps_enabled){
                     lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-                    Log.i("ratelocation", "gps_enabled");
+                //    Log.i("ratelocation", "gps_enabled");
                 }
                 else{
                     if(network_enabled){
                         lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
-                        Log.i("ratelocation", "network_enabled");
+                 //       Log.i("ratelocation", "network_enabled");
                     }
 
                     else{
@@ -143,7 +143,7 @@ public class RateThisPlaceFromVistitedplaceActivity extends TabActivity implemen
     }
 
     public void ReturnButton(View v) {
-        Log.i("test", "returen");
+     //   Log.i("test", "returen");
         super.onBackPressed();
 
     }
@@ -152,7 +152,7 @@ public class RateThisPlaceFromVistitedplaceActivity extends TabActivity implemen
     @Override
     public void onLocationChanged(Location location) {
         globalvariable.thelocation=location;
-        Log.i("ratelocation", "getlocation" + globalvariable.thelocation.getLatitude() + " " + globalvariable.thelocation.getLongitude());
+      //  Log.i("ratelocation", "getlocation" + globalvariable.thelocation.getLatitude() + " " + globalvariable.thelocation.getLongitude());
     }
 
     @Override

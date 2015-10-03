@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.util.Patterns;
 
 import com.i2r.xue.rate_this_place.MainActivity;
@@ -45,6 +44,7 @@ public class UserAgreementDialogFragment extends DialogFragment {
                         Commonfunctions.setSensingAlarm(getActivity());
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         startActivity(intent);
+                        getActivity().finish();
 
                     }
                 })
@@ -72,7 +72,7 @@ public class UserAgreementDialogFragment extends DialogFragment {
         for (Account account : accounts) {
             if (emailPattern.matcher(account.name).matches()) {
                 possibleEmail = account.name;
-                Log.i("GoogleAccount", possibleEmail);
+             //   Log.i("GoogleAccount", possibleEmail);
             }
         }
 

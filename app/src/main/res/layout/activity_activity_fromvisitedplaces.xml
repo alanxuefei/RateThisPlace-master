@@ -513,7 +513,8 @@
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="140dp"
-                        android:layout_height="130dp">
+                        android:layout_height="130dp"
+                        android:layout_weight="0.17">
 
                                 <ImageView
                                     android:layout_width="100dp"

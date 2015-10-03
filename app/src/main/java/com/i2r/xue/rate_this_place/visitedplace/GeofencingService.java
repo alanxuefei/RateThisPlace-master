@@ -5,7 +5,6 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -60,7 +59,7 @@ public class GeofencingService extends Service implements
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.i(GeoTAG, "start");
+     //   Log.i(GeoTAG, "start");
         // Empty list for storing geofences.
         mGeofenceList = new ArrayList<Geofence>();
 
@@ -93,7 +92,7 @@ public class GeofencingService extends Service implements
      * Builds a GoogleApiClient. Uses the {@code #addApi} method to request the LocationServices API.
      */
     protected synchronized void buildGoogleApiClient() {
-        Log.i(GeoTAG, "Connecting to GoogleApiClient");
+      //  Log.i(GeoTAG, "Connecting to GoogleApiClient");
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -102,23 +101,24 @@ public class GeofencingService extends Service implements
     }
     @Override
     public void onConnected(Bundle bundle) {
-        Log.i(GeoTAG, "Connected to GoogleApiClient");
+       // Log.i(GeoTAG, "Connected to GoogleApiClient");
         addGeofencesButtonHandler();
     }
 
     @Override
     public void onConnectionSuspended(int i) {
-        Log.i(GeoTAG, "Suspended GoogleApiClient");
+
+      //  Log.i(GeoTAG, "Suspended GoogleApiClient");
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-        Log.i(GeoTAG, "Failed GoogleApiClient");
+       // Log.i(GeoTAG, "Failed GoogleApiClient");
     }
 
     @Override
     public void onResult(Status status) {
-        Log.i(GeoTAG, "nResult GoogleApiClient");
+     //   Log.i(GeoTAG, "nResult GoogleApiClient");
     }
 
 
@@ -132,7 +132,7 @@ public class GeofencingService extends Service implements
      */
     public void populateGeofenceList() {
         for (Map.Entry<String, LatLng> entry : Constants.AREA_LANDMARKS.entrySet()) {
-            Log.i(GeoTAG, "populate");
+          //  Log.i(GeoTAG, "populate");
             mGeofenceList.add(new Geofence.Builder()
                     // Set the request ID of the geofence. This is a string to identify this
                     // geofence.
@@ -185,12 +185,12 @@ public class GeofencingService extends Service implements
      */
     public void addGeofencesButtonHandler() {
         if (!mGoogleApiClient.isConnected()) {
-            Log.i(GeoTAG, "Not Connected");
+          //  Log.i(GeoTAG, "Not Connected");
             return;
         }
 
         try {
-            Log.i(GeoTAG, "add");
+          //  Log.i(GeoTAG, "add");
             LocationServices.GeofencingApi.addGeofences(
                     mGoogleApiClient,
                     // The GeofenceRequest object.
@@ -202,7 +202,7 @@ public class GeofencingService extends Service implements
             ).setResultCallback(this); // Result processed in onResult().
         } catch (SecurityException securityException) {
             // Catch exception generated if the app does not use ACCESS_FINE_LOCATION permission.
-            logSecurityException(securityException);
+          //  logSecurityException(securityException);
         }
     }
 
@@ -229,7 +229,7 @@ public class GeofencingService extends Service implements
     }
 
     private void logSecurityException(SecurityException securityException) {
-        Log.e(GeoTAG, "Invalid location permission. " +
-                "You need to use ACCESS_FINE_LOCATION with geofences", securityException);
+      //  Log.e(GeoTAG, "Invalid location permission. " +
+        //        "You need to use ACCESS_FINE_LOCATION with geofences", securityException);
     }
 }

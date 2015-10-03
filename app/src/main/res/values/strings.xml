@@ -18,7 +18,7 @@
 
     <string name="not_connected">GoogleApiClient not yet connected. Try again.</string>
     <string name="title_activity_human_activity_diary">HumanActivityDiaryActivity</string>
-    <string name="user_agreement">Agreement</string>
+    <string name="user_agreement">Agreement\n \n The APP is designed to collect feedback on public spaces (i.e. sport facility, car park and so on). \n\n   This APP collects the data about location, network, accelerometer, gyroscope, magnetic field, battery and app usage. \n\n  The APP do NOT collect phone call, SMS messages and chat history. \n</string>
     <string name="agree">Agree</string>
     <string name="disagree">Disagree</string>
     <string name="title_activity_rate_this_place">RateThisPlaceActivity</string>

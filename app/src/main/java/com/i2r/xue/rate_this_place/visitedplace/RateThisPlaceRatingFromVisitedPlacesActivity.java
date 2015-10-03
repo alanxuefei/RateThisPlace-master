@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +17,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.i2r.xue.rate_this_place.R;
 import com.i2r.xue.rate_this_place.myrewards.AsyncTaskGetDataToMyRewardBar;
 import com.i2r.xue.rate_this_place.utility.Constants;
+import com.i2r.xue.rate_this_place.utility.globalvariable;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -62,7 +62,7 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
     }
 
     public void ReturnButton(View v) {
-        Log.i("test", "returen");
+    //    Log.i("test", "returen");
         super.onBackPressed();
 
     }
@@ -196,7 +196,7 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
             LatLng detectedlocation_LatLng = Constants.AREA_LANDMARKS.get(Locationname1);
             JsonGenerator_rating_location.put("longitude",detectedlocation_LatLng.longitude);
             JsonGenerator_rating_location.put("latitude", detectedlocation_LatLng.latitude);
-
+            JsonGenerator_rating.put("PictureURL", "invitedPlaces");
 
             JsonGenerator_rating.put("Datatime", timestamp);
             JsonGenerator_rating.put("Location", JsonGenerator_rating_location);
@@ -210,7 +210,7 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
 
 
          //   JsonGenerator_rating.put("Commentary", ((EditText) findViewById(com.i2r.alan.rate_this_place.R.id.AutoCompleteTextView_Commentary)).getText().toString());
-            Log.i("JSON", JsonGenerator_rating.toString());
+         //   Log.i("JSON", JsonGenerator_rating.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -222,7 +222,7 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
         this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(Locationname1+"RatingStatus", df.format(avgrating)).apply();
 
 
-        Log.i("VisitedPlace", Locationname1+"RatingStatus");
+      //  Log.i("VisitedPlace", Locationname1+"RatingStatus");
 
 
     }

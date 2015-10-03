@@ -123,11 +123,11 @@ public final class Constants {
     /**
      * Map for storing information about airports in the San Francisco bay area.
      */
-    public static final String[] Locations = {"I2ROffice", "Pioneer", "Buona Vista","Jurong East","8 Somapah Rd","Coffee Shop"};
+    public static final String[] Locations = {"I2ROffice", "Pioneer", "Jurong East MRT","Bldg 3, SUTD","8 Somapah Rd","Expo MRT"};
     //public static final double[] Lat = new double[]{1.2993538, 1.337399, 1.307739, 1.334625, 1.340171, 1.335703};
     //public static final double[] Lng = new double[]{103.787726, 103.697090, 103.789675, 103.741915, 103.963100, 103.696774};
-    public static final double[] Lat = new double[]{1.2993538, 1.2993531, 1.2993532, 1.2993533, 1.2993534, 1.2993535};
-    public static final double[] Lng = new double[]{103.787726, 103.787726, 103.787726, 103.787726, 103.787726, 103.787726};
+    public static final double[] Lat = new double[]{1.2993538, 1.2993531, 1.333045, 1.340795, 1.340259, 1.334653};
+    public static final double[] Lng = new double[]{103.787726, 103.787726, 103.742301, 103.963389, 103.963124, 103.961371};
     public static final HashMap<String, LatLng> AREA_LANDMARKS = new HashMap<String, LatLng>();
     static {
         for(int i=0; i<Locations.length; i++){

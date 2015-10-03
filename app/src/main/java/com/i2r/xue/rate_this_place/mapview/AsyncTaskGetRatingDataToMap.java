@@ -1,9 +1,8 @@
 package com.i2r.xue.rate_this_place.mapview;
 
 import android.content.Context;
-import android.location.Location;
 import android.os.AsyncTask;
-import android.util.Log;
+//import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -60,7 +59,7 @@ public class AsyncTaskGetRatingDataToMap extends AsyncTask {
 
     @Override
     protected Object doInBackground(Object[] params) {
-        Log.i(GetDataToMap_TAG, "start");
+      //  Log.i(GetDataToMap_TAG, "start");
         URL url = null;
         JSONObject JsonGenerator_username = new JSONObject();
         try {
@@ -71,7 +70,7 @@ public class AsyncTaskGetRatingDataToMap extends AsyncTask {
         try {
 
             url = new URL("http://www.ratethisplace.co/getRatingDatatoMap.php?JsonData="+JsonGenerator_username.toString().replaceAll(" ", "%20"));
-            Log.i(GetDataToMap_TAG, "http://www.ratethisplace.co/getDBtoMap.php?JsonData="+JsonGenerator_username.toString().replaceAll(" ", "%20"));
+           // Log.i(GetDataToMap_TAG, "http://www.ratethisplace.co/getDBtoMap.php?JsonData="+JsonGenerator_username.toString().replaceAll(" ", "%20"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -110,7 +109,7 @@ public class AsyncTaskGetRatingDataToMap extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-        Log.i(GetDataToMap_TAG, o.toString());
+        //Log.i(GetDataToMap_TAG, o.toString());
         IconGenerator iconFactory = new IconGenerator(this.context);
         iconFactory.setStyle(IconGenerator.STYLE_WHITE);
 
@@ -118,7 +117,7 @@ public class AsyncTaskGetRatingDataToMap extends AsyncTask {
             JSONArray mJsonArray = new JSONArray(o.toString().replace("[],", "").replace("][",","));
 
             for(int i = 0 ; i < mJsonArray.length(); i++) {
-                Log.i(GetDataToMap_TAG, mJsonArray.getJSONObject(i).toString());
+             //   Log.i(GetDataToMap_TAG, mJsonArray.getJSONObject(i).toString());
               /*  mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(Double.parseDouble( mJsonArray.getJSONObject(i).getString("LocationLatitude")), Double.parseDouble(mJsonArray.getJSONObject(i).getString("LocationLongitude"))))
                                 .title(mJsonArray.getJSONObject(i).getString("Date")+" "+mJsonArray.getJSONObject(i).getString("Time")).snippet(mJsonArray.getJSONObject(i).getString("Comment")).flat(true)).showInfoWindow();

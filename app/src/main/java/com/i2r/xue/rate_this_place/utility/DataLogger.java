@@ -1,7 +1,6 @@
 package com.i2r.xue.rate_this_place.utility;
 
 import android.os.Environment;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -150,7 +149,7 @@ public class DataLogger {
         String line;
         int linecount=0;
         while(((line = in.readLine()) != null)&&(linecount<5)){
-            Log.i("DsssssD", line);
+          //  Log.i("DsssssD", line);
             value[linecount]=line;
             linecount++;
         }

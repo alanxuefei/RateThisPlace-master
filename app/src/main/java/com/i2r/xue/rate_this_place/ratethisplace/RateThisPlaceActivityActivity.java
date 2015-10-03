@@ -12,7 +12,6 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -159,7 +158,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
             if (resultCode == Constants.SUCCESS_RESULT) {
                // showToast(getString(R.string.address_found));
             }
-            Log.i("locationname", mAddressOutput);
+         //   Log.i("locationname", mAddressOutput);
 
             mRateThisPlace.runOnUiThread(new Runnable() {
                 @Override
@@ -321,7 +320,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
             if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox8)).isChecked()) Activities=Activities+"Walking_";
             if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox9)).isChecked()) Activities=Activities+"Working_";
             JsonGenerator_activity.put("Activities", Activities);
-            Log.i("JSON", JsonGenerator_activity.toString());
+        //    Log.i("JSON", JsonGenerator_activity.toString());
 
         } catch (JSONException e) {
             e.printStackTrace();

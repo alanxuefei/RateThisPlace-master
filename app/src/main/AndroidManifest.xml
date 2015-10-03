@@ -5,7 +5,6 @@
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -17,9 +16,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
 
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true" />
+
 
     <permission
         android:name="com.company.app.permission.MAPS_RECEIVE"
@@ -38,14 +35,13 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <activity
             android:name="com.i2r.xue.rate_this_place.MainActivity"
-            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -81,59 +77,51 @@
 
         <activity
             android:name="com.i2r.xue.rate_this_place.ratethisplace.RateThisPlaceActivity"
-            android:label="@string/title_activity_rate_this_place"
             android:noHistory="true"
             android:screenOrientation="portrait" >
         </activity>
 
         <activity
             android:name="com.i2r.xue.rate_this_place.visitedplace.RateThisPlaceFromVistitedplaceActivity"
-            android:label="@string/title_activity_rate_this_place"
             android:noHistory="true"
             android:screenOrientation="portrait" >
         </activity>
 
         <activity
-            android:name="com.i2r.xue.rate_this_place.ratethisplace.RateThisPlaceRatingActivity"
-            android:label="@string/title_activity_rate_this_place" >
+            android:name="com.i2r.xue.rate_this_place.ratethisplace.RateThisPlaceRatingActivity">
         </activity>
 
         <activity
             android:name="com.i2r.xue.rate_this_place.visitedplace.RateThisPlaceRatingFromVisitedPlacesActivity"
-            android:noHistory="true"
-            android:label="@string/title_activity_rate_this_place" >
+            android:noHistory="true">
         </activity>
 
         <activity
-            android:name="com.i2r.xue.rate_this_place.ratethisplace.RateThisPlaceActivityActivity"
-            android:label="@string/title_activity_rate_this_place" >
+            android:name="com.i2r.xue.rate_this_place.ratethisplace.RateThisPlaceActivityActivity" >
         </activity>
 
         <activity
             android:name="com.i2r.xue.rate_this_place.visitedplace.RateThisPlaceActivityFromVisitedPlaceActivity"
-            android:label="@string/title_activity_rate_this_place" >
+             >
         </activity>
 
         <activity
             android:name="com.i2r.xue.rate_this_place.mapview.MapsActivity"
-            android:label="@string/title_activity_maps"
             android:screenOrientation="portrait" >
         </activity>
 
 
         <activity
             android:name="com.i2r.xue.rate_this_place.myrewards.MyRewardActivity"
-            android:label="@string/title_activity_my_reward"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.i2r.xue.rate_this_place.visitedplace.VisitedPlacesActivity"
-            android:label="VisitedPlacesActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:noHistory="true">
         </activity>
         <activity
             android:name="com.i2r.xue.rate_this_place.usersetting.UserProfileActivity"
-            android:label="@string/title_activity_user_profile"
             android:screenOrientation="portrait" >
         </activity>
 

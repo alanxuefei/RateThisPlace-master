@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
-import android.util.Log;
+//import android.util.Log;
 
 import java.io.File;
 
@@ -23,7 +23,7 @@ public class WifiBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.i("wifi", "wifistart");
+       // Log.i("wifi", "wifistart");
 
         ConnectivityManager cm =
                 (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -35,7 +35,7 @@ public class WifiBroadcastReceiver extends BroadcastReceiver {
         if (isConnected) {
             boolean isWiFi = activeNetwork.getType() == ConnectivityManager.TYPE_WIFI;
             if (isWiFi){
-                Log.i("wifi", "wifi-upload-start");
+             //   Log.i("wifi", "wifi-upload-start");
                 File filepath= new File(Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/PassiveData");
                 if (folderSize(filepath)>10000){
                     Intent mServiceIntent = new Intent(from, PassiveDataToFTPIntentService.class);

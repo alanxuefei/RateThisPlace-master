@@ -9,7 +9,6 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -187,44 +186,10 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
     }
 
 
-    static final int REQUEST_TAKE_PHOTO = 1;
-    File photoFile = null;
-    public void dispatchTakePictureIntent(View view) {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // Ensure that there's a camera activity to handle the intent
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            // Create the File where the photo should go
-
-            try {
-                photoFile = createImageFile();
-            } catch (IOException ex) {
-                // Error occurred while creating the File
-
-            }
-            // Continue only if the File was successfully created
-            if (photoFile != null) {
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
-                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-            }
-        }
-    }
 
 
 
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null)
-                + "_"+timeStamp + "_Lat_"+ globalvariable.thelocation.getLatitude()+"_Lon_"+ globalvariable.thelocation.getLongitude()+"_"+ globalvariable.thelocation.getProvider()+"_";
-        File storageDir = new File(Environment.getExternalStorageDirectory() + "/" + "RateThisPlace" + "/" + "ActiveData/");
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
 
-        return image;
-    }
 
 
     public void clickButton_submit(View view) {
@@ -243,10 +208,13 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
 
             JsonGenerator_rating.put("Nickname", PreferenceManager.getDefaultSharedPreferences(this).getString("display_name", ""));
             if (globalvariable.thelocation==null){
-                JsonGenerator_rating_location =null;}
+                JsonGenerator_rating_location =null;
+                JsonGenerator_rating.put("PictureURL", "null");
+            }
             else {
                 JsonGenerator_rating_location.put("longitude", globalvariable.thelocation.getLongitude());
                 JsonGenerator_rating_location.put("latitude", globalvariable.thelocation.getLatitude());
+                JsonGenerator_rating.put("PictureURL", globalvariable.thelocation.getAccuracy());
             }
             JsonGenerator_rating.put("Datatime", timestamp);
             JsonGenerator_rating.put("Location", JsonGenerator_rating_location);
@@ -257,21 +225,17 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
             JsonGenerator_rating.put("Rating_Friendliness", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarFRIENDLINESS)).getRating());
             JsonGenerator_rating.put("Rating_Convenience", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarCONVENIENCE)).getRating());
             JsonGenerator_rating.put("Rating_Greenness", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarGREENNESS)).getRating());
-            if (photoFile!=null){
-                JsonGenerator_rating.put("PictureURL", photoFile.getName());
-            }
-            else{
-                JsonGenerator_rating.put("PictureURL", "NoPhoto");
-            }
+
+
 
            // JsonGenerator_rating.put("Commentary", ((EditText) findViewById(com.i2r.alan.rate_this_place.R.id.AutoCompleteTextView_Commentary)).getText().toString());
-            Log.i("JSON", JsonGenerator_rating.toString());
+          //  Log.i("JSON", JsonGenerator_rating.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
        // clickbuttonRecieve();
 
-        AsyncTaskUploadRating myfileuploader = new AsyncTaskUploadRating(this,JsonGenerator_rating,photoFile);
+        AsyncTaskUploadRating myfileuploader = new AsyncTaskUploadRating(this,JsonGenerator_rating);
         myfileuploader.execute();
 
 

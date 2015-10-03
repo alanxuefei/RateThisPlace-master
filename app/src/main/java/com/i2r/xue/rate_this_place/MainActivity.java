@@ -7,7 +7,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -151,14 +150,14 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
         if (DoesUserAgree){
 
-            Log.i(FirstRun_TAG, "User  agree");
+         //   Log.i(FirstRun_TAG, "User  agree");
             ((TextView)findViewById(R.id.textView_UserID)).setText("UserID: " + this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
             checkNetworkandGPS();
             Commonfunctions.setSensingAlarm(this);
 
         }
         else{
-            Log.i(FirstRun_TAG, "User have not agree yet");
+         //   Log.i(FirstRun_TAG, "User have not agree yet");
             UserAgreementDialogFragment UserAgreement = new UserAgreementDialogFragment();
             UserAgreement.show(getSupportFragmentManager(), "NoticeDialogFragment");
         }
@@ -174,11 +173,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
 
         if (manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
-            Log.i(GPS_Internet_Check_TAG, "GPS Yes");
+          //  Log.i(GPS_Internet_Check_TAG, "GPS Yes");
             if (isConnectingToInternet())
             {
                 ((TextView)findViewById(R.id.textView8)).setText("");
-                Log.i(GPS_Internet_Check_TAG, "internet Yes");
+               // Log.i(GPS_Internet_Check_TAG, "internet Yes");
                 new AsyncTaskGetDataToMyRewardBar(this,(ProgressBar)findViewById(R.id.progressBar_promote),(TextView)findViewById(R.id.textView_promote),
                         (ImageView)findViewById(R.id.imageView_rewards1),
                         (ImageView)findViewById(R.id.imageView_rewards2),(ImageView)findViewById(R.id.imageView_rewards3),
@@ -187,16 +186,16 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             else{
                 ((TextView)findViewById(R.id.textView8)).setText("Internet is not available");
 
-                Log.i(GPS_Internet_Check_TAG, "internet No");
+               // Log.i(GPS_Internet_Check_TAG, "internet No");
             }
         }
         else{
 
-            Log.i(GPS_Internet_Check_TAG, "GPS No");
+           // Log.i(GPS_Internet_Check_TAG, "GPS No");
             if (isConnectingToInternet())
             {
                 ((TextView)findViewById(R.id.textView8)).setText("GPS is off");
-                Log.i(GPS_Internet_Check_TAG, "internet Yes");
+              //  Log.i(GPS_Internet_Check_TAG, "internet Yes");
                 new AsyncTaskGetDataToMyRewardBar(this,(ProgressBar)findViewById(R.id.progressBar_promote),(TextView)findViewById(R.id.textView_promote),
                         (ImageView)findViewById(R.id.imageView_rewards1),
                         (ImageView)findViewById(R.id.imageView_rewards2),(ImageView)findViewById(R.id.imageView_rewards3),
@@ -205,7 +204,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             else{
                 ((TextView)findViewById(R.id.textView8)).setText("Internet is not available and GPS is off");
 
-                Log.i(GPS_Internet_Check_TAG, "internet No");
+                //Log.i(GPS_Internet_Check_TAG, "internet No");
             }
 
         }

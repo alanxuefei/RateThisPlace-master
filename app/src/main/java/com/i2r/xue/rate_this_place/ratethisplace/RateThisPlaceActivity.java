@@ -7,7 +7,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -104,7 +103,7 @@ public class RateThisPlaceActivity  extends TabActivity implements TabHost.OnTab
     }
 
     public void ReturnButton(View v) {
-        Log.i("test", "returen");
+     //   Log.i("test", "returen");
         super.onBackPressed();
 
     }
@@ -113,14 +112,10 @@ public class RateThisPlaceActivity  extends TabActivity implements TabHost.OnTab
     @Override
     public void onLocationChanged(Location location) {
         globalvariable.thelocation=location;
-        Log.i("ratelocation", "getlocation" + globalvariable.thelocation.getLatitude() + " " + globalvariable.thelocation.getLongitude());
+      //  Log.i("ratelocation", "getlocation" + globalvariable.thelocation.getLatitude() + " " + globalvariable.thelocation.getLongitude());
         ((TextView)findViewById(R.id.textView_promote)).setText(" The current location is successfully obtained by " + location.getProvider() );
         ((ProgressBar)findViewById(R.id.progressBar_promote)).setVisibility(View.GONE);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         new AsyncTaskGetDataToMyRewardBar(this,(ProgressBar)findViewById(R.id.progressBar_promote),(TextView)findViewById(R.id.textView_promote),
                 (ImageView)findViewById(R.id.imageView_rewards1),
                 (ImageView)findViewById(R.id.imageView_rewards2),(ImageView)findViewById(R.id.imageView_rewards3),

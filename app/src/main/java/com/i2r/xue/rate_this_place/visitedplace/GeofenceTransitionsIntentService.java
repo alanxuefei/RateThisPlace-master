@@ -27,7 +27,6 @@ import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingEvent;
@@ -75,7 +74,7 @@ public class GeofenceTransitionsIntentService extends IntentService {
         if (geofencingEvent.hasError()) {
             String errorMessage = GeofenceErrorMessages.getErrorString(this,
                     geofencingEvent.getErrorCode());
-            Log.e(TAG, errorMessage);
+           // Log.e(TAG, errorMessage);
             return;
         }
 
@@ -106,10 +105,10 @@ public class GeofenceTransitionsIntentService extends IntentService {
 
 
             DataLogger.AddtoVisitedPlacesList(geofenceTransitionDetails.replace("Entered: ", ""));
-            Log.i(TAG, geofenceTransitionDetails);
+          //  Log.i(TAG, geofenceTransitionDetails);
         } else {
             // Log the error.s
-            Log.e(TAG, getString(com.i2r.xue.rate_this_place.R.string.geofence_transition_invalid_type, geofenceTransition));
+         //   Log.e(TAG, getString(com.i2r.xue.rate_this_place.R.string.geofence_transition_invalid_type, geofenceTransition));
 
         }
     }

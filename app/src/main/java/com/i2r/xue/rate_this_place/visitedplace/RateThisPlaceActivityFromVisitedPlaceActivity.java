@@ -3,6 +3,7 @@ package com.i2r.xue.rate_this_place.visitedplace;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Build;
@@ -10,11 +11,14 @@ import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -68,8 +72,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
                 (ImageView)findViewById(R.id.imageView_rewards2),(ImageView)findViewById(R.id.imageView_rewards3),
                 (ImageView)findViewById(R.id.imageView_rewards4),(ProgressBar)findViewById(R.id.progressBar_rewards),(TextView)findViewById(R.id.textView_Rewards)).execute();
 
-
-     /*   mEdit_Activity_Others.addTextChangedListener(new TextWatcher() {
+        mEdit_Activity_Others.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -78,14 +81,14 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                ((CheckBox) findViewById(com.i2r.alan.rate_this_place.R.id.checkBox10)).setChecked(true);
+                ((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox10)).setChecked(true);
 
             }
 
             public void afterTextChanged(Editable s) {
 
                 // you can call or do what you want with your EditText here
-                final Button mbutton_editdone = (Button) findViewById(com.i2r.alan.rate_this_place.R.id.button_editdone);
+                final Button mbutton_editdone = (Button) findViewById(com.i2r.xue.rate_this_place.R.id.button_editdone);
                 mbutton_editdone.setVisibility(View.VISIBLE);
                 mbutton_editdone.setOnClickListener(new View.OnClickListener() {
 
@@ -105,7 +108,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
             }
 
 
-        });*/
+        });
 
     }
 
@@ -164,7 +167,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
             if (resultCode == Constants.SUCCESS_RESULT) {
                // showToast(getString(R.string.address_found));
             }
-            Log.i("locationname", mAddressOutput);
+         //   Log.i("locationname", mAddressOutput);
 
             mRateThisPlace.runOnUiThread(new Runnable() {
                 @Override
@@ -293,7 +296,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
 
 
     public void ReturnButton(View v) {
-        Log.i("test", "returen");
+     //   Log.i("test", "returen");
         super.onBackPressed();
 
     }
@@ -328,7 +331,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
             if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox8)).isChecked()) Activities=Activities+"Walking_";
             if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox9)).isChecked()) Activities=Activities+"Working_";
             JsonGenerator_activity.put("Activities", Activities);
-            Log.i("JSON", JsonGenerator_activity.toString());
+          //  Log.i("JSON", JsonGenerator_activity.toString());
 
         } catch (JSONException e) {
             e.printStackTrace();

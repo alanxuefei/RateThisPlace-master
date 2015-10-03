@@ -2,7 +2,7 @@ package com.i2r.xue.rate_this_place.mapview;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
+//import android.util.Log;
 import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -64,7 +64,7 @@ public class MapsActivity extends FragmentActivity {
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
-        mMap.setMyLocationEnabled(true);
+       // mMap.setMyLocationEnabled(true);
         mMap.setIndoorEnabled(true);
         (new AsyncTaskGetRatingDataToMap(this,mMap)).execute();
         (new AsyncTaskGetActivitiesDataToMap(this,mMap)).execute();
@@ -77,7 +77,7 @@ public class MapsActivity extends FragmentActivity {
     }
 
     public void ReturnButton(View v) {
-        Log.i("test", "returen");
+      //  Log.i("test", "returen");
         super.onBackPressed();
 
     }

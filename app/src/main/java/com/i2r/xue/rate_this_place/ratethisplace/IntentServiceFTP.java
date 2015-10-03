@@ -3,7 +3,6 @@ package com.i2r.xue.rate_this_place.ratethisplace;
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.Environment;
-import android.util.Log;
 
 import com.i2r.xue.rate_this_place.utility.DataLogger;
 
@@ -50,7 +49,7 @@ public class IntentServiceFTP extends IntentService {
         userid=this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID","unknown");
 
         connnectingwithFTP();
-        Log.e("FTP", "done");
+        //Log.e("FTP", "done");
     }
 
 
@@ -68,15 +67,15 @@ public class IntentServiceFTP extends IntentService {
         try {
 
 
-            Log.e("isFTPConnected", String.valueOf(status));
+          //  Log.e("isFTPConnected", String.valueOf(status));
             mFtpClient.connect(InetAddress.getByName(ip));
             status = mFtpClient.login(userName, pass);
-            Log.e("isFTPConnected", String.valueOf(status));
+         //   Log.e("isFTPConnected", String.valueOf(status));
             if (FTPReply.isPositiveCompletion(mFtpClient.getReplyCode())) {
                 mFtpClient.setFileType(FTP.ASCII_FILE_TYPE);
                 mFtpClient.enterLocalPassiveMode();
                 FTPFile[] mFileArray = mFtpClient.listFiles();
-                Log.e("Size",  mFileArray.toString());
+              //  Log.e("Size",  mFileArray.toString());
             }
 
 
@@ -131,10 +130,10 @@ public class IntentServiceFTP extends IntentService {
 
             FileInputStream srcFileStream = new FileInputStream(downloadFile);
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
-            Log.e("FTP", "uploading ");
+           // Log.e("FTP", "uploading ");
             boolean status = ftpClient.storeFile(serverfilePath+downloadFile.getName(),
                     srcFileStream);
-            Log.e("FTP", String.valueOf(status));
+           // Log.e("FTP", String.valueOf(status));
             srcFileStream.close();
             return status;
 
@@ -192,7 +191,7 @@ public class IntentServiceFTP extends IntentService {
 
             // close ZipEntry to store the stream to the file
             zipOutputStream.closeEntry();
-            Log.e("FTP", "Regular file :" + inputFile.getCanonicalPath() + " is zipped to archive :");
+           // Log.e("FTP", "Regular file :" + inputFile.getCanonicalPath() + " is zipped to archive :");
 
 
         } catch (IOException e) {

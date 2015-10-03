@@ -3,7 +3,6 @@ package com.i2r.xue.rate_this_place.ratethisplace;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -84,7 +83,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent0 = new Intent(getApplication(), RateThisPlaceRatingFromVisitedPlacesActivity.class);
                 intent0.putExtra("From", LocationName);
-                Log.i("VisitedPlace", LocationName + "RatingStatus");
+             //   Log.i("VisitedPlace", LocationName + "RatingStatus");
                 startActivity(intent0);
 
             }
@@ -102,7 +101,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent0 = new Intent(getApplication(), RateThisPlaceActivityFromVisitedPlaceActivity.class);
                 intent0.putExtra("From", LocationName);
-                Log.i("VisitedPlace", LocationName + "RatingStatus");
+               // Log.i("VisitedPlace", LocationName + "RatingStatus");
                 startActivity(intent0);
             }
         });
@@ -110,7 +109,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
     public void addStar(ViewGroup vi, String number) {
 
-        Log.i("VisitedPlace", vi.toString() + " number");
+       // Log.i("VisitedPlace", vi.toString() + " number");
 
         TextView bt = new TextView(this);
         vi.addView(bt);
@@ -123,7 +122,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
     public void addACTIVITYcontent(ViewGroup vi, String activities) {
 
-        Log.i("VisitedPlace", vi.toString() + " number");
+   //     Log.i("VisitedPlace", vi.toString() + " number");
 
         TextView bt = new TextView(this);
         vi.addView(bt);
@@ -156,7 +155,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
    /* public void clickthelistview(AdapterView<?> a, View v, int position, long id) {
 
        String value = (String)a.getItemAtPosition(position);
-        Log.i(HumanActivityTAG, value);
+     //   Log.i(HumanActivityTAG, value);
 
         Intent startRatingIntent = new Intent(this,  RateThisPlaceFromVistitedplaceActivity.class);
         startActivity(startRatingIntent);
@@ -165,7 +164,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
     }*/
 
     public void ReturnButton(View v) {
-        Log.i("test", "return");
+       // Log.i("test", "return");
         super.onBackPressed();
     }
 

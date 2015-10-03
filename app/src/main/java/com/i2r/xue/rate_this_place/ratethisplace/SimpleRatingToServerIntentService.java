@@ -2,7 +2,6 @@ package com.i2r.xue.rate_this_place.ratethisplace;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.util.Log;
 
 import com.i2r.xue.rate_this_place.utility.DataLogger;
 
@@ -52,7 +51,7 @@ public class SimpleRatingToServerIntentService extends IntentService {
             }
         }
 
-         Log.e("php", "done");
+         //Log.e("php", "done");
     }
 
 
@@ -72,7 +71,7 @@ public class SimpleRatingToServerIntentService extends IntentService {
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {
-            Log.i("php",  "network is not available");
+          //  Log.i("php",  "network is not available");
             DataLogger.writeSimpleRatingTolog(url.toString());
             e.printStackTrace();
         }
@@ -96,7 +95,7 @@ public class SimpleRatingToServerIntentService extends IntentService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.i("php",  total.toString());
+      //  Log.i("php",  total.toString());
 
     }
 
