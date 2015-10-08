@@ -39,7 +39,7 @@
         <ListPreference
             android:key="display_userage"
             android:title="Age"
-            android:defaultValue="NA"
+            android:defaultValue="0"
             android:entries="@array/pref_example_list_age"
             android:entryValues="@array/pref_example_list_age_values"
             android:negativeButtonText="@null"

@@ -81,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Note: \n Each submision gains 2 points.\n The maximum daily points are 12.  "
+            android:text="Note: \n Each submission gains 2 points.\n The maximum daily points are 12 points.  "
             android:id="@+id/textView6" />
     </LinearLayout>
 

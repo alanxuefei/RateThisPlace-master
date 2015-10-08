@@ -132,7 +132,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:id="@+id/imageView4"
-                android:src="@drawable/dropdownmenubutton_black"
+                android:src="@drawable/dropdownmenubutton"
                 android:cropToPadding="false"
                 android:background="#FFFFFF"
                 android:adjustViewBounds="false"
@@ -149,8 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/textView8"
-            android:text="Connecting to Internet" />
+            android:id="@+id/textView8" />
 
 
 
@@ -162,17 +161,31 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal">
 
-            <ImageView
-                android:layout_width="212dp"
-                android:layout_height="216dp"
-                android:id="@+id/imageView_rate_this_place"
-                android:layout_row="0"
-                android:layout_column="0"
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
+                <ImageView
+                    android:layout_width="181dp"
+                    android:layout_height="184dp"
+                    android:id="@+id/imageView_rate_this_place"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:clickable="true"
+                    android:onClick="clickImage_rate_this_place"
+                    android:src="@drawable/rate_this_place" />
 
-                android:clickable="true"
-                android:onClick="clickImage_rate_this_place"
-                android:src="@drawable/rate_this_place" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Rate This Place"
+                    android:id="@+id/textView10"
+                    android:layout_gravity="center_horizontal"
+                    android:textIsSelectable="false"
+                    android:singleLine="false" />
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -187,27 +200,55 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal">
 
-            <ImageView
-                android:layout_width="125dp"
-                android:layout_height="134dp"
-                android:id="@+id/visitedplaces"
-                android:layout_row="1"
-                android:layout_column="0"
-                android:clickable="true"
-                android:onClick="clickImage_activity_log"
-                android:src="@drawable/visited_places"
-                android:cropToPadding="false" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
 
-            <ImageView
-                android:layout_width="125dp"
-                android:layout_height="134dp"
-                android:id="@+id/reward"
-                android:layout_row="1"
-                android:layout_column="0"
-                android:clickable="true"
-                android:onClick="clickImage_myreward"
-                android:src="@drawable/my_reward"
-                android:adjustViewBounds="true" />
+                <ImageView
+                    android:layout_width="125dp"
+                    android:layout_height="134dp"
+                    android:id="@+id/visitedplaces"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:clickable="true"
+                    android:onClick="clickImage_activity_log"
+                    android:src="@drawable/visited_places"
+                    android:cropToPadding="false" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Invited Places"
+                    android:id="@+id/textView7" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="125dp"
+                    android:layout_height="134dp"
+                    android:id="@+id/reward"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:clickable="true"
+                    android:onClick="clickImage_myreward"
+                    android:src="@drawable/my_reward"
+                    android:adjustViewBounds="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="My Rewards"
+                    android:id="@+id/textView9" />
+            </LinearLayout>
 
         </LinearLayout>
 

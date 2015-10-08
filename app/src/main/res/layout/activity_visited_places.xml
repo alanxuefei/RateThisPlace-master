@@ -39,149 +39,193 @@
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView2" >
+        android:id="@+id/scrollView2"
+        android:layout_margin="1dp">
 
         <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minHeight="60px"
+        android:minHeight="80dp"
         android:stretchColumns="*"
-            android:background="#b3ff96">
+            android:padding="1dp">
 
 
-        <TableRow android:minHeight="40dp">
+        <TableRow android:minHeight="40dp"
+            android:layout_margin="1dp">
             <TextView
-                android:padding="3dip"
+                android:layout_width="wrap_content"
                 android:text="Location"
-                android:layout_span="1"
-                android:textSize="16dp"/>
+                android:textSize="16dp"
+                android:layout_column="0"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Visited Time"
+                android:textSize="16dp"
+                android:layout_column="1"
+                android:layout_span="1" />
+
+            <TextView
+
+            android:text="Pending Tasks "
+            android:textSize="16dp"
+            android:layout_column="2"
+               />
+
+
+            <TextView
+
+                android:text="            "
+                android:textSize="16dp"
+                android:layout_column="3"/>
+
+
+        </TableRow>
+
+        <TableRow android:minHeight="100dp" android:background="@layout/cell_shape"
+            android:layout_margin="3dp">
+            <TextView
+
+                android:id="@+id/location0"
+                android:layout_margin="1dp" />
 
             <TextView
                 android:padding="3dip"
-                android:text="Last Visited Time"
-                android:layout_span="1"
-                android:textSize="16dp"/>
+                android:id="@+id/location0_time"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp" />
 
-            <TextView
-                android:padding="3dip"
-                android:text="Pending Tasks"
-                android:layout_span="8"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16dp"/>
-
-
-
-        </TableRow>
-
-        <TableRow android:minHeight="90dp" >
-            <TextView
-                android:padding="3dip"
-                android:id="@+id/location0"/>
-
-            <TextView
-                android:padding="3dip"
-                android:id="@+id/location0_time" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/TableRow0">
+                android:id="@+id/TableRow0"
+                android:layout_margin="1dp">
 
             </LinearLayout>
 
 
         </TableRow>
 
-        <TableRow android:minHeight="90dp">
+        <TableRow android:minHeight="100dp" android:background="@layout/cell_shape"
+            android:layout_margin="3dp">
             <TextView
-                android:padding="3dip"
-                android:id="@+id/location1"/>
+
+                android:id="@+id/location1"
+                android:layout_margin="1dp" />
             <TextView android:padding="3dip"
-                android:id="@+id/location1_time" />
+                android:id="@+id/location1_time"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp" />
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/TableRow1">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/TableRow1"
+                android:layout_margin="1dp">
             </LinearLayout>
         </TableRow>
 
-        <TableRow android:minHeight="90dp"   >
+        <TableRow android:minHeight="100dp"  android:background="@layout/cell_shape"
+            android:layout_margin="3dp">
             <TextView
                 android:padding="3dip"
-                android:id="@+id/location2"/>
+                android:id="@+id/location2"
+                android:layout_margin="1dp" />
             <TextView android:padding="3dip"
-                android:id="@+id/location2_time" />
+                android:id="@+id/location2_time"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp" />
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/TableRow2">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/TableRow2"
+                android:layout_margin="1dp">
             </LinearLayout>
 
         </TableRow>
 
-        <TableRow  android:minHeight="90dp"  >
+        <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
+            android:layout_margin="3dp">
             <TextView
                 android:padding="3dip"
-                android:id="@+id/location3"/>
+                android:id="@+id/location3"
+                android:layout_margin="1dp" />
 
             <TextView android:padding="3dip"
-                android:id="@+id/location3_time" />
+                android:id="@+id/location3_time"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp" />
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/TableRow3">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/TableRow3"
+                android:layout_margin="1dp">
             </LinearLayout>
 
 
 
         </TableRow >
 
-        <TableRow android:minHeight="90dp"  >
+            <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
+                android:layout_margin="3dp">
             <TextView
                 android:padding="3dip"
-                android:id="@+id/location4" />
+                android:id="@+id/location4"
+                android:layout_margin="1dp" />
             <TextView android:padding="3dip"
-                android:id="@+id/location4_time" />
+                android:id="@+id/location4_time"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp" />
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/TableRow4">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/TableRow4"
+                android:layout_margin="1dp">
             </LinearLayout>
 
         </TableRow>
 
-        <TableRow android:minHeight="90dp"  >
+            <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
+                android:layout_margin="3dp">
             <TextView
                 android:padding="3dip"
-                android:id="@+id/location5" />
+                android:id="@+id/location5"
+                android:layout_margin="1dp" />
             <TextView android:padding="3dip"
-                android:id="@+id/location5_time"  />
+                android:id="@+id/location5_time"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp" />
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/TableRow5">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/TableRow5"
+                android:layout_margin="1dp">
             </LinearLayout>
 
         </TableRow>
 
-        <TableRow android:minHeight="90dp"  >
+            <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
+                android:layout_margin="3dp">
             <TextView
                 android:padding="3dip"
-                android:id="@+id/Location6" />
+                android:id="@+id/location6"
+                android:layout_margin="1dp" />
             <TextView android:padding="3dip"
-                android:id="@+id/location6_time" />
+                android:id="@+id/location6_time"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp" />
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/TableRow6">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/TableRow6"
+                android:layout_margin="1dp">
             </LinearLayout>
 
         </TableRow>

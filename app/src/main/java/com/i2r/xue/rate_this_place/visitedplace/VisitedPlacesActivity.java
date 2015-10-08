@@ -43,6 +43,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.location3)).setText(Constants.Locations[3]);
         ((TextView)findViewById(R.id.location4)).setText(Constants.Locations[4]);
         ((TextView)findViewById(R.id.location5)).setText(Constants.Locations[5]);
+        ((TextView)findViewById(R.id.location6)).setText(Constants.Locations[6]);
 
         buildTableRow0();
         buildTableRow1();
@@ -50,6 +51,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         buildTableRow3();
         buildTableRow4();
         buildTableRow5();
+        buildTableRow6();
 
 
 
@@ -76,9 +78,11 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
     public void addRATINGButton(ViewGroup vi, final String LocationName) {
 
-        Button bt = new Button(this);
+        Button bt = new Button(this,null, android.R.attr.buttonStyleSmall);
+        bt.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
         vi.addView(bt);
-        bt.setText("RATING");
+        bt.setText("RATING   ");
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +97,9 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
     public void addACTIVITYButton(ViewGroup vi, final String LocationName) {
 
-        Button bt = new Button(this);
+        Button bt = new Button(this,null, android.R.attr.buttonStyleSmall);
+        bt.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
         vi.addView(bt);
         bt.setText("ACTIVITY");
 
@@ -113,6 +119,8 @@ public class VisitedPlacesActivity extends AppCompatActivity {
       //  Log.i("VisitedPlace", vi.toString() + " number");
 
         TextView bt = new TextView(this);
+        bt.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        bt.setBackgroundColor(getResources().getColor(android.R.color.transparent));
         vi.addView(bt);
         String star="";
 
@@ -126,6 +134,8 @@ public class VisitedPlacesActivity extends AppCompatActivity {
       //  Log.i("VisitedPlace", vi.toString() + " number");
 
         TextView bt = new TextView(this);
+        bt.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        bt.setBackgroundColor(getResources().getColor(android.R.color.transparent));
         vi.addView(bt);
 
         bt.setText(activities.replace("_","\n"));
@@ -379,6 +389,34 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         }
         else{
             ((TextView)findViewById(R.id.location5_time)).setText("Wait for your visit");
+
+        };
+    }
+
+
+    public void buildTableRow6() {
+
+        if  (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[6] + "DateTime", "NA")).equals("NA"))){
+            ((TextView)findViewById(R.id.location6_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[6] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[6] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow6)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[6] + "RatingStatus", "NA"));
+
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow6)), Constants.Locations[6]);
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[6] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow6)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[6] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow6)), Constants.Locations[6]);
+            }
+
+        }
+        else{
+            ((TextView)findViewById(R.id.location6_time)).setText("Wait for your visit");
 
         };
     }
