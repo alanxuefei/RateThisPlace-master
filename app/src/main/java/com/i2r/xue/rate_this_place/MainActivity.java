@@ -21,6 +21,7 @@ import com.i2r.xue.rate_this_place.myrewards.AsyncTaskGetDataToMyRewardBar;
 import com.i2r.xue.rate_this_place.myrewards.MyRewardActivity;
 import com.i2r.xue.rate_this_place.pasivedatacollection.PassiveDataToFTPIntentService;
 import com.i2r.xue.rate_this_place.ratethisplace.RateThisPlaceActivity;
+import com.i2r.xue.rate_this_place.usersetting.AboutUsDialogFragment;
 import com.i2r.xue.rate_this_place.usersetting.UserAgreementDialogFragment;
 import com.i2r.xue.rate_this_place.usersetting.UserProfileActivity;
 import com.i2r.xue.rate_this_place.utility.Commonfunctions;
@@ -255,7 +256,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 startActivity(new Intent(this, UserProfileActivity.class));
                 break;
             case R.id.action_aboutus:
-
+                AboutUsDialogFragment AboutUs = new AboutUsDialogFragment();
+                AboutUs.show(getSupportFragmentManager(), "NoticeDialogFragment");
                 break;
 
         }

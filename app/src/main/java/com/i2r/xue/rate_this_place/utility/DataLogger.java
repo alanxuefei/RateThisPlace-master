@@ -23,11 +23,50 @@ public class DataLogger {
     /* write into text file*/
     protected static final String Log_TAG = "Log";
 
+    private static StringBuffer sBuffer = new StringBuffer("");
+    private static int NumberOfInsert=0;
 
     public static String mystorefilename;
 
 
     public static void writeTolog(String content,String logswich)  {
+
+        SimpleDateFormat timeformat = new SimpleDateFormat("HH:mm:ss");
+        String timestamp = timeformat.format(new Date());
+        content = timestamp+" "+" "+content;
+        sBuffer.append(content);
+        NumberOfInsert++;
+        if (NumberOfInsert>5000) {
+            File file;
+            FileOutputStream outputStream = null;
+
+            //SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+
+            SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+            String datestamp = dateformat.format(new Date());
+            mystorefilename = datestamp + logswich + ".txt";
+
+            try {
+                file = new File(Environment.getExternalStorageDirectory(), "/" + "RateThisPlace" + "/" + "PassiveData/" + mystorefilename);
+                outputStream = new FileOutputStream(file, true);
+                outputStream.write(sBuffer.toString().getBytes());
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (outputStream != null) {
+                    try {
+                        outputStream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            sBuffer.delete(0, sBuffer.length());
+            NumberOfInsert=0;
+        }
+    }
+
+    public static void writeTolog0(String content,String logswich)  {
 
         File file;
         FileOutputStream outputStream=null;

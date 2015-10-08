@@ -104,7 +104,7 @@ private boolean toggle=true;
             Calendar c = Calendar.getInstance();
             int vHOUR_OF_DAY = c.get(Calendar.HOUR_OF_DAY);
             // Log.i("tiemcontroll", "hour is " + vHOUR_OF_DAY);
-            if ((vHOUR_OF_DAY>7)&&(vHOUR_OF_DAY<21)) {
+            if ((vHOUR_OF_DAY>=7)&&(vHOUR_OF_DAY<=21)) {
                 if (toggle) {
 
                     stopsensing();
@@ -118,6 +118,7 @@ private boolean toggle=true;
                 }
             }
             else{
+                stopsensing();
                 timemanagerhandler.postDelayed(timemanager_runable, 1000 * 60 * 10);
             }
 
@@ -172,8 +173,8 @@ private boolean toggle=true;
         // Acquire a reference to the system Location Manager
         mlocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         // Register the listener with the Location Manager to receive location updates
-        mlocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000 * 60 * 10, 0, this); //long minTime, float minDistance
-        mlocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000 * 60 * 10, 0, this);
+        mlocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000 * 60 * 1, 0, this); //long minTime, float minDistance
+       // mlocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000 * 60 * 10, 0, this);
         buildGoogleApiClient();
 
 
@@ -183,10 +184,10 @@ private boolean toggle=true;
     public void startsensing() {
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        sensorManager.registerListener(this,  sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), (int)(1/(float)ACCsamplingrate)*1000*1000);
+         sensorManager.registerListener(this,  sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), (int)(1/(float)ACCsamplingrate)*1000*1000);
         sensorManager.registerListener(this,  sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE), (int)(1/(float)GROsamplingrate)*1000*1000);
         sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT), (int) (1 / (float) Lightsamplingrate) * 1000 * 1000);
-        sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), 1000 * 1000);
+       sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), 1000 * 1000);
         sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY), 1000 * 1000);
 
      //   Toast.makeText(this, "start sensing", Toast.LENGTH_SHORT).show();
@@ -194,16 +195,16 @@ private boolean toggle=true;
     }
 
     public void stopsensing() {
-        if (sensorManager!=null){
-            sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
+
+             sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
            sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE));
-            sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT));
+             sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT));
             sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD));
-            sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY));
-          //  if (mlocationManager!=null){
-         //       mlocationManager.removeUpdates(this);
-          //  }
-        }
+             sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY));
+           if (mlocationManager!=null){
+                 mlocationManager.removeUpdates(this);
+          }
+
 
 
      //   Toast.makeText(this, "stop sensing", Toast.LENGTH_SHORT).show();
