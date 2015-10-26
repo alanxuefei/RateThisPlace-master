@@ -147,295 +147,338 @@
         >
 
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.08">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="This place makes me feel:"
-                android:id="@+id/textView" />
-
-                        <RadioGroup
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="1">
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="79dp"
-                            android:tag="1"
-                            android:id="@+id/radioButton"
-                            android:onClick="clickImage_happyface"/>
-
-                        <ImageView
-                            android:layout_width="115dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/ratinghappyface"
-                            android:id="@+id/imageView"
-                            android:focusable="false"
-                            android:clickable="true"
-                            android:onClick="clickImage_happyface"/>
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="74dp"
-                            android:tag="2"
-                            android:id="@+id/radioButton2"
-                            android:onClick="clickImage_unhappyface"/>
-
-                        <ImageView
-                            android:layout_width="115dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/ratingunhappyface"
-                            android:id="@+id/imageView2"
-                            android:focusable="false"
-                            android:clickable="true"
-                            android:onClick="clickImage_unhappyface"/>
-                        </RadioGroup>
-                    </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            android:layout_marginTop="5dp">
-            <!-- CLEANNESS:-->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="28dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="CLEANNESS: "
-                    android:id="@+id/textView4"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/textViewCLEANNESS" />
-
-            </LinearLayout>
-
-            <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:numStars="5"
-                android:stepSize="1"
-                android:id="@+id/ratingBarCLEANNESS"
-                android:clickable="true" />
-            <!--  SAFTY-->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="28dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="SAFTY: "
-                    android:id="@+id/textView3" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/textViewSAFTY" />
-            </LinearLayout>
-
-            <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:numStars="5"
-                android:stepSize="1"
-                android:id="@+id/ratingBarSAFTY"
-                android:clickable="true" />
-
-            <!-- BEAUTIFULNESS-->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="28dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="BEAUTY: "
-                    android:id="@+id/textView5" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/textViewBEAUTIFULNESS" />
-            </LinearLayout>
-
-            <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:numStars="5"
-                android:stepSize="1"
-                android:id="@+id/ratingBarBEAUTIFULNESS"
-                android:clickable="true" />
-
-
-
-            <!-- GREENNESS-->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="28dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="GREENNESS: "
-                    android:id="@+id/textViewGREENNESS0" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/textViewGREENNESS" />
-            </LinearLayout>
-
-            <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:numStars="5"
-                android:stepSize="1"
-                android:id="@+id/ratingBarGREENNESS"
-                android:clickable="true" />
-            <!-- FRIENDLINESS-->
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="28dp">
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.08">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="FRIENDLINESS: "
-                    android:id="@+id/textViewFRIENDLINESS0" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="This place makes me feel:"
+                    android:id="@+id/textView" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <RadioGroup
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/textViewFRIENDLINESS" />
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="79dp"
+                        android:tag="1"
+                        android:id="@+id/radioButton"
+                        android:onClick="clickImage_happyface"/>
+
+                    <ImageView
+                        android:layout_width="115dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ratinghappyface"
+                        android:id="@+id/imageView"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:onClick="clickImage_happyface"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="74dp"
+                        android:tag="2"
+                        android:id="@+id/radioButton2"
+                        android:onClick="clickImage_unhappyface"/>
+
+                    <ImageView
+                        android:layout_width="115dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ratingunhappyface"
+                        android:id="@+id/imageView2"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:onClick="clickImage_unhappyface"/>
+                </RadioGroup>
             </LinearLayout>
 
-            <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:numStars="5"
-                android:stepSize="1"
-                android:id="@+id/ratingBarFRIENDLINESS"
-                android:clickable="true" />
-            <!-- INTERESTINGNESS-->
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="28dp">
+                android:layout_height="match_parent"
 
+                android:layout_marginTop="5dp">
+                <!-- Lively:-->
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="CONVENIENCE: "
-                    android:id="@+id/textViewCONVENIENCE0" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="This place is:"
+                    android:id="@+id/textView16" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/textViewCONVENIENCE" />
-            </LinearLayout>
-
-            <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:numStars="5"
-                android:stepSize="1"
-                android:id="@+id/ratingBarCONVENIENCE"
-                android:clickable="true" />
-
-
-        </LinearLayout>
-        <!--
                 <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/editboxborader">
-
-                    <EditText
-                        android:layout_width="230dp"
-                        android:layout_height="60dp"
-                        android:inputType="textMultiLine"
-                        android:ems="10"
-                        android:id="@+id/AutoCompleteTextView_Commentary"
-                        android:lines="3"
-                        android:hint="Write a comment..."
-                        android:imeOptions="actionDone"
-                        android:layout_marginTop="15dp"
-                        android:layout_toLeftOf="@+id/imageView5"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true" />
-
-                    <Button
-                        style="?android:attr/buttonStyleSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp">
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Done"
-                        android:id="@+id/button_editdone"
-                        android:layout_alignRight="@+id/AutoCompleteTextView_Commentary"
-                        android:layout_alignEnd="@+id/AutoCompleteTextView_Commentary"
-                        android:layout_alignParentRight="@+id/AutoCompleteTextView_Commentary"
-                        android:visibility="gone" />
-
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Lively: "
+                        android:id="@+id/textView4"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text=""
+                        android:id="@+id/textViewLively" />
 
                 </LinearLayout>
- -->
 
-                <Button
-                    android:layout_width="278dp"
+                <RatingBar
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Submit"
-                    android:id="@+id/button"
-                    android:layout_gravity="center"
-                    android:onClick="clickButton_submit" />
+                    android:numStars="5"
+                    android:stepSize="1"
+                    android:id="@+id/ratingBarLively"
+                    android:clickable="true" />
+                <!--  Relaxing-->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Relaxing: "
+                        android:id="@+id/textView3" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text=""
+                        android:id="@+id/textViewRelaxing" />
+                </LinearLayout>
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:stepSize="1"
+                    android:id="@+id/ratingBarRelaxing"
+                    android:clickable="true" />
+
+                <!-- Cosy-->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Cosy: "
+                        android:id="@+id/textView5" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text=""
+                        android:id="@+id/textViewCosy" />
+                </LinearLayout>
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:stepSize="1"
+                    android:id="@+id/ratingBarCosy"
+                    android:clickable="true" />
+
+
+
+                <!-- Safe-->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Safe: "
+                        android:id="@+id/textViewSafe0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text=""
+                        android:id="@+id/textViewSafe" />
+                </LinearLayout>
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:stepSize="1"
+                    android:id="@+id/ratingBarSafe"
+                    android:clickable="true" />
+                <!-- Rearrangeable-->
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Rearrangeable: "
+                        android:id="@+id/textViewRearrangeable0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text=""
+                        android:id="@+id/textViewRearrangeable" />
+                </LinearLayout>
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:stepSize="1"
+                    android:id="@+id/ratingBarRearrangeable"
+                    android:clickable="true" />
+                <!-- Sociable-->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Sociable: "
+                        android:id="@+id/textViewSociable0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text=""
+                        android:id="@+id/textViewSociable" />
+                </LinearLayout>
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:stepSize="1"
+                    android:id="@+id/ratingBarSociable"
+                    android:clickable="true" />
+
+                <!-- Specialtome-->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Special to me:"
+                        android:id="@+id/textViewSpecialtome0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text=""
+                        android:id="@+id/textViewSpecialtome" />
+                </LinearLayout>
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:stepSize="1"
+                    android:id="@+id/ratingBarSpecialtome"
+                    android:clickable="true" />
 
             </LinearLayout>
 
-            </ScrollView>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="This place gives me the feeling of :"
+                    android:id="@+id/textView17" />
+
+                <!-- INTERESTINGNESS-->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Privacy: "
+                        android:id="@+id/textViewPRIVACY0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text=""
+                        android:id="@+id/textViewPRIVACY" />
+                </LinearLayout>
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:stepSize="1"
+                    android:id="@+id/ratingBarPRIVACY"
+                    android:clickable="true" />
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="278dp"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:id="@+id/button"
+                android:layout_gravity="center"
+                android:onClick="clickButton_submit" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
         </LinearLayout>

@@ -17,6 +17,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.i2r.xue.rate_this_place.R;
 import com.i2r.xue.rate_this_place.myrewards.AsyncTaskGetDataToMyRewardBar;
 import com.i2r.xue.rate_this_place.utility.Constants;
+import com.i2r.xue.rate_this_place.utility.DataLogger;
 import com.i2r.xue.rate_this_place.utility.globalvariable;
 
 import org.json.JSONException;
@@ -88,15 +89,15 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
         ((RadioButton)findViewById(com.i2r.xue.rate_this_place.R.id.radioButton2)).setChecked(true);
         ((TextView)findViewById(com.i2r.xue.rate_this_place.R.id.textView)).setText("This place makes me feel: Unhappy");
         usermood = Mood.UNHAPPY;
+        DataLogger.writeTolog("VisitedPlace_clickImage_unhappyface" + " " + "\n", "");
     }
 
     public void clickImage_happyface(View view) {
 
-
-
         ((RadioButton)findViewById(com.i2r.xue.rate_this_place.R.id.radioButton)).setChecked(true);
         ((TextView)findViewById(com.i2r.xue.rate_this_place.R.id.textView)).setText("This place makes me feel: Happy");
         usermood = Mood.HAPPY;
+        DataLogger.writeTolog("VisitedPlace_clickImage_happyface" + " " + "\n", "");
 
     }
 
@@ -104,58 +105,79 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
 
         final String[] ratingscale = {"Very poor","Poor", "Average", "Good","Excellent"};
 
-        RatingBar ratingBar = (RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarCLEANNESS);
+        RatingBar ratingBar = (RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarLively);
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             public void onRatingChanged(RatingBar ratingBar, float rating,  boolean fromUser) {
 
-                ((TextView) findViewById(com.i2r.xue.rate_this_place.R.id.textViewCLEANNESS)).setText(ratingscale[(int) rating - 1]);
+                ((TextView) findViewById(com.i2r.xue.rate_this_place.R.id.textViewLively)).setText(ratingscale[(int) rating - 1]);
+                DataLogger.writeTolog("VisitedPlace_clickRatingBarLively" + " " + "\n", "");
             }
         });
 
-        ratingBar = (RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSAFTY);
+        ratingBar = (RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRelaxing);
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             public void onRatingChanged(RatingBar ratingBar, float rating,  boolean fromUser) {
 
-                ((TextView) findViewById(com.i2r.xue.rate_this_place.R.id.textViewSAFTY)).setText(ratingscale[(int) rating - 1]);
+                ((TextView) findViewById(com.i2r.xue.rate_this_place.R.id.textViewRelaxing)).setText(ratingscale[(int) rating - 1]);
+                DataLogger.writeTolog("VisitedPlace_clickratingBarRelaxing" + " " + "\n", "");
             }
         });
 
-        ratingBar = (RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarBEAUTIFULNESS);
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            public void onRatingChanged(RatingBar ratingBar, float rating,  boolean fromUser) {
-
-
-                ((TextView) findViewById(com.i2r.xue.rate_this_place.R.id.textViewBEAUTIFULNESS)).setText(ratingscale[(int) rating - 1]);
-            }
-        });
-
-        ratingBar = (RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarGREENNESS);
+        ratingBar = (RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarCosy);
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             public void onRatingChanged(RatingBar ratingBar, float rating,  boolean fromUser) {
 
 
-                ((TextView) findViewById(com.i2r.xue.rate_this_place.R.id.textViewGREENNESS)).setText(ratingscale[(int)rating-1]);
+                ((TextView) findViewById(com.i2r.xue.rate_this_place.R.id.textViewCosy)).setText(ratingscale[(int) rating - 1]);
+                DataLogger.writeTolog("VisitedPlace_clickratingratingBarCosy" + " " + "\n", "");
+            }
+        });
+
+        ratingBar = (RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSafe);
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            public void onRatingChanged(RatingBar ratingBar, float rating,  boolean fromUser) {
+
+
+                ((TextView) findViewById(com.i2r.xue.rate_this_place.R.id.textViewSafe)).setText(ratingscale[(int)rating-1]);
+                DataLogger.writeTolog("VisitedPlace_clickratingBarSafe" + " " + "\n", "");
             }
         });
 
 
-        ratingBar = (RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarFRIENDLINESS);
+        ratingBar = (RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRearrangeable);
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-
-
-                ((TextView) findViewById(com.i2r.xue.rate_this_place.R.id.textViewFRIENDLINESS)).setText(ratingscale[(int) rating - 1]);
+                ((TextView) findViewById(com.i2r.xue.rate_this_place.R.id.textViewRearrangeable)).setText(ratingscale[(int) rating - 1]);
+                DataLogger.writeTolog("VisitedPlace_clickratingBarRearrangeable" + " " + "\n", "");
             }
         });
 
-        ratingBar = (RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarCONVENIENCE);
+        ratingBar = (RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSociable);
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             public void onRatingChanged(RatingBar ratingBar, float rating,  boolean fromUser) {
 
-                ((TextView) findViewById(com.i2r.xue.rate_this_place.R.id.textViewCONVENIENCE)).setText(ratingscale[(int) rating - 1]);
+                ((TextView) findViewById(com.i2r.xue.rate_this_place.R.id.textViewSociable)).setText(ratingscale[(int) rating - 1]);
+                DataLogger.writeTolog("VisitedPlace_clickratingBarSociable" + " " + "\n", "");
             }
         });
 
+        ratingBar = (RatingBar) findViewById(R.id.ratingBarSpecialtome);
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            public void onRatingChanged(RatingBar ratingBar, float rating,  boolean fromUser) {
+
+                ((TextView) findViewById(com.i2r.xue.rate_this_place.R.id.textViewSpecialtome)).setText(ratingscale[(int) rating - 1]);
+                DataLogger.writeTolog("VisitedPlace_clickratingBarSpecialtome" + " " + "\n", "");
+            }
+        });
+
+        ratingBar = (RatingBar) findViewById(R.id.ratingBarPRIVACY);
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            public void onRatingChanged(RatingBar ratingBar, float rating,  boolean fromUser) {
+
+                ((TextView) findViewById(com.i2r.xue.rate_this_place.R.id.textViewPRIVACY)).setText(ratingscale[(int) rating - 1]);
+                DataLogger.writeTolog("VisitedPlace_clickratingBarPRIVACY" + " " + "\n", "");
+            }
+        });
     }
 
     public void clickButton_submit(View view) {
@@ -164,12 +186,12 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
         String timestamp = datetimeformat.format(new Date());
         JSONObject JsonGenerator_rating = new JSONObject();
         JSONObject JsonGenerator_rating_location = new JSONObject();
-        double VratingBarCLEANNESS= ((RatingBar) findViewById(R.id.ratingBarCLEANNESS)).getRating();
-        double VratingBarSAFTY= ((RatingBar) findViewById(R.id.ratingBarSAFTY)).getRating();
-        double VratingBarBEAUTIFULNESS= ((RatingBar) findViewById(R.id.ratingBarBEAUTIFULNESS)).getRating();
-        double VratingBarFRIENDLINESS= ((RatingBar) findViewById(R.id.ratingBarFRIENDLINESS)).getRating();
-        double VratingBarCONVENIENCE= ((RatingBar) findViewById(R.id.ratingBarCONVENIENCE)).getRating();
-        double VratingBarGREENNESS= ((RatingBar) findViewById(R.id.ratingBarGREENNESS)).getRating();
+        double VratingBarCLEANNESS= ((RatingBar) findViewById(R.id.ratingBarLively)).getRating();
+        double VratingBarSAFTY= ((RatingBar) findViewById(R.id.ratingBarRelaxing)).getRating();
+        double VratingBarBEAUTIFULNESS= ((RatingBar) findViewById(R.id.ratingBarCosy)).getRating();
+        double VratingBarFRIENDLINESS= ((RatingBar) findViewById(R.id.ratingBarRearrangeable)).getRating();
+        double VratingBarCONVENIENCE= ((RatingBar) findViewById(R.id.ratingBarSociable)).getRating();
+        double VratingBarGREENNESS= ((RatingBar) findViewById(R.id.ratingBarSafe)).getRating();
 
         int usedratingbar=0;
         if (VratingBarCLEANNESS!=0)usedratingbar++;
@@ -191,26 +213,30 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
 
 
             JsonGenerator_rating.put("Nickname", PreferenceManager.getDefaultSharedPreferences(this).getString("display_name", ""));
-
-
-            LatLng detectedlocation_LatLng = Constants.AREA_LANDMARKS.get(Locationname1);
-            JsonGenerator_rating_location.put("longitude",detectedlocation_LatLng.longitude);
-            JsonGenerator_rating_location.put("latitude", detectedlocation_LatLng.latitude);
-            JsonGenerator_rating.put("PictureURL", "invitedPlaces");
-
+            if (globalvariable.thelocation==null){
+                JsonGenerator_rating_location =null;
+                JsonGenerator_rating.put("LocationAccuracy", "null");
+            }
+            else {
+                JsonGenerator_rating_location.put("longitude", globalvariable.thelocation.getLongitude());
+                JsonGenerator_rating_location.put("latitude", globalvariable.thelocation.getLatitude());
+                JsonGenerator_rating.put("LocationAccuracy", globalvariable.thelocation.getAccuracy());
+            }
             JsonGenerator_rating.put("Datatime", timestamp);
             JsonGenerator_rating.put("Location", JsonGenerator_rating_location);
             JsonGenerator_rating.put("Feeling", usermood.toString());
-            JsonGenerator_rating.put("Rating_Cleanness", VratingBarCLEANNESS);
-            JsonGenerator_rating.put("Rating_Safty", VratingBarSAFTY);
-            JsonGenerator_rating.put("Rating_Beauty", VratingBarBEAUTIFULNESS);
-            JsonGenerator_rating.put("Rating_Friendliness", VratingBarFRIENDLINESS);
-            JsonGenerator_rating.put("Rating_Convenience", VratingBarCONVENIENCE);
-            JsonGenerator_rating.put("Rating_Greenness", VratingBarGREENNESS);
+            JsonGenerator_rating.put("Rating_Lively", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarLively)).getRating());
+            JsonGenerator_rating.put("Rating_Relaxingy", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRelaxing)).getRating());
+            JsonGenerator_rating.put("Rating_Cosy", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarCosy)).getRating());
+            JsonGenerator_rating.put("Rating_Rearrangeable", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRearrangeable)).getRating());
+            JsonGenerator_rating.put("Rating_Sociable", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSociable)).getRating());
+            JsonGenerator_rating.put("Rating_Safe", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSafe)).getRating());
+            JsonGenerator_rating.put("Rating_Specialtome", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSpecialtome)).getRating());
+            JsonGenerator_rating.put("Rating_Safe", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSafe)).getRating());
 
 
-         //   JsonGenerator_rating.put("Commentary", ((EditText) findViewById(com.i2r.alan.rate_this_place.R.id.AutoCompleteTextView_Commentary)).getText().toString());
-         //   Log.i("JSON", JsonGenerator_rating.toString());
+            // JsonGenerator_rating.put("Commentary", ((EditText) findViewById(com.i2r.alan.rate_this_place.R.id.AutoCompleteTextView_Commentary)).getText().toString());
+            //  Log.i("JSON", JsonGenerator_rating.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }

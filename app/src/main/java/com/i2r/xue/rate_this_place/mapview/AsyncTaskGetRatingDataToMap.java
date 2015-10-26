@@ -3,6 +3,7 @@ package com.i2r.xue.rate_this_place.mapview;
 import android.content.Context;
 import android.os.AsyncTask;
 //import android.util.Log;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -70,7 +71,7 @@ public class AsyncTaskGetRatingDataToMap extends AsyncTask {
         try {
 
             url = new URL("http://www.ratethisplace.co/getRatingDatatoMap.php?JsonData="+JsonGenerator_username.toString().replaceAll(" ", "%20"));
-           // Log.i(GetDataToMap_TAG, "http://www.ratethisplace.co/getDBtoMap.php?JsonData="+JsonGenerator_username.toString().replaceAll(" ", "%20"));
+           Log.i(GetDataToMap_TAG, "http://www.ratethisplace.co/getRatingDatatoMap.php?JsonData=" + JsonGenerator_username.toString().replaceAll(" ", "%20"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

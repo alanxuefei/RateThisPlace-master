@@ -25,6 +25,7 @@ import android.widget.RadioButton;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.i2r.xue.rate_this_place.utility.Constants;
+import com.i2r.xue.rate_this_place.utility.DataLogger;
 import com.i2r.xue.rate_this_place.utility.globalvariable;
 
 import org.json.JSONException;
@@ -67,6 +68,8 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                DataLogger.writeTolog("RateThisPlaceActivityActivity_clickEdit_Activity_Others" + " " + "\n", "");
 
             }
 
@@ -180,16 +183,19 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
     public void clickImage_alone(View view) {
         ((RadioButton) findViewById(com.i2r.xue.rate_this_place.R.id.radioButton1)).setChecked(true);
         AloneGroup= AloneGroupSet.Alone;
+        DataLogger.writeTolog("RateThisPlaceActivityActivity_clickImage_alone" + " " + "\n", "");
 
     }
 
     public void clickImage_group(View view) {
         ((RadioButton) findViewById(com.i2r.xue.rate_this_place.R.id.radioButton2)).setChecked(true);
         AloneGroup= AloneGroupSet.Group;
+        DataLogger.writeTolog("RateThisPlaceActivityActivity_clickImage_group" + " " + "\n", "");
     }
 
     public void clickImage_activity1(View view) {
         CheckBox mCheckBox1 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox1));
+        DataLogger.writeTolog("RateThisPlaceActivityActivity_clickImage_activity1" + " " + "\n", "");
         if (!mCheckBox1.isChecked()){
             mCheckBox1.setChecked(true);
         }
@@ -201,6 +207,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
 
     public void clickImage_activity2(View view) {
         CheckBox mCheckBox2 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox2));
+        DataLogger.writeTolog("RateThisPlaceActivityActivity_clickImage_activity2" + " " + "\n", "");
         if (!mCheckBox2.isChecked()){
             mCheckBox2.setChecked(true);
         }
@@ -212,6 +219,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
 
     public void clickImage_activity3(View view) {
         CheckBox mCheckBox3 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox3));
+        DataLogger.writeTolog("RateThisPlaceActivityActivity_clickImage_activity3" + " " + "\n", "");
         if (!mCheckBox3.isChecked()){
             mCheckBox3.setChecked(true);
         }
@@ -223,6 +231,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
 
     public void clickImage_activity4(View view) {
         CheckBox mCheckBox4 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox4));
+        DataLogger.writeTolog("RateThisPlaceActivityActivity_clickImage_activity4" + " " + "\n", "");
         if (!mCheckBox4.isChecked()){
             mCheckBox4.setChecked(true);
         }
@@ -233,6 +242,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
 
     public void clickImage_activity5(View view) {
         CheckBox mCheckBox5 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox5));
+        DataLogger.writeTolog("RateThisPlaceActivityActivity_clickImage_activity5" + " " + "\n", "");
         if (!mCheckBox5.isChecked()){
             mCheckBox5.setChecked(true);
         }
@@ -243,6 +253,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
 
     public void clickImage_activity6(View view) {
         CheckBox mCheckBox6 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox6));
+        DataLogger.writeTolog("RateThisPlaceActivityActivity_clickImage_activity6" + " " + "\n", "");
         if (!mCheckBox6.isChecked()){
             mCheckBox6.setChecked(true);
         }
@@ -254,6 +265,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
 
     public void clickImage_activity7(View view) {
         CheckBox mCheckBox7 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox7));
+        DataLogger.writeTolog("RateThisPlaceActivityActivity_clickImage_activity7" + " " + "\n", "");
         if (!mCheckBox7.isChecked()){
             mCheckBox7.setChecked(true);
         }
@@ -265,6 +277,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
 
     public void clickImage_activity8(View view) {
         CheckBox mCheckBox8 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox8));
+        DataLogger.writeTolog("RateThisPlaceActivityActivity_clickImage_activity8" + " " + "\n", "");
         if (!mCheckBox8.isChecked()){
             mCheckBox8.setChecked(true);
         }
@@ -276,6 +289,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
 
     public void clickImage_activity9(View view) {
         CheckBox mCheckBox9 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox9));
+        DataLogger.writeTolog("RateThisPlaceActivityActivity_clickImage_activity9" + " " + "\n", "");
         if (!mCheckBox9.isChecked()){
             mCheckBox9.setChecked(true);
         }
@@ -292,7 +306,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
 
 
     public void clickButton_submit(View view) {
-
+        DataLogger.writeTolog("RateThisPlaceActivityActivity_clickButton_submit" + " " + "\n", "");
         SimpleDateFormat datetimeformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String timestamp = datetimeformat.format(new Date());
         JSONObject JsonGenerator_activity = new JSONObject();

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.location.Location;
 import android.os.AsyncTask;
 //import android.util.Log;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -70,7 +71,7 @@ public class AsyncTaskGetActivitiesDataToMap extends AsyncTask {
         try {
 
             url = new URL("http://www.ratethisplace.co/GetActivitiesDatatoMap.php?JsonData="+JsonGenerator_username.toString().replaceAll(" ", "%20"));
-           // Log.i(GetDataToMap_TAG, "http://www.ratethisplace.co/GetActivitiesDatatoMap.php?JsonData="+JsonGenerator_username.toString().replaceAll(" ", "%20"));
+          // Log.i(GetDataToMap_TAG, "http://www.ratethisplace.co/GetActivitiesDatatoMap.php?JsonData="+JsonGenerator_username.toString().replaceAll(" ", "%20"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -109,7 +110,7 @@ public class AsyncTaskGetActivitiesDataToMap extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-       // Log.i(GetDataToMap_TAG, o.toString());
+        Log.i(GetDataToMap_TAG, o.toString());
         IconGenerator iconFactory = new IconGenerator(this.context);
         iconFactory.setStyle(IconGenerator.STYLE_WHITE);
 

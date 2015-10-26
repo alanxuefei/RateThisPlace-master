@@ -79,7 +79,14 @@
             android:layout_height="match_parent"
 
             android:layout_marginTop="5dp">
-            <!-- CLEANNESS:-->
+            <!-- Lively:-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="This place is:"
+                android:id="@+id/textView16" />
+
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -88,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="CLEANNESS: "
+                    android:text="Lively: "
                     android:id="@+id/textView4"
                     />
                 <TextView
@@ -96,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/textViewCLEANNESS" />
+                    android:id="@+id/textViewLively" />
 
             </LinearLayout>
 
@@ -105,9 +112,9 @@
                 android:layout_height="wrap_content"
                 android:numStars="5"
                 android:stepSize="1"
-                android:id="@+id/ratingBarCLEANNESS"
+                android:id="@+id/ratingBarLively"
                 android:clickable="true" />
-            <!--  SAFTY-->
+            <!--  Relaxing-->
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -117,7 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="SAFTY: "
+                    android:text="Relaxing: "
                     android:id="@+id/textView3" />
 
                 <TextView
@@ -125,7 +132,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/textViewSAFTY" />
+                    android:id="@+id/textViewRelaxing" />
             </LinearLayout>
 
             <RatingBar
@@ -133,10 +140,10 @@
                 android:layout_height="wrap_content"
                 android:numStars="5"
                 android:stepSize="1"
-                android:id="@+id/ratingBarSAFTY"
+                android:id="@+id/ratingBarRelaxing"
                 android:clickable="true" />
 
-            <!-- BEAUTIFULNESS-->
+            <!-- Cosy-->
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -146,7 +153,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="BEAUTY: "
+                    android:text="Cosy: "
                     android:id="@+id/textView5" />
 
                 <TextView
@@ -154,7 +161,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/textViewBEAUTIFULNESS" />
+                    android:id="@+id/textViewCosy" />
             </LinearLayout>
 
             <RatingBar
@@ -162,12 +169,12 @@
                 android:layout_height="wrap_content"
                 android:numStars="5"
                 android:stepSize="1"
-                android:id="@+id/ratingBarBEAUTIFULNESS"
+                android:id="@+id/ratingBarCosy"
                 android:clickable="true" />
 
 
 
-            <!-- GREENNESS-->
+            <!-- Safe-->
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -177,15 +184,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="GREENNESS: "
-                    android:id="@+id/textViewGREENNESS0" />
+                    android:text="Safe: "
+                    android:id="@+id/textViewSafe0" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/textViewGREENNESS" />
+                    android:id="@+id/textViewSafe" />
             </LinearLayout>
 
             <RatingBar
@@ -193,9 +200,9 @@
                 android:layout_height="wrap_content"
                 android:numStars="5"
                 android:stepSize="1"
-                android:id="@+id/ratingBarGREENNESS"
+                android:id="@+id/ratingBarSafe"
                 android:clickable="true" />
-            <!-- FRIENDLINESS-->
+            <!-- Rearrangeable-->
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -206,15 +213,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="FRIENDLINESS: "
-                    android:id="@+id/textViewFRIENDLINESS0" />
+                    android:text="Rearrangeable: "
+                    android:id="@+id/textViewRearrangeable0" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/textViewFRIENDLINESS" />
+                    android:id="@+id/textViewRearrangeable" />
             </LinearLayout>
 
             <RatingBar
@@ -222,8 +229,81 @@
                 android:layout_height="wrap_content"
                 android:numStars="5"
                 android:stepSize="1"
-                android:id="@+id/ratingBarFRIENDLINESS"
+                android:id="@+id/ratingBarRearrangeable"
                 android:clickable="true" />
+            <!-- Sociable-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="28dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Sociable: "
+                    android:id="@+id/textViewSociable0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/textViewSociable" />
+            </LinearLayout>
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="1"
+                android:id="@+id/ratingBarSociable"
+                android:clickable="true" />
+
+            <!-- Specialtome-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="28dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Special to me:"
+                    android:id="@+id/textViewSpecialtome0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/textViewSpecialtome" />
+            </LinearLayout>
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="1"
+                android:id="@+id/ratingBarSpecialtome"
+                android:clickable="true" />
+
+    </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="This place gives me the feeling of :"
+                android:id="@+id/textView17" />
+
             <!-- INTERESTINGNESS-->
             <LinearLayout
                 android:orientation="horizontal"
@@ -234,15 +314,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="CONVENIENCE: "
-                    android:id="@+id/textViewCONVENIENCE0" />
+                    android:text="Privacy: "
+                    android:id="@+id/textViewPRIVACY0" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/textViewCONVENIENCE" />
+                    android:id="@+id/textViewPRIVACY" />
             </LinearLayout>
 
             <RatingBar
@@ -250,9 +330,8 @@
                 android:layout_height="wrap_content"
                 android:numStars="5"
                 android:stepSize="1"
-                android:id="@+id/ratingBarCONVENIENCE"
+                android:id="@+id/ratingBarPRIVACY"
                 android:clickable="true" />
-
 
         </LinearLayout>
 

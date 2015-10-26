@@ -31,6 +31,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.i2r.xue.rate_this_place.R;
 import com.i2r.xue.rate_this_place.myrewards.AsyncTaskGetDataToMyRewardBar;
 import com.i2r.xue.rate_this_place.utility.Constants;
+import com.i2r.xue.rate_this_place.utility.DataLogger;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -76,6 +77,8 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_clickEdit_Activity_Others" + " " + "\n", "");
 
             }
 
@@ -187,17 +190,20 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
     }
 
     public void clickImage_alone(View view) {
+        DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_clickImage_alone" + " " + "\n", "");
         ((RadioButton) findViewById(com.i2r.xue.rate_this_place.R.id.radioButton1)).setChecked(true);
         AloneGroup= AloneGroupSet.Alone;
 
     }
 
     public void clickImage_group(View view) {
+        DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_clickImage_group" + " " + "\n", "");
         ((RadioButton) findViewById(com.i2r.xue.rate_this_place.R.id.radioButton2)).setChecked(true);
         AloneGroup= AloneGroupSet.Group;
     }
 
     public void clickImage_activity1(View view) {
+        DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_clickImage_activity1" + " " + "\n", "");
         CheckBox mCheckBox1 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox1));
         if (!mCheckBox1.isChecked()){
             mCheckBox1.setChecked(true);
@@ -209,6 +215,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
 
 
     public void clickImage_activity2(View view) {
+        DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_clickImage_activity2" + " " + "\n", "");
         CheckBox mCheckBox2 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox2));
         if (!mCheckBox2.isChecked()){
             mCheckBox2.setChecked(true);
@@ -220,6 +227,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
 
 
     public void clickImage_activity3(View view) {
+        DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_clickImage_activity3" + " " + "\n", "");
         CheckBox mCheckBox3 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox3));
         if (!mCheckBox3.isChecked()){
             mCheckBox3.setChecked(true);
@@ -231,6 +239,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
 
 
     public void clickImage_activity4(View view) {
+        DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_clickImage_activity4" + " " + "\n", "");
         CheckBox mCheckBox4 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox4));
         if (!mCheckBox4.isChecked()){
             mCheckBox4.setChecked(true);
@@ -241,6 +250,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
     }
 
     public void clickImage_activity5(View view) {
+        DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_clickImage_activity5" + " " + "\n", "");
         CheckBox mCheckBox5 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox5));
         if (!mCheckBox5.isChecked()){
             mCheckBox5.setChecked(true);
@@ -251,6 +261,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
     }
 
     public void clickImage_activity6(View view) {
+        DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_clickImage_activity6" + " " + "\n", "");
         CheckBox mCheckBox6 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox6));
         if (!mCheckBox6.isChecked()){
             mCheckBox6.setChecked(true);
@@ -262,6 +273,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
 
 
     public void clickImage_activity7(View view) {
+        DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_clickImage_activity7" + " " + "\n", "");
         CheckBox mCheckBox7 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox7));
         if (!mCheckBox7.isChecked()){
             mCheckBox7.setChecked(true);
@@ -273,6 +285,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
 
 
     public void clickImage_activity8(View view) {
+        DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_clickImage_activity8" + " " + "\n", "");
         CheckBox mCheckBox8 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox8));
         if (!mCheckBox8.isChecked()){
             mCheckBox8.setChecked(true);
@@ -284,6 +297,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
 
 
     public void clickImage_activity9(View view) {
+        DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_clickImage_activity9" + " " + "\n", "");
         CheckBox mCheckBox9 =((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox9));
         if (!mCheckBox9.isChecked()){
             mCheckBox9.setChecked(true);
@@ -297,6 +311,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
 
     public void ReturnButton(View v) {
      //   Log.i("test", "returen");
+        DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_ReturnButton" + " " + "\n", "");
         super.onBackPressed();
 
     }
@@ -305,7 +320,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
 
 
     public void clickButton_submit(View view) {
-
+        DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_clickButton_submit" + " " + "\n", "");
         SimpleDateFormat datetimeformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String timestamp = datetimeformat.format(new Date());
         JSONObject JsonGenerator_activity = new JSONObject();

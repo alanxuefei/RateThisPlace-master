@@ -18,44 +18,47 @@
 
     <string name="not_connected">GoogleApiClient not yet connected. Try again.</string>
     <string name="title_activity_human_activity_diary">HumanActivityDiaryActivity</string>
-    <string name="user_agreement">Agreement\n \n The APP is designed to collect feedback on public spaces (i.e. sport facility, car park and so on). \n\n   This APP collects the data about location, network, accelerometer, gyroscope, magnetic field, battery and app usage. \n\n  The APP does NOT collect phone call, SMS messages and chat history. \n</string>
-    <string name="agree">Agree</string>
-    <string name="disagree">Disagree</string>
-    <string name="title_activity_rate_this_place">RateThisPlaceActivity</string>
-    <string name="title_activity_my_mood">MyMood</string>
+    <!--  <string name="user_agreement">Agreement\n \n The APP is designed to collect feedback on public spaces (i.e. sport facility, car park and so on). \n\n   This APP collects the data about location, network, accelerometer, gyroscope, magnetic field, battery and app usage. \n\n  The APP does NOT collect phone call, SMS messages and chat history. \n</string>
+    -->
+    <string name="user_agreement">Agreement\n \n Blank \n\n   \n\n   \n</string>
 
-    <string name="service_not_available">service_not_available</string>
-    <string name="invalid_lat_long_used">invalid_lat_long_used</string>
-    <string name="no_address_found">no_address_found</string>
-    <string name="address_found">address_found</string>
+     <string name="agree">Agree</string>
+     <string name="disagree">Disagree</string>
+     <string name="title_activity_rate_this_place">RateThisPlaceActivity</string>
+     <string name="title_activity_my_mood">MyMood</string>
 
-    <string name="decimal_points">%.3f</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="title_activity_main_activity2">MainActivity2Activity</string>
+     <string name="service_not_available">service_not_available</string>
+     <string name="invalid_lat_long_used">invalid_lat_long_used</string>
+     <string name="no_address_found">no_address_found</string>
+     <string name="address_found">address_found</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+     <string name="decimal_points">%.3f</string>
+     <string name="title_activity_maps">Map</string>
+     <string name="title_activity_main_activity2">MainActivity2Activity</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+     <string name="title_section1">Section 1</string>
+     <string name="title_section2">Section 2</string>
+     <string name="title_section3">Section 3</string>
 
-    <string name="action_example">Example action</string>
-    <string name="title_activity_rate_this_place2">RateThisPlace2Activity</string>
-    <string name="action_aboutus">About Us</string>
-    <string name="action_userprofile">Setting</string>
-    <string name="action_mapview">Map View</string>
-    <string name="action_home">Home</string>
-    <string name="title_activity_my_reward">MyReward</string>
-    <string name="youhaveearn">You have earned</string>
-    <string name="title_activity_test">test</string>
+     <string name="navigation_drawer_open">Open navigation drawer</string>
+     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+     <string name="action_example">Example action</string>
+     <string name="title_activity_rate_this_place2">RateThisPlace2Activity</string>
+     <string name="action_aboutus">About Us</string>
+     <string name="action_userprofile">Setting</string>
+     <string name="action_mapview">Map View</string>
+     <string name="action_home">Home</string>
+     <string name="title_activity_my_reward">MyReward</string>
+     <string name="youhaveearn">You have earned</string>
+     <string name="title_activity_test">test</string>
 
 
 
-    <string name="title_activity_show_geofence_transitions">ShowGeofenceTransitionsActivity</string>
-    <string name="title_activity_main">MainActivity</string>
+     <string name="title_activity_show_geofence_transitions">ShowGeofenceTransitionsActivity</string>
+     <string name="title_activity_main">MainActivity</string>
 
-    <!-- Buttons strings -->
+     <!-- Buttons strings -->
     <string name="add_geofences">Add geofences</string>
     <string name="remove_geofences">Remove geofences</string>
 

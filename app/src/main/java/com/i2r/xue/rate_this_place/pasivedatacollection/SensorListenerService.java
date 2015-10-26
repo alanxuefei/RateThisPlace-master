@@ -1,7 +1,10 @@
 package com.i2r.xue.rate_this_place.pasivedatacollection;
 
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -30,6 +33,7 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.ActivityRecognition;
 
 import java.util.Calendar;
+import java.util.List;
 
 
 /**
@@ -93,20 +97,16 @@ public class SensorListenerService extends Service implements SensorEventListene
         }
     };
 
-private boolean toggle=true;
+    private boolean toggle=true;
     private final Handler timemanagerhandler = new Handler();
     public final Runnable timemanager_runable = new Runnable() {
         public void run() {
 
-
-          //   stopSelf();
-
-            Calendar c = Calendar.getInstance();
+           Calendar c = Calendar.getInstance();
             int vHOUR_OF_DAY = c.get(Calendar.HOUR_OF_DAY);
             // Log.i("tiemcontroll", "hour is " + vHOUR_OF_DAY);
             if ((vHOUR_OF_DAY>=7)&&(vHOUR_OF_DAY<=21)) {
                 if (toggle) {
-
                     stopsensing();
                     toggle = false;
                     timemanagerhandler.postDelayed(timemanager_runable, 1000 * 60 * 1);
@@ -121,6 +121,24 @@ private boolean toggle=true;
                 stopsensing();
                 timemanagerhandler.postDelayed(timemanager_runable, 1000 * 60 * 10);
             }
+
+        }
+    };
+
+    private final Handler ActivityManagerhandler = new Handler();
+    public final Runnable ActivityManager_runable = new Runnable() {
+        public void run() {
+
+
+            ActivityManager am = (ActivityManager) getApplication().getSystemService(ACTIVITY_SERVICE);
+            List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
+           // Log.d("topActivity", "CURRENT Activity ::" + taskInfo.get(0).topActivity.getClassName());
+            ComponentName componentInfo = taskInfo.get(0).topActivity;
+
+
+            DataLogger.writeTolog("currentAPP: "+  componentInfo.getPackageName()+" "+componentInfo.getClassName()+ "\n",logswich);
+            ActivityManagerhandler.postDelayed(ActivityManager_runable, 1000 * 10);
+
 
         }
     };
@@ -167,8 +185,8 @@ private boolean toggle=true;
 
         /*timemanager_level*/
         startsensing();
-        timemanagerhandler.postDelayed(timemanager_runable, 1000*60*1);
-
+        timemanagerhandler.postDelayed(timemanager_runable, 1000 * 60*1);
+        ActivityManagerhandler.postDelayed(ActivityManager_runable, 1000 * 10);
                 /*location */
         // Acquire a reference to the system Location Manager
         mlocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -217,20 +235,6 @@ private boolean toggle=true;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-    /*    final Handler handler001 = new Handler();
-        final Runnable r001 = new Runnable() {
-
-            public void run() {
-                logswich=Integer.toString(ACCsamplingrate);
-               // Log.i("changeACC", "changeACC " + ACCsamplingrate + "logswich "+logswich);
-                changeACCsamplingrate(ACCsamplingrate);
-                ACCsamplingrate = ACCsamplingrate+20;
-                handler001.postDelayed(this, 1000*60*30);
-            }
-        };
-
-        handler001.postDelayed(r001, 1000*60);
-*/
 
 
         return mStartMode;
