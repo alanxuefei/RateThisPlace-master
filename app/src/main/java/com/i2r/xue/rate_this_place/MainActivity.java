@@ -26,6 +26,7 @@ import com.i2r.xue.rate_this_place.usersetting.UserAgreementDialogFragment;
 import com.i2r.xue.rate_this_place.usersetting.UserProfileActivity;
 import com.i2r.xue.rate_this_place.utility.Commonfunctions;
 import com.i2r.xue.rate_this_place.utility.DataLogger;
+import com.i2r.xue.rate_this_place.utility.globalvariable;
 import com.i2r.xue.rate_this_place.visitedplace.VisitedPlacesActivity;
 
 /**
@@ -137,6 +138,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     public void clickImage_rate_this_place(View view) {
 
+        globalvariable.isActivity_rated=false;
+        globalvariable.isRating_rated=false;
         Intent intent = new Intent(this, RateThisPlaceActivity.class);
         intent.putExtra("From", "MainActivity");
         startActivity(intent);

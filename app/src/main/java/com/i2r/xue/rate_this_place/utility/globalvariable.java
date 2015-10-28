@@ -8,4 +8,6 @@ import android.location.Location;
 public class globalvariable {
     public static Location thelocation;
     public int myrewards;
+    public static boolean isRating_rated;
+    public static boolean isActivity_rated;
 }

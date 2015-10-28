@@ -1,6 +1,7 @@
 package com.i2r.xue.rate_this_place.visitedplace;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -9,7 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.i2r.xue.rate_this_place.R;
@@ -54,7 +58,13 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         buildTableRow6();
 
 
+        //TableLayout t= (TableLayout)findViewById(R.id.AllTableRow0);
 
+
+
+       // t.removeView(t1);
+       // TableRow t6= (TableRow)findViewById(R.id.AllTableRow6);
+       // t6.setVisibility(View.INVISIBLE);
 
 
         //  readDB(VisitedPlaceList);
@@ -237,7 +247,10 @@ public class VisitedPlacesActivity extends AppCompatActivity {
             ((TextView)findViewById(R.id.location0_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "DateTime", "NA")).replace("_","\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "RatingStatus", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow0)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "RatingStatus", "NA"));
-
+                ((TableRow)findViewById(R.id.AllTableRow0)).setBackgroundColor(Color.GREEN);
+                ((TextView)findViewById(R.id.location0)).setBackgroundColor(Color.GREEN);
+                ((TextView)findViewById(R.id.location0_time)).setBackgroundColor(Color.GREEN);
+                ((LinearLayout)findViewById(R.id.TableRow0)).setBackgroundColor(Color.GREEN);
 
             }
             else{
@@ -253,7 +266,8 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
         }
         else{
-            ((TextView)findViewById(R.id.location0_time)).setText("Wait for your visit");
+          //  ((TextView)findViewById(R.id.location0_time)).setText("Wait for your visit");
+            ((TableRow)findViewById(R.id.AllTableRow0)).setVisibility(TableRow.GONE);
 
         };
     }
@@ -280,7 +294,8 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
         }
         else{
-            ((TextView)findViewById(R.id.location1_time)).setText("Wait for your visit");
+           // ((TextView)findViewById(R.id.location1_time)).setText("Wait for your visit");
+            ((TableRow)findViewById(R.id.AllTableRow1)).setVisibility(TableRow.GONE);
 
         };
     }
@@ -307,8 +322,8 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
         }
         else{
-            ((TextView)findViewById(R.id.location2_time)).setText("Wait for your visit");
-
+            //((TextView)findViewById(R.id.location2_time)).setText("Wait for your visit");
+            ((TableRow)findViewById(R.id.AllTableRow2)).setVisibility(TableRow.GONE);
         };
     }
 
@@ -334,7 +349,8 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
         }
         else{
-            ((TextView)findViewById(R.id.location3_time)).setText("Wait for your visit");
+            //((TextView)findViewById(R.id.location3_time)).setText("Wait for your visit");
+            ((TableRow)findViewById(R.id.AllTableRow3)).setVisibility(TableRow.GONE);
 
         };
     }
@@ -361,8 +377,8 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
         }
         else{
-            ((TextView)findViewById(R.id.location4_time)).setText("Wait for your visit");
-
+           // ((TextView)findViewById(R.id.location4_time)).setText("Wait for your visit");
+            ((TableRow)findViewById(R.id.AllTableRow4)).setVisibility(TableRow.GONE);
         };
     }
 
@@ -388,8 +404,8 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
         }
         else{
-            ((TextView)findViewById(R.id.location5_time)).setText("Wait for your visit");
-
+           // ((TextView)findViewById(R.id.location5_time)).setText("Wait for your visit");
+            ((TableRow)findViewById(R.id.AllTableRow5)).setVisibility(TableRow.GONE);
         };
     }
 
@@ -400,7 +416,6 @@ public class VisitedPlacesActivity extends AppCompatActivity {
             ((TextView)findViewById(R.id.location6_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[6] + "DateTime", "NA")).replace("_","\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[6] + "RatingStatus", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow6)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[6] + "RatingStatus", "NA"));
-
 
             }
             else{
@@ -416,8 +431,8 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
         }
         else{
-            ((TextView)findViewById(R.id.location6_time)).setText("Wait for your visit");
-
+           // ((TextView)findViewById(R.id.location6_time)).setText("Wait for your visit");
+            ((TableRow)findViewById(R.id.AllTableRow6)).setVisibility(TableRow.GONE);
         };
     }
 }

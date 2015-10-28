@@ -342,7 +342,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
 
          AsyncTaskUploadActivity Activityuploader = new AsyncTaskUploadActivity(this, JsonGenerator_activity);
         Activityuploader.execute();
-
+        globalvariable.isActivity_rated=true;
     }
 
 

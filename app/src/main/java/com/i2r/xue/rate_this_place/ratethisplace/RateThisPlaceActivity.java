@@ -43,6 +43,11 @@ public class RateThisPlaceActivity  extends TabActivity implements TabHost.OnTab
         tabHost.addTab(spec1);
         tabHost.addTab(spec2);
 
+        if (globalvariable.isRating_rated){
+            tabHost.setCurrentTab(1);
+        }
+
+
         LocationManager lm=(LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
         lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);

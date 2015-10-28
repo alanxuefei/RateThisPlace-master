@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.i2r.xue.rate_this_place.mapview.MapsActivity;
 import com.i2r.xue.rate_this_place.utility.DataLogger;
+import com.i2r.xue.rate_this_place.utility.globalvariable;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -91,7 +92,13 @@ public class AsyncTaskUploadRating extends AsyncTask {
         super.onPostExecute(o);
         Toast.makeText(this.context, "The data is uploaded successfully", Toast.LENGTH_SHORT).show();
         barProgressDialog.dismiss();
-        context.startActivity(new Intent(context, MapsActivity.class));
+
+        if (globalvariable.isActivity_rated){
+            context.startActivity(new Intent(context, MapsActivity.class));
+        }
+        else{
+            context.startActivity(new Intent(context, RateThisPlaceActivity.class));
+        }
     }
 
 

@@ -261,6 +261,7 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
         myfileuploader.execute();
 
 
+        globalvariable.isRating_rated=true;
 
     }
 

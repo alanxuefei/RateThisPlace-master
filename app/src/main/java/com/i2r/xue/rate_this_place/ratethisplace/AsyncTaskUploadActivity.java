@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.i2r.xue.rate_this_place.mapview.MapsActivity;
 import com.i2r.xue.rate_this_place.utility.DataLogger;
+import com.i2r.xue.rate_this_place.utility.globalvariable;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -82,6 +83,13 @@ public class AsyncTaskUploadActivity extends AsyncTask {
         super.onPostExecute(o);
         Toast.makeText(this.context, "The data is uploaded successfully", Toast.LENGTH_SHORT).show();
         barProgressDialog.dismiss();
+
+        if (globalvariable.isRating_rated){
+            context.startActivity(new Intent(context, MapsActivity.class));
+        }
+        else{
+            context.startActivity(new Intent(context, RateThisPlaceActivity.class));
+        }
     }
 
 
@@ -89,6 +97,9 @@ public class AsyncTaskUploadActivity extends AsyncTask {
     protected void onProgressUpdate(Object[] values) {
         super.onProgressUpdate(values);
         Toast.makeText(this.context, "uploading", Toast.LENGTH_SHORT).show();
+
+
+
     }
 
 
@@ -136,7 +147,7 @@ public class AsyncTaskUploadActivity extends AsyncTask {
        // Log.i("php", total.toString());
 
 
-        context.startActivity(new Intent(context, MapsActivity.class));
+
 
     }
 
