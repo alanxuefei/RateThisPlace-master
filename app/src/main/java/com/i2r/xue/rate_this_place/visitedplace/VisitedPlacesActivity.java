@@ -99,6 +99,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
                 Intent intent0 = new Intent(getApplication(), RateThisPlaceRatingFromVisitedPlacesActivity.class);
                 intent0.putExtra("From", LocationName);
              //   Log.i("VisitedPlace", LocationName + "RatingStatus");
+
                 startActivity(intent0);
 
             }
@@ -118,7 +119,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent0 = new Intent(getApplication(), RateThisPlaceActivityFromVisitedPlaceActivity.class);
                 intent0.putExtra("From", LocationName);
-                //Log.i("VisitedPlace", LocationName + "RatingStatus");
+                //Log.i("VisitedPlace", LocationName + "RatingStatus"); finish();
                 startActivity(intent0);
             }
         });
@@ -247,10 +248,10 @@ public class VisitedPlacesActivity extends AppCompatActivity {
             ((TextView)findViewById(R.id.location0_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "DateTime", "NA")).replace("_","\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "RatingStatus", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow0)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "RatingStatus", "NA"));
-                ((TableRow)findViewById(R.id.AllTableRow0)).setBackgroundColor(Color.GREEN);
-                ((TextView)findViewById(R.id.location0)).setBackgroundColor(Color.GREEN);
-                ((TextView)findViewById(R.id.location0_time)).setBackgroundColor(Color.GREEN);
-                ((LinearLayout)findViewById(R.id.TableRow0)).setBackgroundColor(Color.GREEN);
+               // ((TableRow)findViewById(R.id.AllTableRow0)).setBackgroundColor(Color.GREEN);
+               // ((TextView)findViewById(R.id.location0)).setBackgroundColor(Color.GREEN);
+               // ((TextView)findViewById(R.id.location0_time)).setBackgroundColor(Color.GREEN);
+              //  ((LinearLayout)findViewById(R.id.TableRow0)).setBackgroundColor(Color.GREEN);
 
             }
             else{

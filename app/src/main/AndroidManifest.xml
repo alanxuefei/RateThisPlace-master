@@ -120,7 +120,8 @@
         </activity>
         <activity
             android:name="com.i2r.xue.rate_this_place.visitedplace.VisitedPlacesActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:noHistory="true">
         </activity>
         <activity
             android:name="com.i2r.xue.rate_this_place.usersetting.UserProfileActivity"

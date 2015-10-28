@@ -64,8 +64,14 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
 
     public void ReturnButton(View v) {
     //    Log.i("test", "returen");
-        super.onBackPressed();
+        DataLogger.writeTolog("RateThisPlaceRatingFromVisitedPlaceActivity_ReturnButton" + " " + "\n", "");
+        startActivity(new Intent(getApplication(), VisitedPlacesActivity.class));
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplication(), VisitedPlacesActivity.class));
     }
 
     @Override
@@ -181,6 +187,8 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
     }
 
     public void clickButton_submit(View view) {
+
+       ;
 
         SimpleDateFormat datetimeformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String timestamp = datetimeformat.format(new Date());
