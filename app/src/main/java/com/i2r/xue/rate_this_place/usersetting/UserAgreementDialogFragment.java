@@ -41,6 +41,12 @@ public class UserAgreementDialogFragment extends DialogFragment {
 
                         ReadGoogleAccount();
 
+
+                        getActivity().getSharedPreferences("VisitedPlaceStatus", getActivity().MODE_PRIVATE)
+                                .edit()
+                                .putString("VisitedPlaceStatusExtraIndex", "0")
+                                .apply();
+
                         Commonfunctions.setSensingAlarm(getActivity());
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         startActivity(intent);

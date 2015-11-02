@@ -22,6 +22,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.i2r.xue.rate_this_place.utility.Constants;
@@ -307,43 +308,68 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
 
     public void clickButton_submit(View view) {
         DataLogger.writeTolog("RateThisPlaceActivityActivity_clickButton_submit" + " " + "\n", "");
-        SimpleDateFormat datetimeformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String timestamp = datetimeformat.format(new Date());
-        JSONObject JsonGenerator_activity = new JSONObject();
-        JSONObject JsonGenerator_basicrating_location = new JSONObject();
+        if (globalvariable.thelocation != null) {
+            SimpleDateFormat datetimeformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String timestamp = datetimeformat.format(new Date());
+            JSONObject JsonGenerator_activity = new JSONObject();
+            JSONObject JsonGenerator_basicrating_location = new JSONObject();
+            String Activities = "";
+            try {
+                JsonGenerator_activity.put("UserID", this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
+                JsonGenerator_activity.put("Nickname", PreferenceManager.getDefaultSharedPreferences(this).getString("display_name", ""));
+                if (globalvariable.thelocation == null) {
+                    JsonGenerator_basicrating_location = null;
+                } else {
+                    JsonGenerator_basicrating_location.put("longitude", globalvariable.thelocation.getLongitude());
+                    JsonGenerator_basicrating_location.put("latitude", globalvariable.thelocation.getLatitude());
+                }
+                JsonGenerator_activity.put("Datatime", timestamp);
+                JsonGenerator_activity.put("Location", JsonGenerator_basicrating_location);
+                JsonGenerator_activity.put("AloneGroup", AloneGroup.toString());
 
-        try {
-            JsonGenerator_activity.put("UserID", this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
-            JsonGenerator_activity.put("Nickname", PreferenceManager.getDefaultSharedPreferences(this).getString("display_name", ""));
-            if (globalvariable.thelocation==null){JsonGenerator_basicrating_location=null;}
-            else {
-                JsonGenerator_basicrating_location.put("longitude", globalvariable.thelocation.getLongitude());
-                JsonGenerator_basicrating_location.put("latitude", globalvariable.thelocation.getLatitude());
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox1)).isChecked())
+                    Activities = Activities + "Playing_";
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox2)).isChecked())
+                    Activities = Activities + "Cycling_";
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox3)).isChecked())
+                    Activities = Activities + "OnlineSocializing_";
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox4)).isChecked())
+                    Activities = Activities + "Running_";
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox5)).isChecked())
+                    Activities = Activities + "Sitting_";
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox6)).isChecked())
+                    Activities = Activities + "Studying_";
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox7)).isChecked())
+                    Activities = Activities + "Talking_";
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox8)).isChecked())
+                    Activities = Activities + "Walking_";
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox9)).isChecked())
+                    Activities = Activities + "Working_";
+                JsonGenerator_activity.put("Activities", Activities);
+                //    Log.i("JSON", JsonGenerator_activity.toString());
+
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-            JsonGenerator_activity.put("Datatime", timestamp);
-            JsonGenerator_activity.put("Location", JsonGenerator_basicrating_location);
-            JsonGenerator_activity.put("AloneGroup", AloneGroup.toString());
-            String Activities="";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox1)).isChecked()) Activities=Activities+"Playing_";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox2)).isChecked()) Activities=Activities+"Cycling_";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox3)).isChecked()) Activities=Activities+"OnlineSocializing_";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox4)).isChecked()) Activities=Activities+"Running_";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox5)).isChecked()) Activities=Activities+"Sitting_";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox6)).isChecked()) Activities=Activities+"Studying_";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox7)).isChecked()) Activities=Activities+"Talking_";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox8)).isChecked()) Activities=Activities+"Walking_";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox9)).isChecked()) Activities=Activities+"Working_";
-            JsonGenerator_activity.put("Activities", Activities);
-        //    Log.i("JSON", JsonGenerator_activity.toString());
 
-        } catch (JSONException e) {
-            e.printStackTrace();
+            AsyncTaskUploadActivity Activityuploader = new AsyncTaskUploadActivity(this, JsonGenerator_activity);
+            Activityuploader.execute();
+            globalvariable.isActivity_rated = true;
+
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String currentDate = sdf.format(new Date());
+            sdf = new SimpleDateFormat("HH:mm:ss");
+            String currentTime = sdf.format(new Date());
+            String VisitedPlaceStatusExtraIndex = (this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraIndex", "0"));
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusLongitude" + VisitedPlaceStatusExtraIndex, String.valueOf(globalvariable.thelocation.getLongitude())).apply();
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusLatitude" + VisitedPlaceStatusExtraIndex, String.valueOf(globalvariable.thelocation.getLatitude())).apply();
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraActivity" + VisitedPlaceStatusExtraIndex, Activities).apply();
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtra" + VisitedPlaceStatusExtraIndex + "DateTime", currentDate + "_" + currentTime).apply();
+
+        } else {
+            Toast.makeText(this, "Waiting for the location", Toast.LENGTH_SHORT).show();
         }
-
-         AsyncTaskUploadActivity Activityuploader = new AsyncTaskUploadActivity(this, JsonGenerator_activity);
-        Activityuploader.execute();
-        globalvariable.isActivity_rated=true;
     }
-
 
 }

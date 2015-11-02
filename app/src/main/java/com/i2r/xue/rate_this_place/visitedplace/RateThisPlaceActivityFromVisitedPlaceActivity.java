@@ -25,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.model.LatLng;
@@ -32,6 +33,7 @@ import com.i2r.xue.rate_this_place.R;
 import com.i2r.xue.rate_this_place.myrewards.AsyncTaskGetDataToMyRewardBar;
 import com.i2r.xue.rate_this_place.utility.Constants;
 import com.i2r.xue.rate_this_place.utility.DataLogger;
+import com.i2r.xue.rate_this_place.utility.globalvariable;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -326,41 +328,52 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
     public void clickButton_submit(View view) {
 
         DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_clickButton_submit" + " " + "\n", "");
-        SimpleDateFormat datetimeformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String timestamp = datetimeformat.format(new Date());
-        JSONObject JsonGenerator_activity = new JSONObject();
-        JSONObject JsonGenerator_activity_location = new JSONObject();
-        String Activities="";
-        try {
-            JsonGenerator_activity.put("UserID", this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
-            JsonGenerator_activity.put("Nickname", PreferenceManager.getDefaultSharedPreferences(this).getString("display_name", ""));
-            LatLng detectedlocation_LatLng = Constants.AREA_LANDMARKS.get(Locationname);
-            JsonGenerator_activity_location.put("longitude",detectedlocation_LatLng.longitude);
-            JsonGenerator_activity_location.put("latitude", detectedlocation_LatLng.latitude);
-            JsonGenerator_activity.put("Datatime", timestamp);
-            JsonGenerator_activity.put("Location", JsonGenerator_activity_location);
-            JsonGenerator_activity.put("AloneGroup", AloneGroup.toString());
 
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox1)).isChecked()) Activities=Activities+"Playing_";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox2)).isChecked()) Activities=Activities+"Cycling_";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox3)).isChecked()) Activities=Activities+"OnlineSocializing_";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox4)).isChecked()) Activities=Activities+"Running_";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox5)).isChecked()) Activities=Activities+"Sitting_";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox6)).isChecked()) Activities=Activities+"Studying_";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox7)).isChecked()) Activities=Activities+"Talking_";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox8)).isChecked()) Activities=Activities+"Walking_";
-            if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox9)).isChecked()) Activities=Activities+"Working_";
-            JsonGenerator_activity.put("Activities", Activities);
-          //  Log.i("JSON", JsonGenerator_activity.toString());
+            SimpleDateFormat datetimeformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String timestamp = datetimeformat.format(new Date());
+            JSONObject JsonGenerator_activity = new JSONObject();
+            JSONObject JsonGenerator_activity_location = new JSONObject();
+            String Activities = "";
+            try {
+                JsonGenerator_activity.put("UserID", this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
+                JsonGenerator_activity.put("Nickname", PreferenceManager.getDefaultSharedPreferences(this).getString("display_name", ""));
+                LatLng detectedlocation_LatLng = Constants.AREA_LANDMARKS.get(Locationname);
+                JsonGenerator_activity_location.put("longitude", detectedlocation_LatLng.longitude);
+                JsonGenerator_activity_location.put("latitude", detectedlocation_LatLng.latitude);
+                JsonGenerator_activity.put("Datatime", timestamp);
+                JsonGenerator_activity.put("Location", JsonGenerator_activity_location);
+                JsonGenerator_activity.put("AloneGroup", AloneGroup.toString());
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox1)).isChecked())
+                    Activities = Activities + "Playing_";
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox2)).isChecked())
+                    Activities = Activities + "Cycling_";
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox3)).isChecked())
+                    Activities = Activities + "OnlineSocializing_";
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox4)).isChecked())
+                    Activities = Activities + "Running_";
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox5)).isChecked())
+                    Activities = Activities + "Sitting_";
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox6)).isChecked())
+                    Activities = Activities + "Studying_";
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox7)).isChecked())
+                    Activities = Activities + "Talking_";
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox8)).isChecked())
+                    Activities = Activities + "Walking_";
+                if (((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox9)).isChecked())
+                    Activities = Activities + "Working_";
+                JsonGenerator_activity.put("Activities", Activities);
+                //  Log.i("JSON", JsonGenerator_activity.toString());
 
-        AsyncTaskUploadActivityFromVisitedPlace Activityuploader = new AsyncTaskUploadActivityFromVisitedPlace(this, JsonGenerator_activity);
-        Activityuploader.execute();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
-        this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(Locationname+"ActivityStatus",Activities).apply();
+            AsyncTaskUploadActivityFromVisitedPlace Activityuploader = new AsyncTaskUploadActivityFromVisitedPlace(this, JsonGenerator_activity);
+            Activityuploader.execute();
+
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(Locationname , Activities).apply();
+
 
     }
 

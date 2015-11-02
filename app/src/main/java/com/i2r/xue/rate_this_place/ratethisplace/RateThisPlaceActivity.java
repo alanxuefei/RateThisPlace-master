@@ -42,15 +42,33 @@ public class RateThisPlaceActivity  extends TabActivity implements TabHost.OnTab
 
         tabHost.addTab(spec1);
         tabHost.addTab(spec2);
+        Intent intent = getIntent();
+        String From = intent.getStringExtra("from");
 
-        if (globalvariable.isRating_rated){
+        if (From.equals("Activity")){
+            tabHost.setCurrentTab(0);
+        }else if (From.equals("Rating")){
             tabHost.setCurrentTab(1);
+        } else {
+            tabHost.setCurrentTab(0);
+        }
+
+        if (globalvariable.thelocation!=null){
+            ((ProgressBar)findViewById(R.id.progressBar_promote)).setVisibility(View.GONE);
+
+            new AsyncTaskGetDataToMyRewardBar(this,(ProgressBar)findViewById(R.id.progressBar_promote),(TextView)findViewById(R.id.textView_promote),
+                    (ImageView)findViewById(R.id.imageView_rewards1),
+                    (ImageView)findViewById(R.id.imageView_rewards2),(ImageView)findViewById(R.id.imageView_rewards3),
+                    (ImageView)findViewById(R.id.imageView_rewards4),(ProgressBar)findViewById(R.id.progressBar_rewards),(TextView)findViewById(R.id.textView_Rewards)).execute();
+        }
+        else{
+            LocationManager lm=(LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+            lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
         }
 
 
-        LocationManager lm=(LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-        lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
+
 
 
 
@@ -67,6 +85,13 @@ public class RateThisPlaceActivity  extends TabActivity implements TabHost.OnTab
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        String VisitedPlaceStatusExtraIndex = (this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraIndex", "0"));
+        int temp = Integer.parseInt(VisitedPlaceStatusExtraIndex) + 1;
+        if (temp > 5) {
+            temp = 0;
+        }
+        this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraIndex", String.valueOf(temp)).apply();
         finish();
         //  Intent intent = new Intent(this, SensorListenerService.class);
         // stopService(intent);

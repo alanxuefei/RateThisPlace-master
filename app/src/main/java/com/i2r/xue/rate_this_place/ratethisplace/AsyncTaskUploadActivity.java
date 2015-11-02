@@ -88,7 +88,10 @@ public class AsyncTaskUploadActivity extends AsyncTask {
             context.startActivity(new Intent(context, MapsActivity.class));
         }
         else{
-            context.startActivity(new Intent(context, RateThisPlaceActivity.class));
+
+            Intent RateThisPlaceActivityIntent=new Intent(context, RateThisPlaceActivity.class);
+            RateThisPlaceActivityIntent.putExtra("from", "Activity");
+            context.startActivity(RateThisPlaceActivityIntent);
         }
     }
 

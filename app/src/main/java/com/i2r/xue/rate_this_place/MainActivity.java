@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         globalvariable.isActivity_rated=false;
         globalvariable.isRating_rated=false;
         Intent intent = new Intent(this, RateThisPlaceActivity.class);
-        intent.putExtra("From", "MainActivity");
+        intent.putExtra("from", "MainActivity");
         startActivity(intent);
 
     }

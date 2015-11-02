@@ -87,7 +87,8 @@
 
         <TableRow android:minHeight="100dp" android:background="@layout/cell_shape"
             android:layout_margin="3dp"
-            android:id="@+id/AllTableRow0">
+            android:id="@+id/AllTableRow0"
+            android:visibility="gone">
 
 
 
@@ -119,7 +120,8 @@
 
         <TableRow android:minHeight="100dp" android:background="@layout/cell_shape"
             android:layout_margin="3dp"
-            android:id="@+id/AllTableRow1">
+            android:id="@+id/AllTableRow1"
+            android:visibility="gone">
             <TextView
 
                 android:id="@+id/location1"
@@ -139,7 +141,8 @@
 
         <TableRow android:minHeight="100dp"  android:background="@layout/cell_shape"
             android:layout_margin="3dp"
-            android:id="@+id/AllTableRow2">
+            android:id="@+id/AllTableRow2"
+            android:visibility="gone">
             <TextView
                 android:padding="3dip"
                 android:id="@+id/location2"
@@ -160,7 +163,8 @@
 
         <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
             android:layout_margin="3dp"
-            android:id="@+id/AllTableRow3">
+            android:id="@+id/AllTableRow3"
+            android:visibility="gone">
             <TextView
                 android:padding="3dip"
                 android:id="@+id/location3"
@@ -184,7 +188,8 @@
 
             <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
                 android:layout_margin="3dp"
-                android:id="@+id/AllTableRow4">
+                android:id="@+id/AllTableRow4"
+                android:visibility="gone">
             <TextView
                 android:padding="3dip"
                 android:id="@+id/location4"
@@ -205,7 +210,8 @@
 
             <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
                 android:layout_margin="3dp"
-                android:id="@+id/AllTableRow5">
+                android:id="@+id/AllTableRow5"
+                android:visibility="gone">
             <TextView
                 android:padding="3dip"
                 android:id="@+id/location5"
@@ -226,7 +232,8 @@
 
             <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
                 android:layout_margin="3dp"
-                android:id="@+id/AllTableRow6">
+                android:id="@+id/AllTableRow6"
+                android:visibility="gone">
             <TextView
                 android:padding="3dip"
                 android:id="@+id/location6"
@@ -244,6 +251,210 @@
             </LinearLayout>
 
         </TableRow>
+
+            <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
+                android:layout_margin="3dp"
+                android:id="@+id/AllTableRow7"
+                android:visibility="gone">
+                <TextView
+                    android:padding="3dip"
+                    android:id="@+id/location7"
+                    android:layout_margin="1dp" />
+                <TextView android:padding="3dip"
+                    android:id="@+id/location7_time"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp" />
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/TableRow7"
+                    android:layout_margin="1dp">
+                </LinearLayout>
+
+            </TableRow>
+
+
+            <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
+                android:layout_margin="3dp"
+                android:id="@+id/AllTableRow8"
+                android:visibility="gone">
+                <TextView
+                    android:padding="3dip"
+                    android:id="@+id/location8"
+                    android:layout_margin="1dp" />
+                <TextView android:padding="3dip"
+                    android:id="@+id/location8_time"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp" />
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/TableRow8"
+                    android:layout_margin="1dp">
+                </LinearLayout>
+
+            </TableRow>
+
+            <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
+                android:layout_margin="3dp"
+                android:id="@+id/AllTableRow9"
+                android:visibility="gone">
+                <TextView
+                    android:padding="3dip"
+                    android:id="@+id/location9"
+                    android:layout_margin="1dp" />
+                <TextView android:padding="3dip"
+                    android:id="@+id/location9_time"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp" />
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/TableRow9"
+                    android:layout_margin="1dp">
+                </LinearLayout>
+            </TableRow>
+                <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
+                    android:layout_margin="3dp"
+                    android:id="@+id/AllTableRow10"
+                    android:visibility="gone">
+                    <TextView
+                        android:padding="3dip"
+                        android:id="@+id/location10"
+                        android:layout_margin="1dp" />
+                    <TextView android:padding="3dip"
+                        android:id="@+id/location10_time"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="1dp" />
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/TableRow10"
+                        android:layout_margin="1dp">
+                    </LinearLayout>
+
+                </TableRow>
+
+
+                <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
+                    android:layout_margin="3dp"
+                    android:id="@+id/AllTableRow11"
+                    android:visibility="gone">
+                    <TextView
+                        android:padding="3dip"
+                        android:id="@+id/location11"
+                        android:layout_margin="1dp" />
+                    <TextView android:padding="3dip"
+                        android:id="@+id/location11_time"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="1dp" />
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/TableRow11"
+                        android:layout_margin="1dp">
+                    </LinearLayout>
+
+                </TableRow>
+
+                <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
+                    android:layout_margin="3dp"
+                    android:id="@+id/AllTableRow12"
+                    android:visibility="gone">
+                    <TextView
+                        android:padding="3dip"
+                        android:id="@+id/location12"
+                        android:layout_margin="1dp" />
+                    <TextView android:padding="3dip"
+                        android:id="@+id/location12_time"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="1dp" />
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/TableRow12"
+                        android:layout_margin="1dp">
+                    </LinearLayout>
+
+                </TableRow>
+
+
+                <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
+                    android:layout_margin="3dp"
+                    android:id="@+id/AllTableRow13"
+                    android:visibility="gone">
+                    <TextView
+                        android:padding="3dip"
+                        android:id="@+id/location13"
+                        android:layout_margin="1dp" />
+                    <TextView android:padding="3dip"
+                        android:id="@+id/location13_time"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="1dp" />
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/TableRow13"
+                        android:layout_margin="1dp">
+                    </LinearLayout>
+
+                </TableRow>
+
+
+                <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
+                    android:layout_margin="3dp"
+                    android:id="@+id/AllTableRow14"
+                    android:visibility="gone">
+                    <TextView
+                        android:padding="3dip"
+                        android:id="@+id/location14"
+                        android:layout_margin="1dp" />
+                    <TextView android:padding="3dip"
+                        android:id="@+id/location14_time"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="1dp" />
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/TableRow14"
+                        android:layout_margin="1dp">
+                    </LinearLayout>
+
+                </TableRow>
+
+
+                <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
+                    android:layout_margin="3dp"
+                    android:id="@+id/AllTableRow15"
+                    android:visibility="gone">
+                    <TextView
+                        android:padding="3dip"
+                        android:id="@+id/location15"
+                        android:layout_margin="1dp" />
+                    <TextView android:padding="3dip"
+                        android:id="@+id/location15_time"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="1dp" />
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/TableRow15"
+                        android:layout_margin="1dp">
+                    </LinearLayout>
+
+                </TableRow>
+
+
+
 
         </TableLayout>
     </ScrollView>

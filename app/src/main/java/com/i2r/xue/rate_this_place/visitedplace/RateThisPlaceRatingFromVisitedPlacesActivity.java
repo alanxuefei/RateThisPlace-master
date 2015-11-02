@@ -253,7 +253,7 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
         AsyncTaskUploadRatingFromVisitedPlace myfileuploader = new AsyncTaskUploadRatingFromVisitedPlace(this,JsonGenerator_rating);
         myfileuploader.execute();
 
-        this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(Locationname1+"RatingStatus", df.format(avgrating)).apply();
+        this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(Locationname1, df.format(avgrating)).apply();
 
 
       //  Log.i("VisitedPlace", Locationname1+"RatingStatus");
