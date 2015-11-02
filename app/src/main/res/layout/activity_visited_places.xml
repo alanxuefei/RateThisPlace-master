@@ -88,10 +88,16 @@
         <TableRow android:minHeight="100dp" android:background="@layout/cell_shape"
             android:layout_margin="3dp"
             android:id="@+id/AllTableRow0">
-            <TextView
 
-                android:id="@+id/location0"
-                android:layout_margin="1dp" />
+
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/imageView5"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/i2r"/>
+
 
             <TextView
                 android:padding="3dip"

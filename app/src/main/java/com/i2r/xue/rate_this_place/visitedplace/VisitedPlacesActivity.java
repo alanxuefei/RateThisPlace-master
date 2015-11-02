@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,8 +20,11 @@ import android.widget.TextView;
 import com.i2r.xue.rate_this_place.R;
 import com.i2r.xue.rate_this_place.utility.Constants;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 public class VisitedPlacesActivity extends AppCompatActivity {
@@ -41,7 +45,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.i2r.xue.rate_this_place.R.layout.activity_visited_places);
-        ((TextView)findViewById(R.id.location0)).setText(Constants.Locations[0]);
+       // ((TextView)findViewById(R.id.location0)).setText(Constants.Locations[0]);
         ((TextView)findViewById(R.id.location1)).setText(Constants.Locations[1]);
         ((TextView)findViewById(R.id.location2)).setText(Constants.Locations[2]);
         ((TextView)findViewById(R.id.location3)).setText(Constants.Locations[3]);
@@ -244,7 +248,11 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 */
     public void buildTableRow0() {
 
-        if  (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "DateTime", "NA")).equals("NA"))){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "DateTime", "NA")).split("\n");
+        Log.i("datearray",datearray[0]);
+        if  (datearray[0].equals(currentDate)){
             ((TextView)findViewById(R.id.location0_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "DateTime", "NA")).replace("_","\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "RatingStatus", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow0)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "RatingStatus", "NA"));
@@ -268,14 +276,22 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         }
         else{
           //  ((TextView)findViewById(R.id.location0_time)).setText("Wait for your visit");
-            ((TableRow)findViewById(R.id.AllTableRow0)).setVisibility(TableRow.GONE);
+
+
+                ((TableRow)findViewById(R.id.AllTableRow0)).setVisibility(TableRow.GONE);
+
+
 
         };
     }
 
     public void buildTableRow1() {
 
-        if  (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[1] + "DateTime", "NA")).equals("NA"))){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[1] + "DateTime", "NA")).split("\n");
+Log.i("datearray",datearray[0]);
+        if  (datearray[0].equals(currentDate)){
             ((TextView)findViewById(R.id.location1_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[1] + "DateTime", "NA")).replace("_","\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[1] + "RatingStatus", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow1)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[1] + "RatingStatus", "NA"));
@@ -303,7 +319,11 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
     public void buildTableRow2() {
 
-        if  (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[2] + "DateTime", "NA")).equals("NA"))){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[2] + "DateTime", "NA")).split("\n");
+        Log.i("datearray",datearray[0]);
+        if  (datearray[0].equals(currentDate)){
             ((TextView)findViewById(R.id.location2_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[2] + "DateTime", "NA")).replace("_","\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[2] + "RatingStatus", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow2)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[2] + "RatingStatus", "NA"));
@@ -330,7 +350,11 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
     public void buildTableRow3() {
 
-        if  (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[3] + "DateTime", "NA")).equals("NA"))){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[3] + "DateTime", "NA")).split("\n");
+        Log.i("datearray",datearray[0]);
+        if  (datearray[0].equals(currentDate)){
             ((TextView)findViewById(R.id.location3_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[3] + "DateTime", "NA")).replace("_","\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[3] + "RatingStatus", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow3)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[3] + "RatingStatus", "NA"));
@@ -358,7 +382,11 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
     public void buildTableRow4() {
 
-        if  (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[4] + "DateTime", "NA")).equals("NA"))){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[4] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
             ((TextView)findViewById(R.id.location4_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[4] + "DateTime", "NA")).replace("_","\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[4] + "RatingStatus", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow4)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[4] + "RatingStatus", "NA"));
@@ -385,7 +413,11 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
     public void buildTableRow5() {
 
-        if  (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[5] + "DateTime", "NA")).equals("NA"))){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[5] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
             ((TextView)findViewById(R.id.location5_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[5] + "DateTime", "NA")).replace("_","\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[5] + "RatingStatus", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow5)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[5] + "RatingStatus", "NA"));
@@ -413,7 +445,11 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
     public void buildTableRow6() {
 
-        if  (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[6] + "DateTime", "NA")).equals("NA"))){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[6] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
             ((TextView)findViewById(R.id.location6_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[6] + "DateTime", "NA")).replace("_","\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[6] + "RatingStatus", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow6)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[6] + "RatingStatus", "NA"));

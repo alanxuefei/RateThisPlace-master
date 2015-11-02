@@ -30,7 +30,7 @@ public class AboutUsDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage("Version Location:\n (1)GPS: Closed. \n(2) Location Network: 10mins. \n(3) ACCELEROMETER: 10Hz \n(4)GYROSCOPE: 1Hz \n(5) LIGHT: 0.5Hz \n(6)MAGNETIC_FIELD: 1Hz \n(7)PROXIMITY: 1Hz  ")
+        builder.setMessage("This App is developed for a scientific research project to understand how residents utilize the public space in their neighborhood area. This App has been optimized for power saving and advertisement free. No private data is collected. The anonymized device data is classified for research purpose only.")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // FIRE ZE MISSILES!

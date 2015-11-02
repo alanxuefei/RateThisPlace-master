@@ -20,7 +20,8 @@
     <string name="title_activity_human_activity_diary">HumanActivityDiaryActivity</string>
     <!--  <string name="user_agreement">Agreement\n \n The APP is designed to collect feedback on public spaces (i.e. sport facility, car park and so on). \n\n   This APP collects the data about location, network, accelerometer, gyroscope, magnetic field, battery and app usage. \n\n  The APP does NOT collect phone call, SMS messages and chat history. \n</string>
     -->
-    <string name="user_agreement">Agreement\n \n Blank \n\n   \n\n   \n</string>
+    <string name="user_agreement">Agreement\n\nThis App is developed for a scientific research project to understand how residents utilize the public space in their neighborhood area. Click on the ‘Agree’ button to agree to participate in this research activity. Your rating and comments are of great importance to this research. \n\nThis App has been optimized for power saving and advertisement free. No private data is collected.  Some mobile sensor data including tri-axial accelerometer, gyroscope, magnetic, proximity and location network are collected intermittently. Such anonymized device data is classified for research purpose only.
+</string>
 
      <string name="agree">Agree</string>
      <string name="disagree">Disagree</string>

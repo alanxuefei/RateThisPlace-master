@@ -207,7 +207,7 @@ public class AsyncTaskGetDataToMyRewardBar extends AsyncTask {
             }
         }
         else{
-            TextViewConnection.setText("Internet is not available");
+          //  TextViewConnection.setText("Internet is not available");
 
         }
 

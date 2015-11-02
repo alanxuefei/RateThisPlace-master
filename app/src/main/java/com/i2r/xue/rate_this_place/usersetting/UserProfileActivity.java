@@ -8,6 +8,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -68,7 +69,8 @@ public class  UserProfileActivity extends PreferenceActivity {
 
 
       addPreferencesFromResource(R.xml.pref_general);
-
+       findPreference("display_name").setTitle(this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
+        findPreference("display_name").setSelectable(false);
 
         // Add 'notifications' preferences, and a corresponding header.
         //fakeHeader.setTitle(R.string.pref_header_notifications);
@@ -84,9 +86,9 @@ public class  UserProfileActivity extends PreferenceActivity {
         // Bind the summaries of EditText/List/Dialog/Ringtone preferences to
         // their values. When their values change, their summaries are updated
         // to reflect the new value, per the Android Design guidelines.
-       bindPreferenceSummaryToValue(findPreference("display_name"));
-        bindPreferenceSummaryToValue(findPreference("display_usertitle"));
-        bindPreferenceSummaryToValue(findPreference("display_userage"));
+    //   bindPreferenceSummaryToValue(findPreference("display_name"));
+     //   bindPreferenceSummaryToValue(findPreference("display_usertitle"));
+     //   bindPreferenceSummaryToValue(findPreference("display_userage"));
       // bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
     //  bindPreferenceSummaryToValue(findPreference("sync_frequency"));
     }

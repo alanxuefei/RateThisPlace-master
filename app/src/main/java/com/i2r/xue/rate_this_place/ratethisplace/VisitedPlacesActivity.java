@@ -39,7 +39,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.i2r.xue.rate_this_place.R.layout.activity_visited_places);
-        ((TextView)findViewById(R.id.location0)).setText(Constants.Locations[0]);
+       // ((TextView)findViewById(R.id.location0)).setText(Constants.Locations[0]);
         ((TextView)findViewById(R.id.location1)).setText(Constants.Locations[1]);
         ((TextView)findViewById(R.id.location2)).setText(Constants.Locations[2]);
         ((TextView)findViewById(R.id.location3)).setText(Constants.Locations[3]);
