@@ -2,15 +2,18 @@ package com.i2r.xue.rate_this_place;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -122,16 +125,29 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public void clickImage_activity_log(View view) {
       /*  Toast.makeText(this, "Activity_log", Toast.LENGTH_SHORT).show();*/
         //DataLogger.writeTolog("_________________________________start_a_new_test____________________________" + "\n");
-        Intent intent = new Intent(this, VisitedPlacesActivity.class);
-        startActivity(intent);
+        if (isConnectingToInternet()){
+            Intent intent = new Intent(this, VisitedPlacesActivity.class);
+            startActivity(intent);
+        }
+        else{
+            showmessagePleaseconnecttoInternet();
+        }
+
 
     }
 
 
     public void clickImage_myreward(View view) {
 
-        Intent intent = new Intent(this, MyRewardActivity.class);
-        startActivity(intent);
+
+        if (isConnectingToInternet()){
+            Intent intent = new Intent(this, MyRewardActivity.class);
+            startActivity(intent);
+        }
+        else{
+            showmessagePleaseconnecttoInternet();
+        }
+
 
     }
 
@@ -140,9 +156,17 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
         globalvariable.isActivity_rated=false;
         globalvariable.isRating_rated=false;
-        Intent intent = new Intent(this, RateThisPlaceActivity.class);
-        intent.putExtra("from", "MainActivity");
-        startActivity(intent);
+
+        if (isConnectingToInternet()){
+            Intent intent = new Intent(this, RateThisPlaceActivity.class);
+            intent.putExtra("from", "MainActivity");
+            startActivity(intent);
+        }
+        else{
+            showmessagePleaseconnecttoInternet();
+        }
+
+
 
     }
 
@@ -189,7 +213,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                         (ImageView)findViewById(R.id.imageView_rewards4),(ProgressBar)findViewById(R.id.progressBar_rewards),(TextView)findViewById(R.id.textView_Rewards)).execute();
             }
             else{
-                ((TextView)findViewById(R.id.textView8)).setText("Internet is not available");
+                ((TextView)findViewById(R.id.textView8)).setText("Please connect to Internet");
 
                // Log.i(GPS_Internet_Check_TAG, "internet No");
             }
@@ -199,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
            // Log.i(GPS_Internet_Check_TAG, "GPS No");
             if (isConnectingToInternet())
             {
-                ((TextView)findViewById(R.id.textView8)).setText("GPS is off");
+                //((TextView)findViewById(R.id.textView8)).setText("GPS is off");
               //  Log.i(GPS_Internet_Check_TAG, "internet Yes");
                 new AsyncTaskGetDataToMyRewardBar(this,(ProgressBar)findViewById(R.id.progressBar_promote),(TextView)findViewById(R.id.textView_promote),
                         (ImageView)findViewById(R.id.imageView_rewards1),
@@ -207,8 +231,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                         (ImageView)findViewById(R.id.imageView_rewards4),(ProgressBar)findViewById(R.id.progressBar_rewards),(TextView)findViewById(R.id.textView_Rewards)).execute();
             }
             else{
-                ((TextView)findViewById(R.id.textView8)).setText("Internet is not available and GPS is off");
-
+                //((TextView)findViewById(R.id.textView8)).setText("Internet is not available and GPS is off");
+                ((TextView)findViewById(R.id.textView8)).setText("Please connect to Internet");
                 //Log.i(GPS_Internet_Check_TAG, "internet No");
             }
 
@@ -233,6 +257,17 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         return false;
     }
 
+    public void showmessagePleaseconnecttoInternet(){
+        Toast toast = Toast.makeText(this, "Please connect to Internet", Toast.LENGTH_SHORT);
+        LinearLayout toastLayout = (LinearLayout) toast.getView();
+        TextView toastTV = (TextView) toastLayout.getChildAt(0);
+        toastTV.setTextSize(30);
+        toastTV.setBackgroundColor(Color.BLACK);
+        toast.show();
+    }
+
+
+
     @Override
     public boolean onMenuItemClick(MenuItem item) {
 
@@ -243,7 +278,9 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                     startActivity(new Intent(this, MapsActivity.class));
                 }
                 else{
-                    Toast.makeText(this, "Please connect to Internet", Toast.LENGTH_SHORT).show();
+
+                    showmessagePleaseconnecttoInternet();
+
                 }
 
                 break;
@@ -252,7 +289,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                     startService(new Intent(getBaseContext(), PassiveDataToFTPIntentService.class));
                 }
                 else{
-                    Toast.makeText(this, "Please connect to Internet", Toast.LENGTH_SHORT).show();
+                    showmessagePleaseconnecttoInternet();
                 }
 
                 break;

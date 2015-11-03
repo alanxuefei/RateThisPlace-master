@@ -3,12 +3,16 @@ package com.i2r.xue.rate_this_place.ratethisplace;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.i2r.xue.rate_this_place.mapview.MapsActivity;
 import com.i2r.xue.rate_this_place.utility.DataLogger;
 import com.i2r.xue.rate_this_place.utility.globalvariable;
+import com.i2r.xue.rate_this_place.visitedplace.VisitedPlacesActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,15 +81,25 @@ public class AsyncTaskUploadActivity extends AsyncTask {
         return null;
     }
 
+    public void showmessageThedataisuploadedsuccessfully(){
+        Toast toast = Toast.makeText(this.context, "The data is uploaded successfully", Toast.LENGTH_SHORT);
+        LinearLayout toastLayout = (LinearLayout) toast.getView();
+        TextView toastTV = (TextView) toastLayout.getChildAt(0);
+        toastTV.setTextSize(30);
+        toastTV.setBackgroundColor(Color.BLACK);
+        toast.show();
+    }
+
 
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-        Toast.makeText(this.context, "The data is uploaded successfully", Toast.LENGTH_SHORT).show();
+        showmessageThedataisuploadedsuccessfully();
         barProgressDialog.dismiss();
 
         if (globalvariable.isRating_rated){
-            context.startActivity(new Intent(context, MapsActivity.class));
+           // context.startActivity(new Intent(context, MapsActivity.class));
+            context.startActivity(new Intent(context, VisitedPlacesActivity.class));
         }
         else{
 

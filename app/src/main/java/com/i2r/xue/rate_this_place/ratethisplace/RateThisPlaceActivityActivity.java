@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,8 +21,10 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -49,7 +52,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
     private enum AloneGroupSet {NA, Alone,Group};
     private AloneGroupSet  AloneGroup = AloneGroupSet.NA;
 
-
+    private String Activities = "";
 
     private ActionBar actionBar;
     // Tab titles
@@ -71,17 +74,6 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                 DataLogger.writeTolog("RateThisPlaceActivityActivity_clickEdit_Activity_Others" + " " + "\n", "");
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                ((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox10)).setChecked(true);
-
-            }
-
-            public void afterTextChanged(Editable s) {
-
                 // you can call or do what you want with your EditText here
                 final Button mbutton_editdone = (Button) findViewById(com.i2r.xue.rate_this_place.R.id.button_editdone);
                 mbutton_editdone.setVisibility(View.VISIBLE);
@@ -96,9 +88,21 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
                         //release the focus
                         InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                         inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                        Activities = Activities + "Others_";
                     }
 
                 });
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                ((CheckBox) findViewById(com.i2r.xue.rate_this_place.R.id.checkBox10)).setChecked(true);
+
+            }
+
+            public void afterTextChanged(Editable s) {
+
+
 
             }
 
@@ -313,7 +317,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
             String timestamp = datetimeformat.format(new Date());
             JSONObject JsonGenerator_activity = new JSONObject();
             JSONObject JsonGenerator_basicrating_location = new JSONObject();
-            String Activities = "";
+
             try {
                 JsonGenerator_activity.put("UserID", this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
                 JsonGenerator_activity.put("Nickname", PreferenceManager.getDefaultSharedPreferences(this).getString("display_name", ""));
@@ -366,10 +370,22 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
             this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusLatitude" + VisitedPlaceStatusExtraIndex, String.valueOf(globalvariable.thelocation.getLatitude())).apply();
             this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraActivity" + VisitedPlaceStatusExtraIndex, Activities).apply();
             this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtra" + VisitedPlaceStatusExtraIndex + "DateTime", currentDate + "_" + currentTime).apply();
-
+            if (!globalvariable.isRating_rated)
+                this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraRating" + VisitedPlaceStatusExtraIndex, "NA").apply();
         } else {
-            Toast.makeText(this, "Waiting for the location", Toast.LENGTH_SHORT).show();
+            ShowToastMessage("Waiting for the location");
         }
+    }
+
+
+
+    public void ShowToastMessage(String i){
+        Toast toast = Toast.makeText(this, i, Toast.LENGTH_SHORT);
+        LinearLayout toastLayout = (LinearLayout) toast.getView();
+        TextView toastTV = (TextView) toastLayout.getChildAt(0);
+        toastTV.setTextSize(30);
+        toastTV.setBackgroundColor(Color.BLACK);
+        toast.show();
     }
 
 }

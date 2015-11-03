@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.i2r.xue.rate_this_place.R;
@@ -65,7 +66,8 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
     public void ReturnButton(View v) {
     //    Log.i("test", "returen");
         DataLogger.writeTolog("RateThisPlaceRatingFromVisitedPlaceActivity_ReturnButton" + " " + "\n", "");
-        startActivity(new Intent(getApplication(), VisitedPlacesActivity.class));
+        Intent intent = new Intent(this, VisitedPlacesActivity.class);
+        startActivity(intent);
 
     }
 
@@ -188,7 +190,7 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
 
     public void clickButton_submit(View view) {
 
-       ;
+
 
         SimpleDateFormat datetimeformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String timestamp = datetimeformat.format(new Date());
@@ -209,53 +211,59 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
         if (VratingBarCONVENIENCE!=0)usedratingbar++;
         if (VratingBarGREENNESS!=0)usedratingbar++;
 
+        if (usedratingbar> 0) {
+            double avgrating = (VratingBarCLEANNESS + VratingBarSAFTY + VratingBarBEAUTIFULNESS + VratingBarFRIENDLINESS + VratingBarCONVENIENCE + VratingBarGREENNESS) / usedratingbar;
+            DecimalFormat df = new DecimalFormat("0.0");
 
-        double avgrating= (VratingBarCLEANNESS+VratingBarSAFTY+VratingBarBEAUTIFULNESS+VratingBarFRIENDLINESS+VratingBarCONVENIENCE+VratingBarGREENNESS)/usedratingbar;
-        DecimalFormat df = new DecimalFormat("0.0");
-
-        try {
-
-
-
-            JsonGenerator_rating.put("UserID", this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
+            try {
 
 
-            JsonGenerator_rating.put("Nickname", PreferenceManager.getDefaultSharedPreferences(this).getString("display_name", ""));
-            if (globalvariable.thelocation==null){
-                JsonGenerator_rating_location =null;
-                JsonGenerator_rating.put("LocationAccuracy", "null");
+                JsonGenerator_rating.put("UserID", this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
+
+
+                JsonGenerator_rating.put("Nickname", PreferenceManager.getDefaultSharedPreferences(this).getString("display_name", ""));
+
+
+                LatLng detectedlocation_LatLng = Constants.AREA_LANDMARKS.get(Locationname1);
+
+                if (detectedlocation_LatLng == null) {
+                    JsonGenerator_rating_location = null;
+                    JsonGenerator_rating.put("LocationAccuracy", "Special");
+                } else {
+                    JsonGenerator_rating_location.put("longitude", detectedlocation_LatLng.longitude);
+                    JsonGenerator_rating_location.put("latitude", detectedlocation_LatLng.latitude);
+                    JsonGenerator_rating.put("LocationAccuracy", "Special");
+                }
+
+                JsonGenerator_rating.put("Datatime", timestamp);
+                JsonGenerator_rating.put("Location", JsonGenerator_rating_location);
+                JsonGenerator_rating.put("Feeling", usermood.toString());
+                JsonGenerator_rating.put("Rating_Lively", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarLively)).getRating());
+                JsonGenerator_rating.put("Rating_Relaxingy", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRelaxing)).getRating());
+                JsonGenerator_rating.put("Rating_Cosy", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarCosy)).getRating());
+                JsonGenerator_rating.put("Rating_Rearrangeable", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRearrangeable)).getRating());
+                JsonGenerator_rating.put("Rating_Sociable", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSociable)).getRating());
+                JsonGenerator_rating.put("Rating_Safe", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSafe)).getRating());
+                JsonGenerator_rating.put("Rating_Specialtome", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSpecialtome)).getRating());
+                JsonGenerator_rating.put("Rating_Safe", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSafe)).getRating());
+
+
+                // JsonGenerator_rating.put("Commentary", ((EditText) findViewById(com.i2r.alan.rate_this_place.R.id.AutoCompleteTextView_Commentary)).getText().toString());
+                //  Log.i("JSON", JsonGenerator_rating.toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-            else {
-                JsonGenerator_rating_location.put("longitude", globalvariable.thelocation.getLongitude());
-                JsonGenerator_rating_location.put("latitude", globalvariable.thelocation.getLatitude());
-                JsonGenerator_rating.put("LocationAccuracy", globalvariable.thelocation.getAccuracy());
-            }
-            JsonGenerator_rating.put("Datatime", timestamp);
-            JsonGenerator_rating.put("Location", JsonGenerator_rating_location);
-            JsonGenerator_rating.put("Feeling", usermood.toString());
-            JsonGenerator_rating.put("Rating_Lively", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarLively)).getRating());
-            JsonGenerator_rating.put("Rating_Relaxingy", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRelaxing)).getRating());
-            JsonGenerator_rating.put("Rating_Cosy", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarCosy)).getRating());
-            JsonGenerator_rating.put("Rating_Rearrangeable", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRearrangeable)).getRating());
-            JsonGenerator_rating.put("Rating_Sociable", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSociable)).getRating());
-            JsonGenerator_rating.put("Rating_Safe", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSafe)).getRating());
-            JsonGenerator_rating.put("Rating_Specialtome", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSpecialtome)).getRating());
-            JsonGenerator_rating.put("Rating_Safe", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSafe)).getRating());
+            // clickbuttonRecieve();
 
+            AsyncTaskUploadRatingFromVisitedPlace myfileuploader = new AsyncTaskUploadRatingFromVisitedPlace(this, JsonGenerator_rating);
+            myfileuploader.execute();
 
-            // JsonGenerator_rating.put("Commentary", ((EditText) findViewById(com.i2r.alan.rate_this_place.R.id.AutoCompleteTextView_Commentary)).getText().toString());
-            //  Log.i("JSON", JsonGenerator_rating.toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(Locationname1, df.format(avgrating)).apply();
+
         }
-       // clickbuttonRecieve();
-
-        AsyncTaskUploadRatingFromVisitedPlace myfileuploader = new AsyncTaskUploadRatingFromVisitedPlace(this,JsonGenerator_rating);
-        myfileuploader.execute();
-
-        this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(Locationname1, df.format(avgrating)).apply();
-
-
+        else{
+            Toast.makeText(this, "Please at least input one rating", Toast.LENGTH_SHORT).show();
+        }
       //  Log.i("VisitedPlace", Locationname1+"RatingStatus");
 
 

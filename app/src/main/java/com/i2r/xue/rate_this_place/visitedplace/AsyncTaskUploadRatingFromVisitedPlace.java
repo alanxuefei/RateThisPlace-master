@@ -3,8 +3,11 @@ package com.i2r.xue.rate_this_place.visitedplace;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.i2r.xue.rate_this_place.utility.DataLogger;
@@ -88,10 +91,19 @@ public class AsyncTaskUploadRatingFromVisitedPlace extends AsyncTask {
     }
 
 
+    public void showmessageThedataisuploadedsuccessfully(){
+        Toast toast = Toast.makeText(this.context, "The data is uploaded successfully", Toast.LENGTH_SHORT);
+        LinearLayout toastLayout = (LinearLayout) toast.getView();
+        TextView toastTV = (TextView) toastLayout.getChildAt(0);
+        toastTV.setTextSize(30);
+        toastTV.setBackgroundColor(Color.BLACK);
+        toast.show();
+    }
+
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-        Toast.makeText(this.context, "The data is uploaded successfully", Toast.LENGTH_SHORT).show();
+        showmessageThedataisuploadedsuccessfully();
         barProgressDialog.dismiss();
         context.startActivity(new Intent(context, VisitedPlacesActivity.class));
     }

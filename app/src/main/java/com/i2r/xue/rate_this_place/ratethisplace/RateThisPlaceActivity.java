@@ -7,6 +7,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +26,7 @@ public class RateThisPlaceActivity  extends TabActivity implements TabHost.OnTab
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_this_place);
-
+        globalvariable.isIncremented=false;
         TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
         tabHost.setup();
         TabHost.TabSpec spec1=tabHost.newTabSpec("Tab 1");
@@ -86,12 +87,16 @@ public class RateThisPlaceActivity  extends TabActivity implements TabHost.OnTab
     protected void onDestroy() {
         super.onDestroy();
 
-        String VisitedPlaceStatusExtraIndex = (this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraIndex", "0"));
-        int temp = Integer.parseInt(VisitedPlaceStatusExtraIndex) + 1;
-        if (temp > 5) {
-            temp = 0;
+        if (((globalvariable.isRating_rated)||(globalvariable.isActivity_rated))&&(!globalvariable.isIncremented)) {
+            String VisitedPlaceStatusExtraIndex = (this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraIndex", "0"));
+            int temp = Integer.parseInt(VisitedPlaceStatusExtraIndex) + 1;
+            Log.i("index", String.valueOf(temp));
+            if (temp >= 5) {
+                temp = 0;
+            }
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraIndex", String.valueOf(temp)).apply();
+            globalvariable.isIncremented=true;
         }
-        this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraIndex", String.valueOf(temp)).apply();
         finish();
         //  Intent intent = new Intent(this, SensorListenerService.class);
         // stopService(intent);

@@ -45,8 +45,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/radioGroup1"
-                        android:onClick="clickRadio_group1"
-                        android:clickable="true">
+                    android:clickable="false">
 
                         <RadioButton
                             android:layout_width="wrap_content"

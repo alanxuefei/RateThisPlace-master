@@ -69,8 +69,8 @@ public class  UserProfileActivity extends PreferenceActivity {
 
 
       addPreferencesFromResource(R.xml.pref_general);
-       findPreference("display_name").setTitle(this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
-        findPreference("display_name").setSelectable(false);
+     //  findPreference("display_name").setTitle(this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
+       // findPreference("display_name").setSelectable(false);
 
         // Add 'notifications' preferences, and a corresponding header.
         //fakeHeader.setTitle(R.string.pref_header_notifications);

@@ -95,9 +95,10 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:id="@+id/imageView5"
+                    android:id="@+id/RowImageView0"
                     android:layout_margin="3dp"
-                    android:src="@drawable/i2r"/>
+                    android:src="@drawable/i2r"
+                    android:onClick="clickTableRow0Image" />
 
 
             <TextView
@@ -319,21 +320,23 @@
             </TableRow>
                 <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
                     android:layout_margin="3dp"
-                    android:id="@+id/AllTableRow10"
+                    android:id="@+id/AllTableRow100"
                     android:visibility="gone">
                     <TextView
                         android:padding="3dip"
-                        android:id="@+id/location10"
-                        android:layout_margin="1dp" />
+                        android:id="@+id/location100"
+                        android:layout_margin="1dp"
+                        android:onClick="ClickTableRow100Location"
+                        android:clickable="true" />
                     <TextView android:padding="3dip"
-                        android:id="@+id/location10_time"
+                        android:id="@+id/location100_time"
                         android:layout_marginTop="1dp"
                         android:layout_marginBottom="1dp" />
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/TableRow10"
+                        android:id="@+id/TableRow100"
                         android:layout_margin="1dp">
                     </LinearLayout>
 
@@ -342,21 +345,23 @@
 
                 <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
                     android:layout_margin="3dp"
-                    android:id="@+id/AllTableRow11"
+                    android:id="@+id/AllTableRow101"
                     android:visibility="gone">
                     <TextView
                         android:padding="3dip"
-                        android:id="@+id/location11"
-                        android:layout_margin="1dp" />
+                        android:id="@+id/location101"
+                        android:layout_margin="1dp"
+                        android:onClick="ClickTableRow101Location"
+                        android:clickable="true" />
                     <TextView android:padding="3dip"
-                        android:id="@+id/location11_time"
+                        android:id="@+id/location101_time"
                         android:layout_marginTop="1dp"
                         android:layout_marginBottom="1dp" />
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/TableRow11"
+                        android:id="@+id/TableRow101"
                         android:layout_margin="1dp">
                     </LinearLayout>
 
@@ -364,44 +369,23 @@
 
                 <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
                     android:layout_margin="3dp"
-                    android:id="@+id/AllTableRow12"
+                    android:id="@+id/AllTableRow102"
                     android:visibility="gone">
                     <TextView
                         android:padding="3dip"
-                        android:id="@+id/location12"
-                        android:layout_margin="1dp" />
+                        android:id="@+id/location102"
+                        android:layout_margin="1dp"
+                        android:onClick="ClickTableRow102Location"
+                        android:clickable="true" />
                     <TextView android:padding="3dip"
-                        android:id="@+id/location12_time"
+                        android:id="@+id/location102_time"
                         android:layout_marginTop="1dp"
                         android:layout_marginBottom="1dp" />
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/TableRow12"
-                        android:layout_margin="1dp">
-                    </LinearLayout>
-
-                </TableRow>
-
-
-                <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
-                    android:layout_margin="3dp"
-                    android:id="@+id/AllTableRow13"
-                    android:visibility="gone">
-                    <TextView
-                        android:padding="3dip"
-                        android:id="@+id/location13"
-                        android:layout_margin="1dp" />
-                    <TextView android:padding="3dip"
-                        android:id="@+id/location13_time"
-                        android:layout_marginTop="1dp"
-                        android:layout_marginBottom="1dp" />
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/TableRow13"
+                        android:id="@+id/TableRow102"
                         android:layout_margin="1dp">
                     </LinearLayout>
 
@@ -410,21 +394,23 @@
 
                 <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
                     android:layout_margin="3dp"
-                    android:id="@+id/AllTableRow14"
+                    android:id="@+id/AllTableRow103"
                     android:visibility="gone">
                     <TextView
                         android:padding="3dip"
-                        android:id="@+id/location14"
-                        android:layout_margin="1dp" />
+                        android:id="@+id/location103"
+                        android:layout_margin="1dp"
+                        android:onClick="ClickTableRow103Location"
+                        android:clickable="true" />
                     <TextView android:padding="3dip"
-                        android:id="@+id/location14_time"
+                        android:id="@+id/location103_time"
                         android:layout_marginTop="1dp"
                         android:layout_marginBottom="1dp" />
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/TableRow14"
+                        android:id="@+id/TableRow103"
                         android:layout_margin="1dp">
                     </LinearLayout>
 
@@ -433,21 +419,46 @@
 
                 <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
                     android:layout_margin="3dp"
-                    android:id="@+id/AllTableRow15"
+                    android:id="@+id/AllTableRow104"
                     android:visibility="gone">
                     <TextView
                         android:padding="3dip"
-                        android:id="@+id/location15"
-                        android:layout_margin="1dp" />
+                        android:id="@+id/location104"
+                        android:layout_margin="1dp"
+                        android:onClick="ClickTableRow104Location"
+                        android:clickable="true" />
                     <TextView android:padding="3dip"
-                        android:id="@+id/location15_time"
+                        android:id="@+id/location104_time"
                         android:layout_marginTop="1dp"
                         android:layout_marginBottom="1dp" />
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/TableRow15"
+                        android:id="@+id/TableRow104"
+                        android:layout_margin="1dp">
+                    </LinearLayout>
+
+                </TableRow>
+
+
+                <TableRow  android:minHeight="100dp" android:background="@layout/cell_shape"
+                    android:layout_margin="3dp"
+                    android:id="@+id/AllTableRow105"
+                    android:visibility="gone">
+                    <TextView
+                        android:padding="3dip"
+                        android:id="@+id/location105"
+                        android:layout_margin="1dp" />
+                    <TextView android:padding="3dip"
+                        android:id="@+id/location105_time"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="1dp" />
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/TableRow105"
                         android:layout_margin="1dp">
                     </LinearLayout>
 

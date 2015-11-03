@@ -13,12 +13,14 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.util.Patterns;
 
 import com.i2r.xue.rate_this_place.MainActivity;
 import com.i2r.xue.rate_this_place.R;
 import com.i2r.xue.rate_this_place.utility.Commonfunctions;
 
+import java.util.UUID;
 import java.util.regex.Pattern;
 
 /**
@@ -83,9 +85,12 @@ public class UserAgreementDialogFragment extends DialogFragment {
         }
 
         String uniqueUserID=possibleEmail+"_"+getUniqueHardwareID();
+
+        UUID uid = UUID.nameUUIDFromBytes(uniqueUserID.getBytes());
+        Log.i("123",uid.toString());
         getActivity().getSharedPreferences("UserInfo", getActivity().MODE_PRIVATE)
                 .edit()
-                .putString("UserID",uniqueUserID)
+                .putString("UserID",uid.toString())
                 .apply();
 
     }

@@ -8,8 +8,8 @@ android {
         applicationId "com.i2r.xue.rate_this_place"
         minSdkVersion 11
         targetSdkVersion 22
-        versionCode 16
-        versionName "0.82"
+        versionCode 17
+        versionName "0.85"
     }
     buildTypes {
         release {

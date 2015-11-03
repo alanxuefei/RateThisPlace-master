@@ -30,7 +30,8 @@ public class MyRewardActivity extends AppCompatActivity {
         }
         new AsyncTaskGetDataToMyReward(this,(TextView)findViewById(R.id.textView_Rewards),(ProgressBar)findViewById(R.id.progressBar_locationname)).execute();
 
-
+        ((TextView)findViewById(R.id.textView_UserID)).setText("\nUserID: \n"+this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null)+"");
+        //("display_name").setTitle(this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
     }
 
     @Override

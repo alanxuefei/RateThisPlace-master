@@ -315,7 +315,8 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
      //   Log.i("test", "returen");
         DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_ReturnButton" + " " + "\n", "");
 
-        startActivity(new Intent(getApplication(), VisitedPlacesActivity.class));
+        Intent intent = new Intent(this, VisitedPlacesActivity.class);
+        startActivity(intent);
 
     }
 
@@ -338,8 +339,17 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
                 JsonGenerator_activity.put("UserID", this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
                 JsonGenerator_activity.put("Nickname", PreferenceManager.getDefaultSharedPreferences(this).getString("display_name", ""));
                 LatLng detectedlocation_LatLng = Constants.AREA_LANDMARKS.get(Locationname);
-                JsonGenerator_activity_location.put("longitude", detectedlocation_LatLng.longitude);
-                JsonGenerator_activity_location.put("latitude", detectedlocation_LatLng.latitude);
+
+                if (detectedlocation_LatLng==null){
+                    JsonGenerator_activity_location =null;
+                    JsonGenerator_activity.put("LocationAccuracy", "Special");
+                }
+                else {
+                    JsonGenerator_activity_location.put("longitude", detectedlocation_LatLng.longitude);
+                    JsonGenerator_activity_location.put("latitude",  detectedlocation_LatLng.latitude);
+                     JsonGenerator_activity.put("LocationAccuracy", "Special");
+                }
+
                 JsonGenerator_activity.put("Datatime", timestamp);
                 JsonGenerator_activity.put("Location", JsonGenerator_activity_location);
                 JsonGenerator_activity.put("AloneGroup", AloneGroup.toString());

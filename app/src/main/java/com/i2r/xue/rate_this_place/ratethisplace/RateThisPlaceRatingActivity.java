@@ -1,6 +1,7 @@
 package com.i2r.xue.rate_this_place.ratethisplace;
 
 import android.annotation.TargetApi;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -215,95 +217,108 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
 
     public void clickButton_submit(View view) {
 
+
+        double VratingBarCLEANNESS = ((RatingBar) findViewById(R.id.ratingBarLively)).getRating();
+        double VratingBarSAFTY = ((RatingBar) findViewById(R.id.ratingBarRelaxing)).getRating();
+        double VratingBarBEAUTIFULNESS = ((RatingBar) findViewById(R.id.ratingBarCosy)).getRating();
+        double VratingBarFRIENDLINESS = ((RatingBar) findViewById(R.id.ratingBarRearrangeable)).getRating();
+        double VratingBarCONVENIENCE = ((RatingBar) findViewById(R.id.ratingBarSociable)).getRating();
+        double VratingBarGREENNESS = ((RatingBar) findViewById(R.id.ratingBarSafe)).getRating();
+
+        int usedratingbar = 0;
+        if (VratingBarCLEANNESS != 0) usedratingbar++;
+        if (VratingBarSAFTY != 0) usedratingbar++;
+        if (VratingBarBEAUTIFULNESS != 0) usedratingbar++;
+        if (VratingBarFRIENDLINESS != 0) usedratingbar++;
+        if (VratingBarCONVENIENCE != 0) usedratingbar++;
+        if (VratingBarGREENNESS != 0) usedratingbar++;
+
         if (globalvariable.thelocation != null) {
+            if (usedratingbar> 0) {
 
-            DataLogger.writeTolog("RateThisPlaceRatingActivity_clickButton_submit_RateThisPlaceRatingActivity" + " " + "\n", "");
+                DataLogger.writeTolog("RateThisPlaceRatingActivity_clickButton_submit_RateThisPlaceRatingActivity" + " " + "\n", "");
 
-            SimpleDateFormat datetimeformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String timestamp = datetimeformat.format(new Date());
-            JSONObject JsonGenerator_rating = new JSONObject();
-            JSONObject JsonGenerator_rating_location = new JSONObject();
+                SimpleDateFormat datetimeformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String timestamp = datetimeformat.format(new Date());
+                JSONObject JsonGenerator_rating = new JSONObject();
+                JSONObject JsonGenerator_rating_location = new JSONObject();
 
-            try {
-
-
-                JsonGenerator_rating.put("UserID", this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
+                try {
 
 
-                JsonGenerator_rating.put("Nickname", PreferenceManager.getDefaultSharedPreferences(this).getString("display_name", ""));
-                if (globalvariable.thelocation == null) {
-                    JsonGenerator_rating_location = null;
-                    JsonGenerator_rating.put("LocationAccuracy", "null");
-                } else {
-                    JsonGenerator_rating_location.put("longitude", globalvariable.thelocation.getLongitude());
-                    JsonGenerator_rating_location.put("latitude", globalvariable.thelocation.getLatitude());
-                    JsonGenerator_rating.put("LocationAccuracy", globalvariable.thelocation.getAccuracy());
+                    JsonGenerator_rating.put("UserID", this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
+
+
+                    JsonGenerator_rating.put("Nickname", PreferenceManager.getDefaultSharedPreferences(this).getString("display_name", ""));
+                    if (globalvariable.thelocation == null) {
+                        JsonGenerator_rating_location = null;
+                        JsonGenerator_rating.put("LocationAccuracy", "null");
+                    } else {
+                        JsonGenerator_rating_location.put("longitude", globalvariable.thelocation.getLongitude());
+                        JsonGenerator_rating_location.put("latitude", globalvariable.thelocation.getLatitude());
+                        JsonGenerator_rating.put("LocationAccuracy", globalvariable.thelocation.getAccuracy());
+                    }
+                    JsonGenerator_rating.put("Datatime", timestamp);
+                    JsonGenerator_rating.put("Location", JsonGenerator_rating_location);
+                    JsonGenerator_rating.put("Feeling", usermood.toString());
+                    JsonGenerator_rating.put("Rating_Lively", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarLively)).getRating());
+                    JsonGenerator_rating.put("Rating_Relaxingy", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRelaxing)).getRating());
+                    JsonGenerator_rating.put("Rating_Cosy", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarCosy)).getRating());
+                    JsonGenerator_rating.put("Rating_Rearrangeable", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRearrangeable)).getRating());
+                    JsonGenerator_rating.put("Rating_Sociable", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSociable)).getRating());
+                    JsonGenerator_rating.put("Rating_Safe", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSafe)).getRating());
+                    JsonGenerator_rating.put("Rating_Specialtome", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSpecialtome)).getRating());
+                    JsonGenerator_rating.put("Rating_Safe", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSafe)).getRating());
+
+
+                    // JsonGenerator_rating.put("Commentary", ((EditText) findViewById(com.i2r.alan.rate_this_place.R.id.AutoCompleteTextView_Commentary)).getText().toString());
+                    //  Log.i("JSON", JsonGenerator_rating.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                JsonGenerator_rating.put("Datatime", timestamp);
-                JsonGenerator_rating.put("Location", JsonGenerator_rating_location);
-                JsonGenerator_rating.put("Feeling", usermood.toString());
-                JsonGenerator_rating.put("Rating_Lively", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarLively)).getRating());
-                JsonGenerator_rating.put("Rating_Relaxingy", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRelaxing)).getRating());
-                JsonGenerator_rating.put("Rating_Cosy", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarCosy)).getRating());
-                JsonGenerator_rating.put("Rating_Rearrangeable", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRearrangeable)).getRating());
-                JsonGenerator_rating.put("Rating_Sociable", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSociable)).getRating());
-                JsonGenerator_rating.put("Rating_Safe", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSafe)).getRating());
-                JsonGenerator_rating.put("Rating_Specialtome", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSpecialtome)).getRating());
-                JsonGenerator_rating.put("Rating_Safe", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSafe)).getRating());
+                // clickbuttonRecieve();
+
+                AsyncTaskUploadRating myfileuploader = new AsyncTaskUploadRating(this, JsonGenerator_rating);
+                myfileuploader.execute();
 
 
-                // JsonGenerator_rating.put("Commentary", ((EditText) findViewById(com.i2r.alan.rate_this_place.R.id.AutoCompleteTextView_Commentary)).getText().toString());
-                //  Log.i("JSON", JsonGenerator_rating.toString());
-            } catch (JSONException e) {
-                e.printStackTrace();
+                globalvariable.isRating_rated = true;
+
+
+                double avgrating = (VratingBarCLEANNESS + VratingBarSAFTY + VratingBarBEAUTIFULNESS + VratingBarFRIENDLINESS + VratingBarCONVENIENCE + VratingBarGREENNESS) / usedratingbar;
+
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String currentDate = sdf.format(new Date());
+                sdf = new SimpleDateFormat("HH:mm:ss");
+                String currentTime = sdf.format(new Date());
+                String VisitedPlaceStatusExtraIndex = (this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraIndex", "0"));
+                DecimalFormat df = new DecimalFormat("0.0");
+                this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusLongitude" + VisitedPlaceStatusExtraIndex, String.valueOf(globalvariable.thelocation.getLongitude())).apply();
+                this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusLatitude" + VisitedPlaceStatusExtraIndex, String.valueOf(globalvariable.thelocation.getLatitude())).apply();
+                this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraRating" + VisitedPlaceStatusExtraIndex, df.format(avgrating)).apply();
+                this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtra" + VisitedPlaceStatusExtraIndex + "DateTime", currentDate + "_" + currentTime).apply();
+                if (!globalvariable.isActivity_rated)
+                    this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraActivity" + VisitedPlaceStatusExtraIndex, "NA").apply();
             }
-            // clickbuttonRecieve();
+            else{
+                ShowToastMessage("Please input at least one rating");
 
-            AsyncTaskUploadRating myfileuploader = new AsyncTaskUploadRating(this, JsonGenerator_rating);
-            myfileuploader.execute();
-
-
-            globalvariable.isRating_rated = true;
-
-            double VratingBarCLEANNESS = ((RatingBar) findViewById(R.id.ratingBarLively)).getRating();
-            double VratingBarSAFTY = ((RatingBar) findViewById(R.id.ratingBarRelaxing)).getRating();
-            double VratingBarBEAUTIFULNESS = ((RatingBar) findViewById(R.id.ratingBarCosy)).getRating();
-            double VratingBarFRIENDLINESS = ((RatingBar) findViewById(R.id.ratingBarRearrangeable)).getRating();
-            double VratingBarCONVENIENCE = ((RatingBar) findViewById(R.id.ratingBarSociable)).getRating();
-            double VratingBarGREENNESS = ((RatingBar) findViewById(R.id.ratingBarSafe)).getRating();
-
-            int usedratingbar = 0;
-            if (VratingBarCLEANNESS != 0) usedratingbar++;
-            if (VratingBarSAFTY != 0) usedratingbar++;
-            if (VratingBarBEAUTIFULNESS != 0) usedratingbar++;
-            if (VratingBarFRIENDLINESS != 0) usedratingbar++;
-            if (VratingBarCONVENIENCE != 0) usedratingbar++;
-            if (VratingBarGREENNESS != 0) usedratingbar++;
-
-
-            double avgrating = (VratingBarCLEANNESS + VratingBarSAFTY + VratingBarBEAUTIFULNESS + VratingBarFRIENDLINESS + VratingBarCONVENIENCE + VratingBarGREENNESS) / usedratingbar;
-
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            String currentDate = sdf.format(new Date());
-            sdf = new SimpleDateFormat("HH:mm:ss");
-            String currentTime = sdf.format(new Date());
-            String VisitedPlaceStatusExtraIndex = (this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraIndex", "0"));
-            DecimalFormat df = new DecimalFormat("0.0");
-            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusLongitude" + VisitedPlaceStatusExtraIndex, String.valueOf(globalvariable.thelocation.getLongitude())).apply();
-            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusLatitude" + VisitedPlaceStatusExtraIndex, String.valueOf(globalvariable.thelocation.getLatitude())).apply();
-            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraRating" + VisitedPlaceStatusExtraIndex, df.format(avgrating)).apply();
-            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtra" + VisitedPlaceStatusExtraIndex + "DateTime", currentDate + "_" + currentTime).apply();
-
-
+            }
         }
         else{
-            Toast.makeText(this, "Waiting for the location", Toast.LENGTH_SHORT).show();
+            ShowToastMessage("Waiting for the location");
         }
 
 
     }
 
-
-
+    public void ShowToastMessage(String i){
+        Toast toast = Toast.makeText(this, i, Toast.LENGTH_SHORT);
+        LinearLayout toastLayout = (LinearLayout) toast.getView();
+        TextView toastTV = (TextView) toastLayout.getChildAt(0);
+        toastTV.setTextSize(30);
+        toastTV.setBackgroundColor(Color.BLACK);
+        toast.show();
+    }
 
 }
