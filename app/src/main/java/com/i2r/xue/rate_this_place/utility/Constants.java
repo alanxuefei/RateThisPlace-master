@@ -18,6 +18,7 @@ package com.i2r.xue.rate_this_place.utility;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.location.Location;
 
 import com.google.android.gms.location.DetectedActivity;
 import com.google.android.gms.maps.model.LatLng;
@@ -133,5 +134,11 @@ public final class Constants {
         for(int i=0; i<Locations.length; i++){
             AREA_LANDMARKS.put(Locations[i], new LatLng(Lat[i], Lng[i]));
         }
+    }
+
+    public static final Location mainpoint = new Location("mainpoint");
+    static {
+        mainpoint.setLatitude(1.299166);
+        mainpoint.setLongitude(103.787066);
     }
 }

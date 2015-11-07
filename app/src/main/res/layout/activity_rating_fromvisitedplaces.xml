@@ -225,11 +225,19 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="28dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/info_Lively_imageView"
+                        android:src="@drawable/info"
+                        android:onClick="ShowInfo" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Lively: "
+                        android:text=" Lively: "
                         android:id="@+id/textView4"
                         />
                     <TextView
@@ -253,12 +261,17 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="28dp">
-
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/info_Relaxing_imageView"
+                        android:src="@drawable/info"
+                        android:onClick="ShowInfo" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Relaxing: "
+                        android:text=" Relaxing: "
                         android:id="@+id/textView3" />
 
                     <TextView
@@ -282,12 +295,17 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="28dp">
-
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/info_Cosy_imageView"
+                        android:src="@drawable/info"
+                        android:onClick="ShowInfo" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Cosy: "
+                        android:text=" Cosy: "
                         android:id="@+id/textView5" />
 
                     <TextView
@@ -313,12 +331,17 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="28dp">
-
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/info_Safe_imageView"
+                        android:src="@drawable/info"
+                        android:onClick="ShowInfo" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Safe: "
+                        android:text=" Safe: "
                         android:id="@+id/textViewSafe0" />
 
                     <TextView
@@ -342,12 +365,17 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="28dp">
-
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/info_Rearrangeable_imageView"
+                        android:src="@drawable/info"
+                        android:onClick="ShowInfo" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Rearrangeable: "
+                        android:text=" Rearrangeable: "
                         android:id="@+id/textViewRearrangeable0" />
 
                     <TextView
@@ -370,12 +398,17 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="28dp">
-
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/info_Sociable_imageView"
+                        android:src="@drawable/info"
+                        android:onClick="ShowInfo" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Sociable: "
+                        android:text=" Sociable: "
                         android:id="@+id/textViewSociable0" />
 
                     <TextView
@@ -399,12 +432,17 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="28dp">
-
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/info_Specialtome_imageView"
+                        android:src="@drawable/info"
+                        android:onClick="ShowInfo" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Special to me:"
+                        android:text=" Special to me:"
                         android:id="@+id/textViewSpecialtome0" />
 
                     <TextView
@@ -443,12 +481,17 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="28dp">
-
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/info_Privacy_imageView"
+                        android:src="@drawable/info"
+                        android:onClick="ShowInfo" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Privacy: "
+                        android:text=" Privacy: "
                         android:id="@+id/textViewPRIVACY0" />
 
                     <TextView

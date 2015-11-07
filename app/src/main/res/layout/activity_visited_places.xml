@@ -70,10 +70,9 @@
 
             <TextView
 
-            android:text="Pending Tasks "
+            android:text="Results/status"
             android:textSize="16dp"
-            android:layout_column="2"
-               />
+            android:layout_column="2" />
 
 
             <TextView

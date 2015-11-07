@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.model.LatLng;
 import com.i2r.xue.rate_this_place.R;
 import com.i2r.xue.rate_this_place.myrewards.AsyncTaskGetDataToMyRewardBar;
+import com.i2r.xue.rate_this_place.ratethisplace.infoDialogFragment;
 import com.i2r.xue.rate_this_place.utility.Constants;
 import com.i2r.xue.rate_this_place.utility.DataLogger;
 import com.i2r.xue.rate_this_place.utility.globalvariable;
@@ -191,27 +192,26 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
     public void clickButton_submit(View view) {
 
 
-
         SimpleDateFormat datetimeformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String timestamp = datetimeformat.format(new Date());
         JSONObject JsonGenerator_rating = new JSONObject();
         JSONObject JsonGenerator_rating_location = new JSONObject();
-        double VratingBarCLEANNESS= ((RatingBar) findViewById(R.id.ratingBarLively)).getRating();
-        double VratingBarSAFTY= ((RatingBar) findViewById(R.id.ratingBarRelaxing)).getRating();
-        double VratingBarBEAUTIFULNESS= ((RatingBar) findViewById(R.id.ratingBarCosy)).getRating();
-        double VratingBarFRIENDLINESS= ((RatingBar) findViewById(R.id.ratingBarRearrangeable)).getRating();
-        double VratingBarCONVENIENCE= ((RatingBar) findViewById(R.id.ratingBarSociable)).getRating();
-        double VratingBarGREENNESS= ((RatingBar) findViewById(R.id.ratingBarSafe)).getRating();
+        double VratingBarCLEANNESS = ((RatingBar) findViewById(R.id.ratingBarLively)).getRating();
+        double VratingBarSAFTY = ((RatingBar) findViewById(R.id.ratingBarRelaxing)).getRating();
+        double VratingBarBEAUTIFULNESS = ((RatingBar) findViewById(R.id.ratingBarCosy)).getRating();
+        double VratingBarFRIENDLINESS = ((RatingBar) findViewById(R.id.ratingBarRearrangeable)).getRating();
+        double VratingBarCONVENIENCE = ((RatingBar) findViewById(R.id.ratingBarSociable)).getRating();
+        double VratingBarGREENNESS = ((RatingBar) findViewById(R.id.ratingBarSafe)).getRating();
 
-        int usedratingbar=0;
-        if (VratingBarCLEANNESS!=0)usedratingbar++;
-        if (VratingBarSAFTY!=0)usedratingbar++;
-        if (VratingBarBEAUTIFULNESS!=0)usedratingbar++;
-        if (VratingBarFRIENDLINESS!=0)usedratingbar++;
-        if (VratingBarCONVENIENCE!=0)usedratingbar++;
-        if (VratingBarGREENNESS!=0)usedratingbar++;
+        int usedratingbar = 0;
+        if (VratingBarCLEANNESS != 0) usedratingbar++;
+        if (VratingBarSAFTY != 0) usedratingbar++;
+        if (VratingBarBEAUTIFULNESS != 0) usedratingbar++;
+        if (VratingBarFRIENDLINESS != 0) usedratingbar++;
+        if (VratingBarCONVENIENCE != 0) usedratingbar++;
+        if (VratingBarGREENNESS != 0) usedratingbar++;
 
-        if (usedratingbar> 0) {
+        if (usedratingbar > 0) {
             double avgrating = (VratingBarCLEANNESS + VratingBarSAFTY + VratingBarBEAUTIFULNESS + VratingBarFRIENDLINESS + VratingBarCONVENIENCE + VratingBarGREENNESS) / usedratingbar;
             DecimalFormat df = new DecimalFormat("0.0");
 
@@ -260,14 +260,16 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
 
             this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(Locationname1, df.format(avgrating)).apply();
 
-        }
-        else{
+        } else {
             Toast.makeText(this, "Please at least input one rating", Toast.LENGTH_SHORT).show();
         }
-      //  Log.i("VisitedPlace", Locationname1+"RatingStatus");
-
-
+        //  Log.i("VisitedPlace", Locationname1+"RatingStatus");
     }
+    public void ShowInfo(View i){
+        infoDialogFragment AboutUs = new infoDialogFragment();
+        AboutUs.show(getSupportFragmentManager(), "Info");
+    }
+
 
 
 

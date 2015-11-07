@@ -372,6 +372,9 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
             this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtra" + VisitedPlaceStatusExtraIndex + "DateTime", currentDate + "_" + currentTime).apply();
             if (!globalvariable.isRating_rated)
                 this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraRating" + VisitedPlaceStatusExtraIndex, "NA").apply();
+            if ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint)>1000){
+                ShowToastMessage("You are out of testbed area, so no points.");
+            }
         } else {
             ShowToastMessage("Waiting for the location");
         }

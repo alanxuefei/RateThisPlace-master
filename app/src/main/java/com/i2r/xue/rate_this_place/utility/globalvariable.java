@@ -10,6 +10,10 @@ public class globalvariable {
         globalvariable.thelocation = thelocation;
     }
 
+    public static Location getThelocation() {
+        return thelocation;
+    }
+
     public static Location thelocation;
     public int myrewards;
     public static boolean isRating_rated;

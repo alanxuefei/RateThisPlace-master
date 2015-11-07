@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.i2r.xue.rate_this_place.R;
+import com.i2r.xue.rate_this_place.usersetting.AboutUsDialogFragment;
+import com.i2r.xue.rate_this_place.utility.Constants;
 import com.i2r.xue.rate_this_place.utility.DataLogger;
 import com.i2r.xue.rate_this_place.utility.globalvariable;
 
@@ -299,6 +301,10 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
                 this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtra" + VisitedPlaceStatusExtraIndex + "DateTime", currentDate + "_" + currentTime).apply();
                 if (!globalvariable.isActivity_rated)
                     this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraActivity" + VisitedPlaceStatusExtraIndex, "NA").apply();
+
+                if ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint)>1000){
+                    ShowToastMessage("You are out of testbed area, so no points.");
+                }
             }
             else{
                 ShowToastMessage("Please input at least one rating");
@@ -320,5 +326,12 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
         toastTV.setBackgroundColor(Color.BLACK);
         toast.show();
     }
+
+
+    public void ShowInfo(View i){
+        infoDialogFragment AboutUs = new infoDialogFragment();
+        AboutUs.show(getSupportFragmentManager(), "Info");
+    }
+
 
 }
