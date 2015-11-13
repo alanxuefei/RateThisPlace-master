@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.i2r.xue.rate_this_place.mapview.MapsActivity;
+import com.i2r.xue.rate_this_place.utility.Constants;
 import com.i2r.xue.rate_this_place.utility.DataLogger;
 import com.i2r.xue.rate_this_place.utility.globalvariable;
 import com.i2r.xue.rate_this_place.visitedplace.VisitedPlacesActivity;
@@ -81,10 +82,13 @@ public class AsyncTaskUploadActivity extends AsyncTask {
         return null;
     }
 
-    public void showmessageThedataisuploadedsuccessfully(){
-        Toast toast = Toast.makeText(this.context, "The data is uploaded successfully", Toast.LENGTH_SHORT);
+
+
+    public void ShowToastMessage(String i){
+        Toast toast = Toast.makeText(context, i, Toast.LENGTH_LONG);
         LinearLayout toastLayout = (LinearLayout) toast.getView();
         TextView toastTV = (TextView) toastLayout.getChildAt(0);
+
         toastTV.setTextSize(30);
         toastTV.setBackgroundColor(Color.BLACK);
         toast.show();
@@ -94,12 +98,17 @@ public class AsyncTaskUploadActivity extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-        showmessageThedataisuploadedsuccessfully();
+        if ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint)>1000){
+            ShowToastMessage("The data is uploaded successfully, but System shows this rated place is not in the research list. Thus 0 point is credited.");
+        }
+        else {
+            ShowToastMessage("The data is uploaded successfully.");
+        }
         barProgressDialog.dismiss();
 
         if (globalvariable.isRating_rated){
-           // context.startActivity(new Intent(context, MapsActivity.class));
-            context.startActivity(new Intent(context, VisitedPlacesActivity.class));
+             context.startActivity(new Intent(context, MapsActivityFromRatethisPlace.class));
+           // context.startActivity(new Intent(context, VisitedPlacesActivity.class));
         }
         else{
 

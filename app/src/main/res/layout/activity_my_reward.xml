@@ -87,30 +87,32 @@
             </LinearLayout>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/textView_UserID"
-                android:layout_marginLeft="10dp" />
+                android:text="Redemption ID:"
+                android:id="@+id/textView6"
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="\nNote: \nEach submission gains 2 points.
-                \n1, The maximum daily points are 12 points.
-                \n2, Only the registered participants in the testbed area are eligible for point redemption.
-                \n3, A rating for a place which is not in the testbed area will not be entitled to any points.
-                \n4, If you have earned 4 cups, please contact ***@i2r.com
-                \n5, The maximum points are 500. "
-                android:id="@+id/textView6"
-                android:layout_marginLeft="10dp" />
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/textView_UserID"
+                android:layout_marginLeft="10dp"
+                android:textColor="#000000"
+                android:textStyle="normal"
+                android:typeface="normal"
+                android:layout_marginTop="5dp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageView_myreward"
-                android:src="@drawable/myrewardexplanation"/>
+                android:src="@drawable/myrewardexplanation"
+                android:adjustViewBounds="true" />
 
         </LinearLayout>
     </ScrollView>

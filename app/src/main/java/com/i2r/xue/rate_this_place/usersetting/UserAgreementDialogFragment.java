@@ -3,6 +3,7 @@ package com.i2r.xue.rate_this_place.usersetting;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Dialog;
+import android.app.FragmentManager;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -49,7 +50,7 @@ public class UserAgreementDialogFragment extends DialogFragment {
                                 .putString("VisitedPlaceStatusExtraIndex", "0")
                                 .apply();
 
-                        Commonfunctions.setSensingAlarm(getActivity());
+                        Commonfunctions.startPassiveDataCollection(getActivity());
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         startActivity(intent);
                         getActivity().finish();
@@ -87,7 +88,7 @@ public class UserAgreementDialogFragment extends DialogFragment {
         String uniqueUserID=possibleEmail+"_"+getUniqueHardwareID();
 
         UUID uid = UUID.nameUUIDFromBytes(uniqueUserID.getBytes());
-        Log.i("123",uid.toString());
+        Log.i("123", uid.toString());
         getActivity().getSharedPreferences("UserInfo", getActivity().MODE_PRIVATE)
                 .edit()
                 .putString("UserID",uid.toString())
@@ -135,4 +136,6 @@ public class UserAgreementDialogFragment extends DialogFragment {
             }
         }
     }
+
+
 }

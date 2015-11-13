@@ -373,7 +373,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
             if (!globalvariable.isRating_rated)
                 this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraRating" + VisitedPlaceStatusExtraIndex, "NA").apply();
             if ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint)>1000){
-                ShowToastMessage("You are out of testbed area, so no points.");
+                ShowToastMessage("System shows this rated place is not in the research list. Thus 0 point is credited.");
             }
         } else {
             ShowToastMessage("Waiting for the location");

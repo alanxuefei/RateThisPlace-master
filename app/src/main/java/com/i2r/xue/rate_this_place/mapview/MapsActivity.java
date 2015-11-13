@@ -54,6 +54,7 @@ public class MapsActivity extends FragmentActivity {
             if (mMap != null) {
                 setUpMap();
             }
+
         }
     }
 
@@ -66,6 +67,7 @@ public class MapsActivity extends FragmentActivity {
     private void setUpMap() {
        // mMap.setMyLocationEnabled(true);
         mMap.setIndoorEnabled(true);
+        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         (new AsyncTaskGetRatingDataToMap(this,mMap)).execute();
         (new AsyncTaskGetActivitiesDataToMap(this,mMap)).execute();
         if(globalvariable.thelocation==null){

@@ -322,7 +322,6 @@ public class SensorListenerService extends Service implements SensorEventListene
             DataLogger.writeTolog(dataformat,logswich);
            // Log.i(Sensor_TAG, Long.toString(event.timestamp) + dataformat);
         }
-
     }
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {

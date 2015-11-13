@@ -1,12 +1,16 @@
 package com.i2r.xue.rate_this_place.ratethisplace;
 
+import android.Manifest;
 import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,24 +22,27 @@ import android.widget.TextView;
 
 import com.i2r.xue.rate_this_place.R;
 import com.i2r.xue.rate_this_place.myrewards.AsyncTaskGetDataToMyRewardBar;
+import com.i2r.xue.rate_this_place.usersetting.UserAgreementDialogFragment;
 import com.i2r.xue.rate_this_place.utility.globalvariable;
 
-public class RateThisPlaceActivity  extends TabActivity implements TabHost.OnTabChangeListener, LocationListener {
+public class RateThisPlaceActivity extends TabActivity implements TabHost.OnTabChangeListener, LocationListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_this_place);
-        globalvariable.isIncremented=false;
-        TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
+
+        LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        globalvariable.isIncremented = false;
+        TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
         tabHost.setup();
-        TabHost.TabSpec spec1=tabHost.newTabSpec("Tab 1");
+        TabHost.TabSpec spec1 = tabHost.newTabSpec("Tab 1");
         spec1.setIndicator("Rating");
         Intent startBasicIntent = new Intent();
 
         spec1.setContent(startBasicIntent.setClass(this, RateThisPlaceRatingActivity.class));
 
-        TabHost.TabSpec spec2=tabHost.newTabSpec("Tab 2");
+        TabHost.TabSpec spec2 = tabHost.newTabSpec("Tab 2");
         spec2.setIndicator("Activity");
         Intent startDetailIntent = new Intent();
 
@@ -45,34 +52,41 @@ public class RateThisPlaceActivity  extends TabActivity implements TabHost.OnTab
         tabHost.addTab(spec2);
         Intent intent = getIntent();
         String From = intent.getStringExtra("from");
-
-        if (From.equals("Activity")){
+        String Environment = intent.getStringExtra("environment");
+        if (From.equals("Activity")) {
             tabHost.setCurrentTab(0);
-        }else if (From.equals("Rating")){
+        } else if (From.equals("Rating")) {
             tabHost.setCurrentTab(1);
         } else {
             tabHost.setCurrentTab(0);
+
         }
 
-        if (globalvariable.thelocation!=null){
-            ((ProgressBar)findViewById(R.id.progressBar_promote)).setVisibility(View.GONE);
+        if (globalvariable.thelocation != null) {
+            ((ProgressBar) findViewById(R.id.progressBar_promote)).setVisibility(View.GONE);
 
-            new AsyncTaskGetDataToMyRewardBar(this,(ProgressBar)findViewById(R.id.progressBar_promote),(TextView)findViewById(R.id.textView_promote),
-                    (ImageView)findViewById(R.id.imageView_rewards1),
-                    (ImageView)findViewById(R.id.imageView_rewards2),(ImageView)findViewById(R.id.imageView_rewards3),
-                    (ImageView)findViewById(R.id.imageView_rewards4),(ProgressBar)findViewById(R.id.progressBar_rewards),(TextView)findViewById(R.id.textView_Rewards)).execute();
+            new AsyncTaskGetDataToMyRewardBar(this, (ProgressBar) findViewById(R.id.progressBar_promote), (TextView) findViewById(R.id.textView_promote),
+                    (ImageView) findViewById(R.id.imageView_rewards1),
+                    (ImageView) findViewById(R.id.imageView_rewards2), (ImageView) findViewById(R.id.imageView_rewards3),
+                    (ImageView) findViewById(R.id.imageView_rewards4), (ProgressBar) findViewById(R.id.progressBar_rewards), (TextView) findViewById(R.id.textView_Rewards)).execute();
+        } else {
+
+            if (Environment.equals("Outdoor")) {
+
+                Log.i("Location", "Outdoor");
+
+                lm.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, this, null);
+                lm.requestSingleUpdate(LocationManager.GPS_PROVIDER, this, null);
+            } else {
+
+                //  lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+                Log.i("Location", "Indoor");
+
+                lm.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, this, null);
+                lm.requestSingleUpdate(LocationManager.GPS_PROVIDER, this, null);
+            }
+
         }
-        else{
-            LocationManager lm=(LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-            lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
-        }
-
-
-
-
-
-
     }
 
 
@@ -170,7 +184,6 @@ public class RateThisPlaceActivity  extends TabActivity implements TabHost.OnTab
     public void onProviderDisabled(String s) {
 
     }
-
 
 
 }

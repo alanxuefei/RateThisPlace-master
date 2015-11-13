@@ -1,9 +1,11 @@
 package com.i2r.xue.rate_this_place.visitedplace;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -12,18 +14,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 import com.i2r.xue.rate_this_place.MainActivity;
 import com.i2r.xue.rate_this_place.R;
 import com.i2r.xue.rate_this_place.mapview.MapsActivity;
 import com.i2r.xue.rate_this_place.utility.Constants;
 import com.i2r.xue.rate_this_place.utility.globalvariable;
 
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -170,7 +179,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         bt.setBackgroundColor(getResources().getColor(android.R.color.transparent));
         vi.addView(bt);
 
-        bt.setText(activities.replace("_","\n"));
+        bt.setText(activities.replace("_", "\n"));
     }
 
     @Override
@@ -532,7 +541,7 @@ Log.i("datearray", datearray[0]);
 
 
     public void ClickTableRow100Location(View v) {
-Log.i("123","123");
+Log.i("123", "123");
         startmap2(0);
     }
 
@@ -568,9 +577,11 @@ Log.i("123","123");
 
         if  (datearray[0].equals(currentDate)){
             ((TableRow)findViewById(R.id.AllTableRow100)).setVisibility(TableRow.VISIBLE);
-            ((TextView)findViewById(R.id.location100)).setText(
+            /*((TextView)findViewById(R.id.location100)).setText(
                     ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLongitude0", "NA")))+"\n"+
-                            ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLatitude0", "NA"))));
+                            ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLatitude0", "NA"))));*/
+            String Image_Path= Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/ActiveData/" + "MapScreen0"+ ".png";
+            ((ImageView)findViewById(R.id.location100_imageView)).setImageBitmap(BitmapFactory.decodeFile(Image_Path));
             ((TextView) findViewById(R.id.location100_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtra0DateTime", "NA")).replace("_", "\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating0", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow100)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating0", "NA"));
@@ -601,10 +612,16 @@ Log.i("123","123");
 
         if  (datearray[0].equals(currentDate)){
             ((TableRow)findViewById(R.id.AllTableRow101)).setVisibility(TableRow.VISIBLE);
-            ((TextView)findViewById(R.id.location101)).setText(
+           /* ((TextView)findViewById(R.id.location101)).setText(
                     ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLongitude1", "NA"))) + "\n" +
-                            ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLatitude1", "NA"))));
-            ((TextView)findViewById(R.id.location101_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtra1DateTime", "NA")).replace("_","\n")));
+                            ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLatitude1", "NA"))));*/
+          //  GoogleMap mMap101=  ((MapView)(findViewById(R.id.map101))).getMap();
+        //    mMap101.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(1.348551, 103.813059), 10));
+
+            String Image_Path= Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/ActiveData/" + "MapScreen1"+ ".png";
+            ((ImageView)findViewById(R.id.location101_imageView)).setImageBitmap(BitmapFactory.decodeFile(Image_Path));
+
+            ((TextView)findViewById(R.id.location101_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtra1DateTime", "NA")).replace("_", "\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating1", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow101)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating1", "NA"));
             }
@@ -634,9 +651,9 @@ Log.i("123","123");
 
         if  (datearray[0].equals(currentDate)){
             ((TableRow)findViewById(R.id.AllTableRow102)).setVisibility(TableRow.VISIBLE);
-            ((TextView)findViewById(R.id.location102)).setText(
-                    ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLongitude2", "NA"))) + "\n" +
-                            ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLatitude2", "NA"))));
+            String Image_Path= Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/ActiveData/" + "MapScreen2"+ ".png";
+            ((ImageView)findViewById(R.id.location102_imageView)).setImageBitmap(BitmapFactory.decodeFile(Image_Path));
+
             ((TextView)findViewById(R.id.location102_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtra2DateTime", "NA")).replace("_","\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating2", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow102)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating2", "NA"));
@@ -669,9 +686,10 @@ Log.i("123","123");
 
         if  (datearray[0].equals(currentDate)){
             ((TableRow)findViewById(R.id.AllTableRow103)).setVisibility(TableRow.VISIBLE);
-            ((TextView)findViewById(R.id.location103)).setText(
-                    ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLongitude3", "NA"))) + "\n" +
-                            ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLatitude3", "NA"))));
+
+            String Image_Path= Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/ActiveData/" + "MapScreen3"+ ".png";
+            ((ImageView)findViewById(R.id.location103_imageView)).setImageBitmap(BitmapFactory.decodeFile(Image_Path));
+
             ((TextView)findViewById(R.id.location103_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtra3DateTime", "NA")).replace("_","\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating3", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow103)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating3", "NA"));
@@ -703,9 +721,10 @@ Log.i("123","123");
 
         if  (datearray[0].equals(currentDate)){
             ((TableRow)findViewById(R.id.AllTableRow104)).setVisibility(TableRow.VISIBLE);
-            ((TextView)findViewById(R.id.location104)).setText(
-                    ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLongitude4", "NA"))) + "\n" +
-                            ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLatitude4", "NA"))));
+
+            String Image_Path= Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/ActiveData/" + "MapScreen4"+ ".png";
+            ((ImageView)findViewById(R.id.location104_imageView)).setImageBitmap(BitmapFactory.decodeFile(Image_Path));
+
             ((TextView)findViewById(R.id.location104_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtra4DateTime", "NA")).replace("_","\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating4", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow104)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating4", "NA"));
@@ -736,9 +755,9 @@ Log.i("123","123");
 
         if  (datearray[0].equals(currentDate)){
             ((TableRow)findViewById(R.id.AllTableRow105)).setVisibility(TableRow.VISIBLE);
-            ((TextView)findViewById(R.id.location105)).setText(
-                    ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLongitude5", "NA"))) + "\n" +
-                            ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLatitude5", "NA"))));
+            String Image_Path= Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/ActiveData/" + "MapScreen5"+ ".png";
+            ((ImageView)findViewById(R.id.location105_imageView)).setImageBitmap(BitmapFactory.decodeFile(Image_Path));
+
             ((TextView)findViewById(R.id.location105_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtra5DateTime", "NA")).replace("_","\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating5", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow105)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating5", "NA"));

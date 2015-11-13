@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -123,7 +124,6 @@
             android:id="@+id/AllTableRow1"
             android:visibility="gone">
             <TextView
-
                 android:id="@+id/location1"
                 android:layout_margin="1dp" />
             <TextView android:padding="3dip"
@@ -321,12 +321,15 @@
                     android:layout_margin="3dp"
                     android:id="@+id/AllTableRow100"
                     android:visibility="gone">
-                    <TextView
-                        android:padding="3dip"
-                        android:id="@+id/location100"
+
+                    <ImageView
+                        android:layout_width="99dp"
+                        android:layout_height="99dp"
                         android:layout_margin="1dp"
+                        android:id="@+id/location100_imageView"
                         android:onClick="ClickTableRow100Location"
                         android:clickable="true" />
+
                     <TextView android:padding="3dip"
                         android:id="@+id/location100_time"
                         android:layout_marginTop="1dp"
@@ -346,12 +349,15 @@
                     android:layout_margin="3dp"
                     android:id="@+id/AllTableRow101"
                     android:visibility="gone">
-                    <TextView
-                        android:padding="3dip"
-                        android:id="@+id/location101"
+
+                    <ImageView
+                        android:layout_width="99dp"
+                        android:layout_height="99dp"
                         android:layout_margin="1dp"
+                        android:id="@+id/location101_imageView"
                         android:onClick="ClickTableRow101Location"
                         android:clickable="true" />
+
                     <TextView android:padding="3dip"
                         android:id="@+id/location101_time"
                         android:layout_marginTop="1dp"
@@ -370,10 +376,11 @@
                     android:layout_margin="3dp"
                     android:id="@+id/AllTableRow102"
                     android:visibility="gone">
-                    <TextView
-                        android:padding="3dip"
-                        android:id="@+id/location102"
+                    <ImageView
+                        android:layout_width="99dp"
+                        android:layout_height="99dp"
                         android:layout_margin="1dp"
+                        android:id="@+id/location102_imageView"
                         android:onClick="ClickTableRow102Location"
                         android:clickable="true" />
                     <TextView android:padding="3dip"
@@ -395,10 +402,11 @@
                     android:layout_margin="3dp"
                     android:id="@+id/AllTableRow103"
                     android:visibility="gone">
-                    <TextView
-                        android:padding="3dip"
-                        android:id="@+id/location103"
+                    <ImageView
+                        android:layout_width="99dp"
+                        android:layout_height="99dp"
                         android:layout_margin="1dp"
+                        android:id="@+id/location103_imageView"
                         android:onClick="ClickTableRow103Location"
                         android:clickable="true" />
                     <TextView android:padding="3dip"
@@ -420,10 +428,11 @@
                     android:layout_margin="3dp"
                     android:id="@+id/AllTableRow104"
                     android:visibility="gone">
-                    <TextView
-                        android:padding="3dip"
-                        android:id="@+id/location104"
+                    <ImageView
+                        android:layout_width="99dp"
+                        android:layout_height="99dp"
                         android:layout_margin="1dp"
+                        android:id="@+id/location104_imageView"
                         android:onClick="ClickTableRow104Location"
                         android:clickable="true" />
                     <TextView android:padding="3dip"
@@ -445,10 +454,13 @@
                     android:layout_margin="3dp"
                     android:id="@+id/AllTableRow105"
                     android:visibility="gone">
-                    <TextView
-                        android:padding="3dip"
-                        android:id="@+id/location105"
-                        android:layout_margin="1dp" />
+                    <ImageView
+                        android:layout_width="99dp"
+                        android:layout_height="99dp"
+                        android:layout_margin="1dp"
+                        android:id="@+id/location105_imageView"
+                        android:onClick="ClickTableRow105Location"
+                        android:clickable="true" />
                     <TextView android:padding="3dip"
                         android:id="@+id/location105_time"
                         android:layout_marginTop="1dp"
@@ -467,6 +479,7 @@
 
 
         </TableLayout>
+
     </ScrollView>
 
 </LinearLayout>

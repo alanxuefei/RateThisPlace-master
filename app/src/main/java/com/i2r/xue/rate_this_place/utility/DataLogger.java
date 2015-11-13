@@ -66,35 +66,7 @@ public class DataLogger {
         }
     }
 
-    public static void writeTolog0(String content,String logswich)  {
 
-        File file;
-        FileOutputStream outputStream=null;
-
-        //SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-        SimpleDateFormat timeformat = new SimpleDateFormat("HH:mm:ss");
-        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-        String timestamp = timeformat.format(new Date());
-        String datestamp = dateformat.format(new Date());
-        content = timestamp+" "+" "+content;
-        mystorefilename=   datestamp+logswich+".txt";
-
-        try {
-            file = new File(Environment.getExternalStorageDirectory(), "/"+"RateThisPlace"+"/"+"PassiveData/"+mystorefilename);
-            outputStream = new FileOutputStream(file,true);
-            outputStream.write(content.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally{
-            if ( outputStream != null) {
-                try {
-                    outputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
 
 
 

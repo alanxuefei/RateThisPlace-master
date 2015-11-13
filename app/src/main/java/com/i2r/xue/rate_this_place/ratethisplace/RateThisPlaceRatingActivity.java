@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -274,7 +275,7 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
 
 
                     // JsonGenerator_rating.put("Commentary", ((EditText) findViewById(com.i2r.alan.rate_this_place.R.id.AutoCompleteTextView_Commentary)).getText().toString());
-                    //  Log.i("JSON", JsonGenerator_rating.toString());
+                      Log.i("JSON", JsonGenerator_rating.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -302,9 +303,7 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
                 if (!globalvariable.isActivity_rated)
                     this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraActivity" + VisitedPlaceStatusExtraIndex, "NA").apply();
 
-                if ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint)>1000){
-                    ShowToastMessage("You are out of testbed area, so no points.");
-                }
+
             }
             else{
                 ShowToastMessage("Please input at least one rating");

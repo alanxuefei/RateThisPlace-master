@@ -170,7 +170,7 @@ public class PassiveDataToFTPIntentService extends IntentService {
         if (uploadFile(mFtpClient, thefile, "")){
             DataLogger.EmptyFolder(INPUT_FOLDER);
         };
-        thefile.delete();
+
     }
 
     /**

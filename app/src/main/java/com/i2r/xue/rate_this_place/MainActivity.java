@@ -23,6 +23,7 @@ import com.i2r.xue.rate_this_place.mapview.MapsActivity;
 import com.i2r.xue.rate_this_place.myrewards.AsyncTaskGetDataToMyRewardBar;
 import com.i2r.xue.rate_this_place.myrewards.MyRewardActivity;
 import com.i2r.xue.rate_this_place.pasivedatacollection.PassiveDataToFTPIntentService;
+import com.i2r.xue.rate_this_place.ratethisplace.IndoorOutdoorDialogFragment;
 import com.i2r.xue.rate_this_place.ratethisplace.RateThisPlaceActivity;
 import com.i2r.xue.rate_this_place.usersetting.AboutUsDialogFragment;
 import com.i2r.xue.rate_this_place.usersetting.UserAgreementDialogFragment;
@@ -158,9 +159,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         globalvariable.isRating_rated=false;
 
         if (isConnectingToInternet()){
-            Intent intent = new Intent(this, RateThisPlaceActivity.class);
-            intent.putExtra("from", "MainActivity");
-            startActivity(intent);
+
+            (new IndoorOutdoorDialogFragment()).show(getSupportFragmentManager(), "IndoorOutdoorDialog");
+           // Intent intent = new Intent(this, RateThisPlaceActivity.class);
+           // intent.putExtra("from", "MainActivity");
+           // startActivity(intent);
         }
         else{
             showmessagePleaseconnecttoInternet();
@@ -182,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
            // ((TextView)findViewById(R.id.textView_UserID)).setText("UserID: " + this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
            ((TextView)findViewById(R.id.textView_UserID)).setText("");
             checkNetworkandGPS();
-            Commonfunctions.setSensingAlarm(this);
+            Commonfunctions.startPassiveDataCollection(this);
 
         }
         else{

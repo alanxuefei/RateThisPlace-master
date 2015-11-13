@@ -93,9 +93,17 @@
                 android:layout_height="28dp"
                 android:weightSum="1">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=" Lively "
+                    android:id="@+id/textView4"
+                    />
+
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:id="@+id/info_Lively_imageView"
                     android:src="@drawable/info"
                     android:onClick="ShowInfo" />
@@ -104,9 +112,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=" Lively: "
-                    android:id="@+id/textView4"
-                    />
+                    android:id="@+id/textView18" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -128,18 +135,26 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="28dp">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:id="@+id/info_Relaxing_imageView"
-                    android:src="@drawable/info"
-                    android:onClick="ShowInfo" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=" Relaxing: "
+                    android:text=" Relaxing "
+                    android:id="@+id/textView19" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/textView3" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:id="@+id/info_Relaxing_imageView"
+                    android:src="@drawable/info"
+                    android:onClick="ShowInfo" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -162,9 +177,17 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="28dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=" Cosy "
+                    android:id="@+id/textView20" />
+
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:id="@+id/info_Cosy_imageView"
                     android:src="@drawable/info"
                     android:onClick="ShowInfo" />
@@ -172,7 +195,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=" Cosy: "
                     android:id="@+id/textView5" />
 
                 <TextView
@@ -198,9 +220,17 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="28dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=" Safe"
+                    android:id="@+id/textView21" />
+
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:id="@+id/info_Safe_imageView"
                     android:src="@drawable/info"
                     android:onClick="ShowInfo" />
@@ -208,7 +238,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=" Safe: "
                     android:id="@+id/textViewSafe0" />
 
                 <TextView
@@ -232,9 +261,17 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="28dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=" Rearrangeable"
+                    android:id="@+id/textView22" />
+
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:id="@+id/info_Rearrangeable_imageView"
                     android:src="@drawable/info"
                     android:onClick="ShowInfo" />
@@ -242,7 +279,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=" Rearrangeable: "
                     android:id="@+id/textViewRearrangeable0" />
 
                 <TextView
@@ -265,9 +301,17 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="28dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=" Sociable"
+                    android:id="@+id/textView23" />
+
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:id="@+id/info_Sociable_imageView"
                     android:src="@drawable/info"
                     android:onClick="ShowInfo" />
@@ -275,7 +319,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=" Sociable: "
                     android:id="@+id/textViewSociable0" />
 
                 <TextView
@@ -299,9 +342,17 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="28dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=" Special to me"
+                    android:id="@+id/textView24" />
+
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:id="@+id/info_Specialtome_imageView"
                     android:src="@drawable/info"
                     android:onClick="ShowInfo" />
@@ -309,7 +360,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=" Special to me:"
                     android:id="@+id/textViewSpecialtome0" />
 
                 <TextView
@@ -348,9 +398,17 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="28dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=" Privacy"
+                    android:id="@+id/textView25" />
+
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:id="@+id/info_Privacy_imageView"
                     android:src="@drawable/info"
                     android:onClick="ShowInfo" />
@@ -358,7 +416,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=" Privacy: "
                     android:id="@+id/textViewPRIVACY0" />
 
                 <TextView
