@@ -21,6 +21,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.telephony.CellInfo;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 //import android.util.Log;
 
 import com.i2r.xue.rate_this_place.R;
@@ -40,6 +43,13 @@ import java.util.List;
  * Created by Xue Fei on 19/5/2015.
  */
 public class SensorListenerService extends Service implements SensorEventListener, LocationListener,GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, ResultCallback<Status> {
+
+
+
+    private double ACCsamplingrate=10;  //100Hz will slow the system down
+    private double GROsamplingrate=1;
+    private double Lightsamplingrate=0.5;
+    private long CellInfo_APPStatics_Timeinterval=60*1000; //ms
 
     int mStartMode;       // indicates how to behave if the service is killed
     IBinder mBinder;      // interface for clients that bind
@@ -129,7 +139,7 @@ public class SensorListenerService extends Service implements SensorEventListene
     public final Runnable ActivityManager_runable = new Runnable() {
         public void run() {
 
-
+            //App statistics
             ActivityManager am = (ActivityManager) getApplication().getSystemService(ACTIVITY_SERVICE);
             List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
            // Log.d("topActivity", "CURRENT Activity ::" + taskInfo.get(0).topActivity.getClassName());
@@ -137,9 +147,15 @@ public class SensorListenerService extends Service implements SensorEventListene
 
 
             DataLogger.writeTolog("currentAPP: "+  componentInfo.getPackageName()+" "+componentInfo.getClassName()+ "\n",logswich);
-            ActivityManagerhandler.postDelayed(ActivityManager_runable, 1000 * 10);
 
-
+            ActivityManagerhandler.postDelayed(ActivityManager_runable, CellInfo_APPStatics_Timeinterval);
+            //Cell Tower
+            TelephonyManager TM = (TelephonyManager) getApplication()
+                    .getSystemService(Context.TELEPHONY_SERVICE);
+            List<CellInfo> cellinfo = TM.getAllCellInfo();
+            Log.d("AA", Integer.toString(cellinfo.size()));
+            Log.d("AA", cellinfo.toString());
+            DataLogger.writeTolog("CellInfo " + cellinfo.toString() + "\n",logswich);
         }
     };
 
@@ -150,9 +166,6 @@ public class SensorListenerService extends Service implements SensorEventListene
     /*google activity detection*/
     protected GoogleApiClient mGoogleApiClient;
 
-    public double ACCsamplingrate=10;  //100Hz will slow the system down
-    public double GROsamplingrate=1;
-    public double Lightsamplingrate=0.5;
 
 
     private SoundLevelMonitor soundlevel= new SoundLevelMonitor();

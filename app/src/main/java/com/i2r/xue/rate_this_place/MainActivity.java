@@ -89,6 +89,19 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public void onResume() {
         super.onResume();
         checkFirstRun();
+        if (globalvariable.isFromGPSsetting()){
+            globalvariable.setFromGPSsetting(false);
+            final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
+
+            if (manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+                Intent intent = new Intent(this, RateThisPlaceActivity.class);
+                intent.putExtra("from", "MainActivity");
+                intent.putExtra("environment", "Outdoor");
+                startActivity(intent);
+            }
+
+
+        }
 
         // Intent intent = new Intent(this, SensorListenerService.class);
        // startService(intent);
