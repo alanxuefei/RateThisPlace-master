@@ -5,6 +5,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -18,10 +19,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.i2r.xue.rate_this_place.utility.Constants;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class GeofencingService extends Service implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, ResultCallback<Status> {
+
+
 
     protected static final String GeoTAG = "creating-and-monitoring-geofences";
 
@@ -61,8 +65,9 @@ public class GeofencingService extends Service implements
         super.onCreate();
      //   Log.i(GeoTAG, "start");
         // Empty list for storing geofences.
-        mGeofenceList = new ArrayList<Geofence>();
 
+
+        mGeofenceList = new ArrayList<Geofence>();
         // Initially set the PendingIntent used in addGeofences() and removeGeofences() to null.
         mGeofencePendingIntent = null;
 
@@ -131,18 +136,19 @@ public class GeofencingService extends Service implements
      * the user's location.
      */
     public void populateGeofenceList() {
-        for (Map.Entry<String, LatLng> entry : Constants.AREA_LANDMARKS.entrySet()) {
-          //  Log.i(GeoTAG, "populate");
+        for (int i = 0; i < Constants.AREA_LANDMARKS.length; i++) {
+
+             Log.i(GeoTAG, "populate");
             mGeofenceList.add(new Geofence.Builder()
                     // Set the request ID of the geofence. This is a string to identify this
                     // geofence.
-                    .setRequestId(entry.getKey())
+                    .setRequestId( Constants.AREA_LANDMARKS[i].getName())
 
                             // Set the circular region of this geofence.
                     .setCircularRegion(
-                            entry.getValue().latitude,
-                            entry.getValue().longitude,
-                            Constants.GEOFENCE_RADIUS_IN_METERS
+                            Constants.AREA_LANDMARKS[i].getLocation().latitude,
+                            Constants.AREA_LANDMARKS[i].getLocation().longitude,
+                            Constants.AREA_LANDMARKS[i].getGeofence_Radius_In_Meters()
                     )
 
                             // Set the expiration duration of the geofence. This geofence gets automatically

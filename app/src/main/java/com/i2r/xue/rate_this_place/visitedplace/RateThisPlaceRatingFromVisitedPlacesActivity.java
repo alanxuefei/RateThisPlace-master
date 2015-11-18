@@ -224,7 +224,14 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
                 JsonGenerator_rating.put("Nickname", PreferenceManager.getDefaultSharedPreferences(this).getString("display_name", ""));
 
 
-                LatLng detectedlocation_LatLng = Constants.AREA_LANDMARKS.get(Locationname1);
+                LatLng detectedlocation_LatLng = null;
+
+
+                for (GeoFencingLocationClass item : Constants.AREA_LANDMARKS) {
+                    if ((item.getName()).equals(Locationname1)){
+                        detectedlocation_LatLng=item.getLocation();
+                    }
+                }
 
                 if (detectedlocation_LatLng == null) {
                     JsonGenerator_rating_location = null;

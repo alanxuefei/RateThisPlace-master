@@ -338,7 +338,14 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
             try {
                 JsonGenerator_activity.put("UserID", this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
                 JsonGenerator_activity.put("Nickname", PreferenceManager.getDefaultSharedPreferences(this).getString("display_name", ""));
-                LatLng detectedlocation_LatLng = Constants.AREA_LANDMARKS.get(Locationname);
+                LatLng detectedlocation_LatLng = null;
+
+
+                for (GeoFencingLocationClass item : Constants.AREA_LANDMARKS) {
+                    if ((item.getName()).equals(Locationname)){
+                        detectedlocation_LatLng=item.getLocation();
+                    }
+                }
 
                 if (detectedlocation_LatLng==null){
                     JsonGenerator_activity_location =null;

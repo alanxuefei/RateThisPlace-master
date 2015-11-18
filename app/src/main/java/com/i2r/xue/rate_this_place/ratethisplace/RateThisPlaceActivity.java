@@ -75,15 +75,16 @@ public class RateThisPlaceActivity extends TabActivity implements TabHost.OnTabC
 
                 Log.i("Location", "Outdoor");
 
-                lm.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, this, null);
-                lm.requestSingleUpdate(LocationManager.GPS_PROVIDER, this, null);
+                lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+
+
             } else {
 
                 //  lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
                 Log.i("Location", "Indoor");
 
-                lm.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, this, null);
-                lm.requestSingleUpdate(LocationManager.GPS_PROVIDER, this, null);
+                lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
+
             }
 
         }

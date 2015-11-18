@@ -19,9 +19,11 @@ package com.i2r.xue.rate_this_place.utility;
 import android.content.Context;
 import android.content.res.Resources;
 import android.location.Location;
+import android.util.Log;
 
 import com.google.android.gms.location.DetectedActivity;
 import com.google.android.gms.maps.model.LatLng;
+import com.i2r.xue.rate_this_place.visitedplace.GeoFencingLocationClass;
 
 import java.util.HashMap;
 
@@ -124,16 +126,24 @@ public final class Constants {
     /**
      * Map for storing information about airports in the San Francisco bay area.
      */
-    public static final String[] Locations = {"I2ROffice", "Pioneer", "Jurong East MRT","Bldg 3, SUTD","8 Somapah Rd","Expo MRT","Dover MRT"};
-    //public static final double[] Lat = new double[]{1.2993538, 1.337399, 1.307739, 1.334625, 1.340171, 1.335703};
-    //public static final double[] Lng = new double[]{103.787726, 103.697090, 103.789675, 103.741915, 103.963100, 103.696774};
+  /*  public static final String[] Locations = {"I2ROffice", "Pioneer", "Jurong East MRT","Bldg 3, SUTD","8 Somapah Rd","Expo MRT","Dover MRT"};
     public static final double[] Lat = new double[]{1.2993538, 1.337376, 1.333045, 1.340795, 1.340259, 1.334653,1.311317};
     public static final double[] Lng = new double[]{103.787726, 103.697103, 103.742301, 103.963389, 103.963124, 103.961371,103.778656};
-    public static final HashMap<String, LatLng> AREA_LANDMARKS = new HashMap<String, LatLng>();
+    public static final int[] Radius_In_Meters = new int[]{10, 10, 10, 10, 10, 10,10};
+*/
+
+    public static final String[] Locations = {     "Location1", "Location2", "Location3", "Location4", "Location5", "Location6", "Location7"};
+    public static final double[] Lat = new double[]{1.298592,    1.298930,    1.298935,    1.299387,    1.299845,   1.300020,     1.300721,       1.301135};
+    public static final double[] Lng = new double[]{103.787537,  103.786749,  103.786743,  103.785851,  103.785832, 103.785938,   103.786394,     103.786716};
+    public static final int[] Radius_In_Meters = new int[]{9999,   10,          10,          10,          10,         5,           5,             5};
+
+    public static final GeoFencingLocationClass[] AREA_LANDMARKS = new GeoFencingLocationClass[Locations.length];
     static {
         for(int i=0; i<Locations.length; i++){
-            AREA_LANDMARKS.put(Locations[i], new LatLng(Lat[i], Lng[i]));
+            AREA_LANDMARKS[i]=new GeoFencingLocationClass(Locations[i],new LatLng(Lat[i], Lng[i]),Radius_In_Meters[i]);
+
         }
+
     }
 
     public static final Location mainpoint = new Location("mainpoint");

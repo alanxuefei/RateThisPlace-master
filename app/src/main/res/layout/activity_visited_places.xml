@@ -92,13 +92,13 @@
 
 
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:id="@+id/RowImageView0"
-                    android:layout_margin="3dp"
-                    android:src="@drawable/i2r"
-                    android:onClick="clickTableRow0Image" />
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/RowImageView0"
+                android:layout_margin="3dp"
+                android:src="@drawable/location1"
+                android:onClick="clickTableRow0Image" />
 
 
             <TextView
@@ -123,9 +123,14 @@
             android:layout_margin="3dp"
             android:id="@+id/AllTableRow1"
             android:visibility="gone">
-            <TextView
-                android:id="@+id/location1"
-                android:layout_margin="1dp" />
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/RowImageView1"
+                android:layout_margin="3dp"
+                android:src="@drawable/location2"
+                android:onClick="clickTableRow1Image" />
+
             <TextView android:padding="3dip"
                 android:id="@+id/location1_time"
                 android:layout_marginTop="1dp"
@@ -143,10 +148,13 @@
             android:layout_margin="3dp"
             android:id="@+id/AllTableRow2"
             android:visibility="gone">
-            <TextView
-                android:padding="3dip"
-                android:id="@+id/location2"
-                android:layout_margin="1dp" />
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/RowImageView2"
+                android:layout_margin="3dp"
+                android:src="@drawable/location3"
+                android:onClick="clickTableRow2Image" />
             <TextView android:padding="3dip"
                 android:id="@+id/location2_time"
                 android:layout_marginTop="1dp"
@@ -165,10 +173,13 @@
             android:layout_margin="3dp"
             android:id="@+id/AllTableRow3"
             android:visibility="gone">
-            <TextView
-                android:padding="3dip"
-                android:id="@+id/location3"
-                android:layout_margin="1dp" />
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/RowImageView3"
+                android:layout_margin="3dp"
+                android:src="@drawable/location4"
+                android:onClick="clickTableRow3Image" />
 
             <TextView android:padding="3dip"
                 android:id="@+id/location3_time"
@@ -190,10 +201,13 @@
                 android:layout_margin="3dp"
                 android:id="@+id/AllTableRow4"
                 android:visibility="gone">
-            <TextView
-                android:padding="3dip"
-                android:id="@+id/location4"
-                android:layout_margin="1dp" />
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/RowImageView4"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/location5"
+                    android:onClick="clickTableRow4Image" />
             <TextView android:padding="3dip"
                 android:id="@+id/location4_time"
                 android:layout_marginTop="1dp"
@@ -212,10 +226,13 @@
                 android:layout_margin="3dp"
                 android:id="@+id/AllTableRow5"
                 android:visibility="gone">
-            <TextView
-                android:padding="3dip"
-                android:id="@+id/location5"
-                android:layout_margin="1dp" />
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/RowImageView5"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/location6"
+                    android:onClick="clickTableRow5Image" />
             <TextView android:padding="3dip"
                 android:id="@+id/location5_time"
                 android:layout_marginTop="1dp"
@@ -234,10 +251,13 @@
                 android:layout_margin="3dp"
                 android:id="@+id/AllTableRow6"
                 android:visibility="gone">
-            <TextView
-                android:padding="3dip"
-                android:id="@+id/location6"
-                android:layout_margin="1dp" />
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/RowImageView6"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/i2r"
+                    android:onClick="clickTableRow6Image" />
             <TextView android:padding="3dip"
                 android:id="@+id/location6_time"
                 android:layout_marginTop="1dp"
@@ -256,10 +276,13 @@
                 android:layout_margin="3dp"
                 android:id="@+id/AllTableRow7"
                 android:visibility="gone">
-                <TextView
-                    android:padding="3dip"
-                    android:id="@+id/location7"
-                    android:layout_margin="1dp" />
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/RowImageView7"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/i2r"
+                    android:onClick="clickTableRow7Image" />
                 <TextView android:padding="3dip"
                     android:id="@+id/location7_time"
                     android:layout_marginTop="1dp"

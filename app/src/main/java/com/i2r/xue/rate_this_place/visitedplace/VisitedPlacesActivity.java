@@ -44,7 +44,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
     protected static final String HumanActivityTAG = "HumanActivity";
 
-   // JSONArray mJsonArray = new JSONArray(o.toString().replace("[],",""));
+    // JSONArray mJsonArray = new JSONArray(o.toString().replace("[],",""));
 
     List<String> VisitedPlaceList = new ArrayList<>();
 
@@ -56,13 +56,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setContentView(com.i2r.xue.rate_this_place.R.layout.activity_visited_places);
-        // ((TextView)findViewById(R.id.location0)).setText(Constants.Locations[0]);
-        ((TextView)findViewById(R.id.location1)).setText(Constants.Locations[1]);
-        ((TextView)findViewById(R.id.location2)).setText(Constants.Locations[2]);
-        ((TextView)findViewById(R.id.location3)).setText(Constants.Locations[3]);
-        ((TextView)findViewById(R.id.location4)).setText(Constants.Locations[4]);
-        ((TextView)findViewById(R.id.location5)).setText(Constants.Locations[5]);
-        ((TextView)findViewById(R.id.location6)).setText(Constants.Locations[6]);
+
 
         buildTableRow0();
         buildTableRow1();
@@ -91,27 +85,27 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
 
 
-       // t.removeView(t1);
-       // TableRow t6= (TableRow)findViewById(R.id.AllTableRow6);
-       // t6.setVisibility(View.INVISIBLE);
+        // t.removeView(t1);
+        // TableRow t6= (TableRow)findViewById(R.id.AllTableRow6);
+        // t6.setVisibility(View.INVISIBLE);
 
 
         //  readDB(VisitedPlaceList);
 
-      //  HumanActivityListView = (ListView) findViewById(com.i2r.alan.rate_this_place.R.id.listView_HumanActivity);
+        //  HumanActivityListView = (ListView) findViewById(com.i2r.alan.rate_this_place.R.id.listView_HumanActivity);
 
         // this-The current activity context.
         // Second param is the resource Id for list layout row item
         // Third param is input array
-      //  arrayAdapter = new ArrayAdapter(this, com.i2r.alan.rate_this_place.R.layout.visitedplaces_list_eachrow, com.i2r.alan.rate_this_place.R.id.thetheTextView, VisitedPlaceList.toArray());
-     //   HumanActivityListView.setAdapter(arrayAdapter);
+        //  arrayAdapter = new ArrayAdapter(this, com.i2r.alan.rate_this_place.R.layout.visitedplaces_list_eachrow, com.i2r.alan.rate_this_place.R.id.thetheTextView, VisitedPlaceList.toArray());
+        //   HumanActivityListView.setAdapter(arrayAdapter);
 
-      //  HumanActivityListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-       //     @Override
-         //   public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-       //         clickthelistview(a, v, position, id);
-      //      }
-      //  });
+        //  HumanActivityListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //     @Override
+        //   public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+        //         clickthelistview(a, v, position, id);
+        //      }
+        //  });
 
     }
 
@@ -127,7 +121,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent0 = new Intent(getApplication(), RateThisPlaceRatingFromVisitedPlacesActivity.class);
                 intent0.putExtra("From", LocationName);
-             //   Log.i("VisitedPlace", LocationName + "RatingStatus");
+                //   Log.i("VisitedPlace", LocationName + "RatingStatus");
                 finish();
                 startActivity(intent0);
 
@@ -157,7 +151,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
     public void addStar(ViewGroup vi, String number) {
 
-      //  Log.i("VisitedPlace", vi.toString() + " number");
+        //  Log.i("VisitedPlace", vi.toString() + " number");
 
         TextView bt = new TextView(this);
         bt.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -165,14 +159,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         vi.addView(bt);
         String star="";
 
-            star="★ "+number;
+        star="? "+number;
 
         bt.setText(star);
     }
 
     public void addACTIVITYcontent(ViewGroup vi, String activities) {
 
-      //  Log.i("VisitedPlace", vi.toString() + " number");
+        //  Log.i("VisitedPlace", vi.toString() + " number");
 
         TextView bt = new TextView(this);
         bt.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -216,7 +210,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
     }*/
 
     public void ReturnButton(View v) {
-       // Log.i("test", "return");
+        // Log.i("test", "return");
 
         startActivity(new Intent(getApplication(), MainActivity.class));
     }
@@ -234,57 +228,57 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         startActivity(new Intent(this, MapsActivity.class));
     }
 
-  /*  public void readDB(List<String> VisitedPlaceList) {
+    /*  public void readDB(List<String> VisitedPlaceList) {
 
-        DBHelper mDbHelper = new DBHelper(this);
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
-
-
-// Define a projection that specifies which columns from the database
-// you will actually use after this query.
-        String[] projection = {
-                DBContract.FeedEntry.COLUMN_NAME_DATE,
-                DBContract.FeedEntry.COLUMN_NAME_TIME,
-                DBContract.FeedEntry.COLUMN_LOCATION_LONGITUDE,
-                DBContract.FeedEntry.COLUMN_LOCATION_LATITUDE,
-                DBContract.FeedEntry.COLUMN_LOCATION_NAME
-        };
-
-// How you want the results sorted in the resulting Cursor
+          DBHelper mDbHelper = new DBHelper(this);
+          SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
 
-        Cursor c = db.query(
-                DBContract.FeedEntry.TABLE_NAME,  // The table to query
-                projection,                               // The columns to return
-                null,                                // The columns for the WHERE clause
-                null,                            // The values for the WHERE clause
-                null,                                     // don't group the rows
-                null,                                     // don't filter by row groups
-                null                                 // The sort order
-        );
+  // Define a projection that specifies which columns from the database
+  // you will actually use after this query.
+          String[] projection = {
+                  DBContract.FeedEntry.COLUMN_NAME_DATE,
+                  DBContract.FeedEntry.COLUMN_NAME_TIME,
+                  DBContract.FeedEntry.COLUMN_LOCATION_LONGITUDE,
+                  DBContract.FeedEntry.COLUMN_LOCATION_LATITUDE,
+                  DBContract.FeedEntry.COLUMN_LOCATION_NAME
+          };
+
+  // How you want the results sorted in the resulting Cursor
 
 
-        Boolean rowExists=c.moveToFirst();
-        if (rowExists){
-            while (!c.isLast()) {
-                String vLOCATION_NAME = c.getString(
-                        c.getColumnIndexOrThrow(DBContract.FeedEntry.COLUMN_LOCATION_NAME)
-                );
-
-                String vTIME = c.getString(
-                        c.getColumnIndexOrThrow(DBContract.FeedEntry.COLUMN_NAME_TIME)
-                );
-
-                VisitedPlaceList.add(vTIME + "\r\n" + vLOCATION_NAME);
-                c.moveToNext();
-
-            }
-        }
-
-    }
+          Cursor c = db.query(
+                  DBContract.FeedEntry.TABLE_NAME,  // The table to query
+                  projection,                               // The columns to return
+                  null,                                // The columns for the WHERE clause
+                  null,                            // The values for the WHERE clause
+                  null,                                     // don't group the rows
+                  null,                                     // don't filter by row groups
+                  null                                 // The sort order
+          );
 
 
-*/
+          Boolean rowExists=c.moveToFirst();
+          if (rowExists){
+              while (!c.isLast()) {
+                  String vLOCATION_NAME = c.getString(
+                          c.getColumnIndexOrThrow(DBContract.FeedEntry.COLUMN_LOCATION_NAME)
+                  );
+
+                  String vTIME = c.getString(
+                          c.getColumnIndexOrThrow(DBContract.FeedEntry.COLUMN_NAME_TIME)
+                  );
+
+                  VisitedPlaceList.add(vTIME + "\r\n" + vLOCATION_NAME);
+                  c.moveToNext();
+
+              }
+          }
+
+      }
+
+
+  */
     public void buildTableRow0() {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -296,10 +290,10 @@ public class VisitedPlacesActivity extends AppCompatActivity {
             ((TextView)findViewById(R.id.location0_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "DateTime", "NA")).replace("_","\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "RatingStatus", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow0)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "RatingStatus", "NA"));
-               // ((TableRow)findViewById(R.id.AllTableRow0)).setBackgroundColor(Color.GREEN);
-               // ((TextView)findViewById(R.id.location0)).setBackgroundColor(Color.GREEN);
-               // ((TextView)findViewById(R.id.location0_time)).setBackgroundColor(Color.GREEN);
-              //  ((LinearLayout)findViewById(R.id.TableRow0)).setBackgroundColor(Color.GREEN);
+                // ((TableRow)findViewById(R.id.AllTableRow0)).setBackgroundColor(Color.GREEN);
+                // ((TextView)findViewById(R.id.location0)).setBackgroundColor(Color.GREEN);
+                // ((TextView)findViewById(R.id.location0_time)).setBackgroundColor(Color.GREEN);
+                //  ((LinearLayout)findViewById(R.id.TableRow0)).setBackgroundColor(Color.GREEN);
 
             }
             else{
@@ -315,10 +309,10 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
         }
         else{
-          //  ((TextView)findViewById(R.id.location0_time)).setText("Wait for your visit");
+            //  ((TextView)findViewById(R.id.location0_time)).setText("Wait for your visit");
 
 
-              //  ((TableRow)findViewById(R.id.AllTableRow0)).setVisibility(TableRow.GONE);
+            //  ((TableRow)findViewById(R.id.AllTableRow0)).setVisibility(TableRow.GONE);
 
 
 
@@ -330,7 +324,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String currentDate = sdf.format(new Date());
         String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[1] + "DateTime", "NA")).split("\n");
-Log.i("datearray", datearray[0]);
+        Log.i("datearray", datearray[0]);
         if  (datearray[0].equals(currentDate)){
             ((TableRow)findViewById(R.id.AllTableRow1)).setVisibility(TableRow.VISIBLE);
             ((TextView)findViewById(R.id.location1_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[1] + "DateTime", "NA")).replace("_","\n")));
@@ -352,8 +346,8 @@ Log.i("datearray", datearray[0]);
 
         }
         else{
-           // ((TextView)findViewById(R.id.location1_time)).setText("Wait for your visit");
-           // ((TableRow)findViewById(R.id.AllTableRow1)).setVisibility(TableRow.GONE);
+            // ((TextView)findViewById(R.id.location1_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow1)).setVisibility(TableRow.GONE);
 
         };
     }
@@ -418,7 +412,7 @@ Log.i("datearray", datearray[0]);
         }
         else{
             //((TextView)findViewById(R.id.location3_time)).setText("Wait for your visit");
-           // ((TableRow)findViewById(R.id.AllTableRow3)).setVisibility(TableRow.GONE);
+            // ((TableRow)findViewById(R.id.AllTableRow3)).setVisibility(TableRow.GONE);
 
         };
     }
@@ -450,7 +444,7 @@ Log.i("datearray", datearray[0]);
 
         }
         else{
-           // ((TextView)findViewById(R.id.location4_time)).setText("Wait for your visit");
+            // ((TextView)findViewById(R.id.location4_time)).setText("Wait for your visit");
             //((TableRow)findViewById(R.id.AllTableRow4)).setVisibility(TableRow.GONE);
         };
     }
@@ -482,7 +476,7 @@ Log.i("datearray", datearray[0]);
 
         }
         else{
-           // ((TextView)findViewById(R.id.location5_time)).setText("Wait for your visit");
+            // ((TextView)findViewById(R.id.location5_time)).setText("Wait for your visit");
             //((TableRow)findViewById(R.id.AllTableRow5)).setVisibility(TableRow.GONE);
         };
     }
@@ -514,8 +508,8 @@ Log.i("datearray", datearray[0]);
 
         }
         else{
-           // ((TextView)findViewById(R.id.location6_time)).setText("Wait for your visit");
-           // ((TableRow)findViewById(R.id.AllTableRow6)).setVisibility(TableRow.GONE);
+            // ((TextView)findViewById(R.id.location6_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow6)).setVisibility(TableRow.GONE);
         };
     }
 
@@ -541,7 +535,7 @@ Log.i("datearray", datearray[0]);
 
 
     public void ClickTableRow100Location(View v) {
-Log.i("123", "123");
+        Log.i("123", "123");
         startmap2(0);
     }
 
@@ -587,14 +581,14 @@ Log.i("123", "123");
                 addStar(((ViewGroup) findViewById(R.id.TableRow100)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating0", "NA"));
             }
             else{
-                 addRATINGButton(((ViewGroup) findViewById(R.id.TableRow100)), "VisitedPlaceStatusExtraRating0");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow100)), "VisitedPlaceStatusExtraRating0");
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity0", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow100)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity0", "NA"));
             }
             else{
-                  addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow100)), "VisitedPlaceStatusExtraActivity0");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow100)), "VisitedPlaceStatusExtraActivity0");
             }
 
         }
@@ -615,8 +609,8 @@ Log.i("123", "123");
            /* ((TextView)findViewById(R.id.location101)).setText(
                     ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLongitude1", "NA"))) + "\n" +
                             ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLatitude1", "NA"))));*/
-          //  GoogleMap mMap101=  ((MapView)(findViewById(R.id.map101))).getMap();
-        //    mMap101.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(1.348551, 103.813059), 10));
+            //  GoogleMap mMap101=  ((MapView)(findViewById(R.id.map101))).getMap();
+            //    mMap101.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(1.348551, 103.813059), 10));
 
             String Image_Path= Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/ActiveData/" + "MapScreen1"+ ".png";
             ((ImageView)findViewById(R.id.location101_imageView)).setImageBitmap(BitmapFactory.decodeFile(Image_Path));
@@ -659,14 +653,14 @@ Log.i("123", "123");
                 addStar(((ViewGroup) findViewById(R.id.TableRow102)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating2", "NA"));
             }
             else{
-                   addRATINGButton(((ViewGroup) findViewById(R.id.TableRow102)), "VisitedPlaceStatusExtraRating2");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow102)), "VisitedPlaceStatusExtraRating2");
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity2", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow102)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity2", "NA"));
             }
             else{
-                  addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow102)), "VisitedPlaceStatusExtraActivity2");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow102)), "VisitedPlaceStatusExtraActivity2");
             }
 
         }
@@ -695,14 +689,14 @@ Log.i("123", "123");
                 addStar(((ViewGroup) findViewById(R.id.TableRow103)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating3", "NA"));
             }
             else{
-                   addRATINGButton(((ViewGroup) findViewById(R.id.TableRow103)), "VisitedPlaceStatusExtraRating3");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow103)), "VisitedPlaceStatusExtraRating3");
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity3", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow103)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity3", "NA"));
             }
             else{
-                   addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow103)), "VisitedPlaceStatusExtraActivity3");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow103)), "VisitedPlaceStatusExtraActivity3");
             }
 
         }
@@ -730,14 +724,14 @@ Log.i("123", "123");
                 addStar(((ViewGroup) findViewById(R.id.TableRow104)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating4", "NA"));
             }
             else{
-                 addRATINGButton(((ViewGroup) findViewById(R.id.TableRow104)), "VisitedPlaceStatusExtraRating4");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow104)), "VisitedPlaceStatusExtraRating4");
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity4", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow104)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity4", "NA"));
             }
             else{
-                 addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow104)),"VisitedPlaceStatusExtraActivity4");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow104)),"VisitedPlaceStatusExtraActivity4");
             }
 
         }
@@ -763,14 +757,14 @@ Log.i("123", "123");
                 addStar(((ViewGroup) findViewById(R.id.TableRow105)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating5", "NA"));
             }
             else{
-                   addRATINGButton(((ViewGroup) findViewById(R.id.TableRow105)), "VisitedPlaceStatusExtraRating5");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow105)), "VisitedPlaceStatusExtraRating5");
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity5", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow105)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity5", "NA"));
             }
             else{
-                   addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow105)), "VisitedPlaceStatusExtraActivity5");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow105)), "VisitedPlaceStatusExtraActivity5");
             }
 
         }
