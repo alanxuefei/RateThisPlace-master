@@ -98,7 +98,7 @@ public class AsyncTaskUploadActivity extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-        if ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint)>1000){
+        if ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint)>Constants.mainpointradius){
             ShowToastMessage("The data is uploaded successfully, but System shows this rated place is not in the research list. Thus 0 point is credited.");
         }
         else {

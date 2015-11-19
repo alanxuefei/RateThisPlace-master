@@ -2,12 +2,16 @@ package com.i2r.xue.rate_this_place.pasivedatacollection;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.app.TaskStackBuilder;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -21,11 +25,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.support.v4.app.NotificationCompat;
 import android.telephony.CellInfo;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 //import android.util.Log;
 
+import com.i2r.xue.rate_this_place.MainActivity;
 import com.i2r.xue.rate_this_place.R;
 import com.i2r.xue.rate_this_place.utility.Constants;
 import com.i2r.xue.rate_this_place.utility.DataLogger;
@@ -34,8 +40,12 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.ActivityRecognition;
+import com.i2r.xue.rate_this_place.visitedplace.GeoFencingLocationClass;
+import com.i2r.xue.rate_this_place.visitedplace.VisitedPlacesActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -202,9 +212,7 @@ public class SensorListenerService extends Service implements SensorEventListene
         ActivityManagerhandler.postDelayed(ActivityManager_runable, 1000 * 10);
                 /*location */
         // Acquire a reference to the system Location Manager
-        mlocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        // Register the listener with the Location Manager to receive location updates
-        mlocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000 * 60 * 1, 0, this); //long minTime, float minDistance
+
        // mlocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000 * 60 * 10, 0, this);
         buildGoogleApiClient();
 
@@ -220,7 +228,9 @@ public class SensorListenerService extends Service implements SensorEventListene
         sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT), (int) (1 / (float) Lightsamplingrate) * 1000 * 1000);
        sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), 1000 * 1000);
         sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY), 1000 * 1000);
-
+        mlocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        // Register the listener with the Location Manager to receive location updates
+        mlocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000 * 30, 0, this); //long minTime, float minDistance
      //   Toast.makeText(this, "start sensing", Toast.LENGTH_SHORT).show();
 
     }
@@ -235,12 +245,7 @@ public class SensorListenerService extends Service implements SensorEventListene
            if (mlocationManager!=null){
                  mlocationManager.removeUpdates(this);
           }
-
-
-
      //   Toast.makeText(this, "stop sensing", Toast.LENGTH_SHORT).show();
-
-
         removeActivityUpdates();
     }
 
@@ -353,9 +358,43 @@ public class SensorListenerService extends Service implements SensorEventListene
         String Location_information= "L " + longitude + " " + latitude+" "+location.getProvider()+" "+Accuracy;
 
        // Log.i(Location_TAG,  Location_information);
-        DataLogger.writeTolog(Location_information + "\n",logswich);
+        DataLogger.writeTolog(Location_information + "\n", logswich);
 
         //Toast.makeText(this, Location_information, Toast.LENGTH_SHORT).show();
+        Log.i("GeoFencingSelf", "check");
+        for (GeoFencingLocationClass item : Constants.AREA_LANDMARKS) {
+
+            Location locationItems = new Location("");
+            locationItems.setLatitude(item.getLocation().latitude);
+            locationItems.setLongitude(item.getLocation().longitude);
+
+            String LocationName=item.getName();
+            if (location.distanceTo(locationItems)<=item.getGeofence_Radius_In_Meters()){
+                        /*my code*/
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    String currentDate = sdf.format(new Date());
+                    sdf = new SimpleDateFormat("HH:mm:ss");
+                    String currentTime = sdf.format(new Date());
+
+                if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(LocationName + "Status","NA")).equals("IN"))){
+                    this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName + "DateTime", currentDate + "\n" + currentTime).apply();
+                    this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName+"RatingStatus", "NA").apply();
+                    this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName+"ActivityStatus", "NA").apply();
+                    Log.i("GeoFencingSelf", "record " + LocationName);
+                    sendNotification(LocationName);
+                };
+                this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName + "Status", "IN").apply();
+
+                    Log.i("GeoFencingSelf",LocationName);
+            }
+            else{
+                this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName + "Status", "OUT").apply();
+            }
+
+
+        }
+
+
 
     }
 
@@ -517,6 +556,53 @@ public class SensorListenerService extends Service implements SensorEventListene
          sensorManager.registerListener(this,  sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), delay);
        // Log.i("changeACC", "changeACC " + ACCsamplingrate + "" + logswich + "delayxue" + delay);
    // }
+    }
+
+
+    /**
+     * Posts a notification in the notification bar when a transition is detected.
+     * If the user clicks the notification, control goes to the MainActivity.
+     */
+    private void sendNotification(String notificationDetails) {
+        // Create an explicit content Intent that starts the main Activity.
+        Intent notificationIntent = new Intent(getApplicationContext(), VisitedPlacesActivity.class);
+
+        // Construct a task stack.
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+
+        // Add the main Activity to the task stack as the parent.
+        stackBuilder.addParentStack(MainActivity.class);
+
+        // Push the content Intent onto the stack.
+        stackBuilder.addNextIntent(notificationIntent);
+
+        // Get a PendingIntent containing the entire back stack.
+        PendingIntent notificationPendingIntent =
+                stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        // Get a notification builder that's compatible with platform versions >= 4
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+
+        // Define the notification settings.
+        builder.setSmallIcon(com.i2r.xue.rate_this_place.R.mipmap.ic_launcher)
+                // In a real app, you may want to use a library like Volley
+                // to decode the Bitmap.
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(),
+                        com.i2r.xue.rate_this_place.R.mipmap.ic_launcher))
+                .setColor(Color.RED)
+                .setContentTitle(notificationDetails)
+                .setContentText(getString(com.i2r.xue.rate_this_place.R.string.geofence_transition_notification_text))
+                .setContentIntent(notificationPendingIntent);
+
+        // Dismiss notification once the user touches it.
+        builder.setAutoCancel(true);
+
+        // Get an instance of the Notification manager
+        NotificationManager mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // Issue the notification
+        mNotificationManager.notify(0, builder.build());
     }
 
 

@@ -111,8 +111,10 @@ public class RateThisPlaceActivity extends TabActivity implements TabHost.OnTabC
             }
             this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraIndex", String.valueOf(temp)).apply();
             globalvariable.isIncremented=true;
+            startActivity(new Intent(this, MapsActivityFromRatethisPlace.class));
+
         }
-        finish();
+
         //  Intent intent = new Intent(this, SensorListenerService.class);
         // stopService(intent);
     }

@@ -65,6 +65,54 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         buildTableRow4();
         buildTableRow5();
         buildTableRow6();
+        buildTableRow7();
+        buildTableRow8();
+        buildTableRow9();
+        buildTableRow10();
+        buildTableRow11();
+        buildTableRow12();
+        buildTableRow13();
+        buildTableRow14();
+        buildTableRow15();
+        buildTableRow16();
+        buildTableRow17();
+        buildTableRow18();
+        buildTableRow19();
+        buildTableRow20();
+        buildTableRow21();
+        buildTableRow22();
+        buildTableRow23();
+        buildTableRow24();
+        buildTableRow25();
+        buildTableRow26();
+        buildTableRow27();
+        buildTableRow28();
+        buildTableRow29();
+        buildTableRow30();
+        buildTableRow31();
+        buildTableRow32();
+        buildTableRow33();
+        buildTableRow34();
+        buildTableRow35();
+        buildTableRow36();
+        buildTableRow37();
+        buildTableRow38();
+        buildTableRow39();
+        buildTableRow40();
+        buildTableRow41();
+        buildTableRow42();
+        buildTableRow43();
+        buildTableRow44();
+        buildTableRow45();
+        buildTableRow46();
+        buildTableRow47();
+        buildTableRow48();
+        buildTableRow49();
+       // buildTableRow50();
+
+
+
+
         buildTableRow100();
         buildTableRow101();
         buildTableRow102();
@@ -159,7 +207,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         vi.addView(bt);
         String star="";
 
-        star="? "+number;
+        star="★ "+number;
 
         bt.setText(star);
     }
@@ -215,18 +263,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         startActivity(new Intent(getApplication(), MainActivity.class));
     }
 
-    public void clickTableRow0Image(View v) {
-        // Log.i("test", "return");
-        startmap(0);
-    }
 
-    public void startmap(int i) {
-        Location targetLocation = new Location("");//provider name is unecessary
-        targetLocation.setLatitude(Constants.Lat[0]);//your coords of course
-        targetLocation.setLongitude(Constants.Lng[0]);//your coords of course
-        globalvariable.setThelocation(targetLocation);
-        startActivity(new Intent(this, MapsActivity.class));
-    }
 
     /*  public void readDB(List<String> VisitedPlaceList) {
 
@@ -389,7 +426,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String currentDate = sdf.format(new Date());
         String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[3] + "DateTime", "NA")).split("\n");
-        Log.i("datearray",datearray[0]);
+        Log.i("datearray", datearray[0]);
         if  (datearray[0].equals(currentDate)){
             ((TableRow)findViewById(R.id.AllTableRow3)).setVisibility(TableRow.VISIBLE);
             ((TextView)findViewById(R.id.location3_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[3] + "DateTime", "NA")).replace("_","\n")));
@@ -517,11 +554,1471 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
 
 
+    public void buildTableRow7() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[7] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow7)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location7_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[7] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[7] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow7)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[7] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow7)), Constants.Locations[7]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[7] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow7)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[7] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow7)), Constants.Locations[7]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location7_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow7)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow8() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[8] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow8)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location8_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[8] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[8] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow8)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[8] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow8)), Constants.Locations[8]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[8] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow8)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[8] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow8)), Constants.Locations[8]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location8_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow8)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+    public void buildTableRow9() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[9] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow9)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location9_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[9] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[9] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow9)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[9] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow9)), Constants.Locations[9]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[9] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow9)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[9] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow9)), Constants.Locations[9]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location9_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow9)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+
+    public void buildTableRow10() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[10] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow10)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location10_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[10] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[10] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow10)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[10] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow10)), Constants.Locations[10]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[10] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow10)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[10] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow10)), Constants.Locations[10]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location10_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow10)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+    public void buildTableRow11() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[11] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow11)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location11_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[11] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[11] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow11)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[11] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow11)), Constants.Locations[11]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[11] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow11)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[11] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow11)), Constants.Locations[11]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location11_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow11)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+    public void buildTableRow12() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[12] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow12)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location12_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[12] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[12] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow12)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[12] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow12)), Constants.Locations[12]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[12] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow12)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[12] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow12)), Constants.Locations[12]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location12_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow12)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow13() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[13] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow13)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location13_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[13] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[13] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow13)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[13] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow13)), Constants.Locations[13]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[13] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow13)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[13] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow13)), Constants.Locations[13]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location13_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow13)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow14() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[14] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow14)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location14_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[14] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[14] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow14)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[14] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow14)), Constants.Locations[14]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[14] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow14)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[14] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow14)), Constants.Locations[14]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location14_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow14)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow15() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[15] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow15)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location15_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[15] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[15] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow15)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[15] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow15)), Constants.Locations[15]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[15] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow15)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[15] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow15)), Constants.Locations[15]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location15_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow15)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+
+    public void buildTableRow16() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[16] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow16)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location16_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[16] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[16] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow16)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[16] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow16)), Constants.Locations[16]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[16] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow16)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[16] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow16)), Constants.Locations[16]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location16_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow16)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+
+    public void buildTableRow17() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[17] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow17)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location17_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[17] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[17] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow17)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[17] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow17)), Constants.Locations[17]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[17] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow17)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[17] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow17)), Constants.Locations[17]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location17_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow17)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow18() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[18] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow18)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location18_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[18] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[18] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow18)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[18] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow18)), Constants.Locations[18]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[18] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow18)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[18] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow18)), Constants.Locations[18]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location18_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow18)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow19() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[19] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow19)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location19_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[19] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[19] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow19)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[19] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow19)), Constants.Locations[19]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[19] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow19)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[19] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow19)), Constants.Locations[19]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location19_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow19)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow20() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[20] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow20)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location20_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[20] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[20] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow20)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[20] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow20)), Constants.Locations[20]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[20] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow20)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[20] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow20)), Constants.Locations[20]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location20_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow20)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow21() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[21] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow21)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location21_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[21] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[21] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow21)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[21] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow21)), Constants.Locations[21]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[21] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow21)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[21] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow21)), Constants.Locations[21]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location21_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow21)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow22() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[22] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow22)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location22_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[22] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[22] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow22)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[22] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow22)), Constants.Locations[22]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[22] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow22)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[22] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow22)), Constants.Locations[22]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location22_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow22)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow23() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[23] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow23)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location23_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[23] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[23] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow23)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[23] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow23)), Constants.Locations[23]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[23] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow23)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[23] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow23)), Constants.Locations[23]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location23_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow23)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+
+    public void buildTableRow24() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[24] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow24)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location24_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[24] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[24] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow24)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[24] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow24)), Constants.Locations[24]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[24] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow24)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[24] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow24)), Constants.Locations[24]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location24_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow24)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+
+    public void buildTableRow25() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[25] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow25)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location25_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[25] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[25] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow25)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[25] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow25)), Constants.Locations[25]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[25] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow25)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[25] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow25)), Constants.Locations[25]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location25_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow25)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+
+    public void buildTableRow26() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[26] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow26)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location26_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[26] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[26] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow26)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[26] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow26)), Constants.Locations[26]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[26] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow26)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[26] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow26)), Constants.Locations[26]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location26_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow26)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow27() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[27] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow27)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location27_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[27] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[27] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow27)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[27] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow27)), Constants.Locations[27]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[27] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow27)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[27] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow27)), Constants.Locations[27]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location27_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow27)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+
+    public void buildTableRow28() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[28] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow28)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location28_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[28] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[28] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow28)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[28] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow28)), Constants.Locations[28]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[28] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow28)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[28] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow28)), Constants.Locations[28]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location28_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow28)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow29() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[29] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow29)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location29_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[29] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[29] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow29)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[29] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow29)), Constants.Locations[29]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[29] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow29)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[29] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow29)), Constants.Locations[29]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location29_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow29)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow30() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[30] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow30)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location30_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[30] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[30] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow30)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[30] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow30)), Constants.Locations[30]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[30] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow30)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[30] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow30)), Constants.Locations[30]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location30_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow30)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow31() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[31] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow31)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location31_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[31] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[31] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow31)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[31] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow31)), Constants.Locations[31]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[31] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow31)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[31] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow31)), Constants.Locations[31]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location31_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow31)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow32() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[32] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow32)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location32_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[32] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[32] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow32)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[32] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow32)), Constants.Locations[32]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[32] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow32)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[32] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow32)), Constants.Locations[32]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location32_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow32)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+
+    public void buildTableRow33() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[33] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow33)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location33_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[33] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[33] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow33)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[33] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow33)), Constants.Locations[33]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[33] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow33)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[33] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow33)), Constants.Locations[33]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location33_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow33)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow34() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[34] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow34)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location34_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[34] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[34] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow34)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[34] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow34)), Constants.Locations[34]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[34] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow34)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[34] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow34)), Constants.Locations[34]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location34_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow34)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow35() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[35] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow35)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location35_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[35] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[35] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow35)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[35] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow35)), Constants.Locations[35]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[35] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow35)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[35] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow35)), Constants.Locations[35]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location35_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow35)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow36() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[36] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow36)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location36_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[36] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[36] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow36)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[36] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow36)), Constants.Locations[36]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[36] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow36)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[36] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow36)), Constants.Locations[36]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location36_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow36)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow37() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[37] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow37)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location37_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[37] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[37] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow37)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[37] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow37)), Constants.Locations[37]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[37] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow37)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[37] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow37)), Constants.Locations[37]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location37_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow37)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow38() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[38] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow38)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location38_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[38] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[38] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow38)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[38] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow38)), Constants.Locations[38]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[38] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow38)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[38] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow38)), Constants.Locations[38]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location38_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow38)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+    public void buildTableRow39() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[39] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow39)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location39_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[39] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[39] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow39)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[39] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow39)), Constants.Locations[39]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[39] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow39)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[39] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow39)), Constants.Locations[39]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location39_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow39)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow40() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[40] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow40)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location40_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[40] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[40] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow40)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[40] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow40)), Constants.Locations[40]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[40] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow40)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[40] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow40)), Constants.Locations[40]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location40_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow40)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow41() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[41] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow41)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location41_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[41] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[41] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow41)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[41] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow41)), Constants.Locations[41]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[41] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow41)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[41] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow41)), Constants.Locations[41]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location41_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow41)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow42() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[42] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow42)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location42_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[42] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[42] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow42)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[42] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow42)), Constants.Locations[42]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[42] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow42)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[42] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow42)), Constants.Locations[42]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location42_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow42)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+
+    public void buildTableRow43() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[43] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow43)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location43_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[43] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[43] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow43)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[43] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow43)), Constants.Locations[43]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[43] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow43)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[43] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow43)), Constants.Locations[43]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location43_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow43)).setVisibility(TableRow.GONE);
+        };
+    }
+
+    public void buildTableRow44() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[44] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow44)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location44_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[44] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[44] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow44)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[44] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow44)), Constants.Locations[44]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[44] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow44)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[44] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow44)), Constants.Locations[44]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location44_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow44)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+    public void buildTableRow45() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[45] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow45)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location45_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[45] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[45] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow45)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[45] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow45)), Constants.Locations[45]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[45] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow45)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[45] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow45)), Constants.Locations[45]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location45_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow45)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow46() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[46] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow46)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location46_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[46] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[46] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow46)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[46] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow46)), Constants.Locations[46]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[46] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow46)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[46] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow46)), Constants.Locations[46]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location46_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow46)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow47() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[47] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow47)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location47_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[47] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[47] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow47)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[47] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow47)), Constants.Locations[47]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[47] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow47)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[47] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow47)), Constants.Locations[47]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location47_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow47)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+
+    public void buildTableRow48() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[48] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow48)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location48_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[48] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[48] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow48)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[48] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow48)), Constants.Locations[48]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[48] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow48)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[48] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow48)), Constants.Locations[48]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location48_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow48)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+
+    public void buildTableRow49() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[49] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow49)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location49_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[49] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[49] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow49)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[49] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow49)), Constants.Locations[49]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[49] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow49)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[49] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow49)), Constants.Locations[49]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location49_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow49)).setVisibility(TableRow.GONE);
+        };
+    }
+
+
+
+    public void buildTableRow50() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[50] + "DateTime", "NA")).split("\n");
+
+        if  (datearray[0].equals(currentDate)){
+            ((TableRow)findViewById(R.id.AllTableRow50)).setVisibility(TableRow.VISIBLE);
+            ((TextView)findViewById(R.id.location50_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[50] + "DateTime", "NA")).replace("_","\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[50] + "RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow50)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[50] + "RatingStatus", "NA"));
+
+            }
+            else{
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow50)), Constants.Locations[50]+"RatingStatus");
+            }
+
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[50] + "ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow50)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[50] + "ActivityStatus", "NA"));
+            }
+            else{
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow50)), Constants.Locations[50]+ "ActivityStatus");
+            }
+
+        }
+        else{
+            // ((TextView)findViewById(R.id.location50_time)).setText("Wait for your visit");
+            // ((TableRow)findViewById(R.id.AllTableRow50)).setVisibility(TableRow.GONE);
+        };
+    }
 
 
 
 
 
+    public void startmap(int i) {
+        Location targetLocation = new Location("");//provider name is unecessary
+        targetLocation.setLatitude(Constants.Lat[i]);
+        targetLocation.setLongitude(Constants.Lng[i]);//your coords of course
+        globalvariable.setThelocation(targetLocation);
+        startActivity(new Intent(this, MapsActivity.class));
+    }
 
 
 
@@ -531,6 +2028,166 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         targetLocation.setLongitude(Double.parseDouble(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLongitude"+Integer.toString(i), "NA")))));//your coords of course
         globalvariable.setThelocation(targetLocation);
         startActivity(new Intent(this, MapsActivity.class));
+    }
+
+    public void clickTableRow0Image(View v) {
+        startmap(0);
+    }
+
+    public void clickTableRow1Image(View v) {
+        startmap(1);
+    }
+
+
+    public void clickTableRow2Image(View v) {
+        startmap(2);
+    }
+
+
+    public void clickTableRow3Image(View v) {
+        startmap(3);
+    }
+
+
+    public void clickTableRow4Image(View v) {
+        startmap(4);
+    }
+
+    public void clickTableRow5Image(View v) {
+        startmap(5);
+    }
+
+    public void clickTableRow6Image(View v) {
+        startmap(6);
+    }
+
+    public void clickTableRow7Image(View v) {
+        startmap(7);
+    }
+    public void clickTableRow8Image(View v) {
+        startmap(8);
+    }
+    public void clickTableRow9Image(View v) {
+        startmap(9);
+    }
+
+    public void clickTableRow10Image(View v) {
+        startmap(10);
+    }
+    public void clickTableRow11Image(View v) {
+        startmap(11);
+    }
+
+
+    public void clickTableRow12Image(View v) {
+        startmap(12);
+    }
+
+
+    public void clickTableRow13Image(View v) {
+        startmap(13);
+    }
+
+
+    public void clickTableRow14Image(View v) {
+        startmap(14);
+    }
+
+    public void clickTableRow15Image(View v) {
+        startmap(15);
+    }
+
+    public void clickTableRow16Image(View v) {
+        startmap(16);
+    }
+
+    public void clickTableRow17Image(View v) {
+        startmap(17);
+    }
+    public void clickTableRow18Image(View v) {
+        startmap(18);
+    }
+    public void clickTableRow19Image(View v) {
+        startmap(19);
+    }
+
+    public void clickTableRow20Image(View v) {
+        startmap(20);
+    }
+
+
+    public void clickTableRow31Image(View v) {
+        startmap(31);
+    }
+
+
+    public void clickTableRow32Image(View v) {
+        startmap(32);
+    }
+
+
+    public void clickTableRow33Image(View v) {
+        startmap(33);
+    }
+
+
+    public void clickTableRow34Image(View v) {
+        startmap(34);
+    }
+
+    public void clickTableRow35Image(View v) {
+        startmap(35);
+    }
+
+    public void clickTableRow36Image(View v) {
+        startmap(36);
+    }
+
+    public void clickTableRow37Image(View v) {
+        startmap(37);
+    }
+    public void clickTableRow38Image(View v) {
+        startmap(38);
+    }
+    public void clickTableRow39Image(View v) {
+        startmap(39);
+    }
+
+    public void clickTableRow40Image(View v) {
+        startmap(40);
+    }
+
+    public void clickTableRow41Image(View v) {
+        startmap(41);
+    }
+    public void clickTableRow42Image(View v) {
+        startmap(42);
+    }
+    public void clickTableRow43Image(View v) {
+        startmap(43);
+    }
+    public void clickTableRow44Image(View v) {
+        startmap(44);
+    }
+    public void clickTableRow45Image(View v) {
+        startmap(45);
+    }
+    public void clickTableRow46Image(View v) {
+        startmap(46);
+    }
+    public void clickTableRow47Image(View v) {
+        startmap(47);
+    }
+
+    public void clickTableRow48Image(View v) {
+        startmap(48);
+    }
+    public void clickTableRow49Image(View v) {
+        startmap(49);
+    }
+    public void clickTableRow50Image(View v) {
+
+        startmap(50);
     }
 
 
