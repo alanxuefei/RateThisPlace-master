@@ -97,44 +97,44 @@ public class UserAgreementDialogFragment extends DialogFragment {
     }
 
     public String getUniqueHardwareID(){
-        WifiManager wifiMan = (WifiManager) getActivity().getSystemService(
-                Context.WIFI_SERVICE);
-        WifiInfo wifiInf = wifiMan.getConnectionInfo();
-        String wifimacAddr = wifiInf.getMacAddress();
-        if (wifimacAddr != null){
-            return "wifi_"+wifimacAddr;
-        }
-        else {
-            BluetoothAdapter myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-            if (myBluetoothAdapter!=null){
-                String bluetoothmacAddr = myBluetoothAdapter.getAddress();
-                if (bluetoothmacAddr!=null){
-                    return "Blue_"+bluetoothmacAddr;
-                }
-                else{
+      //  WifiManager wifiMan = (WifiManager) getActivity().getSystemService(
+              //  Context.WIFI_SERVICE);
+       // WifiInfo wifiInf = wifiMan.getConnectionInfo();
+       // String wifimacAddr = wifiInf.getMacAddress();
+        //if (wifimacAddr != null){
+       //     return "wifi_"+wifimacAddr;
+       // }
+       // else {
+        //    BluetoothAdapter myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+          //  if (myBluetoothAdapter!=null){
+            //    String bluetoothmacAddr = myBluetoothAdapter.getAddress();
+            //    if (bluetoothmacAddr!=null){
+             //       return "Blue_"+bluetoothmacAddr;
+            //    }
+             //   else{
                     String android_id = Settings.Secure.getString(getActivity().getContentResolver(),
                             Settings.Secure.ANDROID_ID);
-                    if (android_id!=null){
+                 //   if (android_id!=null){
                         return "Aid_"+android_id;
-                    }
-                    else{
-                        return "no_available_hardwareID";
+                 //   }
+                  //  else{
+                 //       return "no_available_hardwareID";
 
-                    }
-                }
-            }
-            else{
-                String android_id = Settings.Secure.getString(getActivity().getContentResolver(),
-                        Settings.Secure.ANDROID_ID);
-                if (android_id!=null){
-                    return "Aid_"+android_id;
-                }
-                else{
-                    return "no_available_hardwareID";
+                //    }
+              //  }
+           // }
+         //   else{
+          ///      String android_id = Settings.Secure.getString(getActivity().getContentResolver(),
+         //               Settings.Secure.ANDROID_ID);
+         //       if (android_id!=null){
+         //           return "Aid_"+android_id;
+         //       }
+         //       else{
+         //           return "no_available_hardwareID";
 
-                }
-            }
-        }
+          //      }
+         //   }
+       // }
     }
 
 

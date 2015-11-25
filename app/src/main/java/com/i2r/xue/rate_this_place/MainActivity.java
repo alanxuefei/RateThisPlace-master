@@ -33,6 +33,8 @@ import com.i2r.xue.rate_this_place.utility.DataLogger;
 import com.i2r.xue.rate_this_place.utility.globalvariable;
 import com.i2r.xue.rate_this_place.visitedplace.VisitedPlacesActivity;
 
+import android.os.Handler;
+
 /**
  * Created by Xue Fei on 19/5/2015.
  */
@@ -99,8 +101,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 intent.putExtra("environment", "Outdoor");
                 startActivity(intent);
             }
-
-
         }
 
         // Intent intent = new Intent(this, SensorListenerService.class);

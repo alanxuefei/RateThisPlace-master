@@ -5,6 +5,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -326,7 +328,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
     }
 
 
-    public void clickButton_submit(View view) {
+    public void clickButton_submit(View view) throws JSONException {
 
         DataLogger.writeTolog("RateThisPlaceActivityFromVisitedPlaceActivity_clickButton_submit" + " " + "\n", "");
 
@@ -335,6 +337,23 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
             JSONObject JsonGenerator_activity = new JSONObject();
             JSONObject JsonGenerator_activity_location = new JSONObject();
             String Activities = "";
+
+        if (((globalvariable.getThelocation()).distanceTo(Constants.mainpoint1)<Constants.mainpointradius1)||
+                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint2)<Constants.mainpointradius2)||
+                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint3)<Constants.mainpointradius3)||
+                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint4)<Constants.mainpointradius4)||
+                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint5)<Constants.mainpointradius5)||
+                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint6)<Constants.mainpointradius6)) {
+
+            JsonGenerator_activity.put("IsTestbed",true);
+            ShowToastMessage("The data is uploaded successfully.");
+        }
+        else {
+
+            JsonGenerator_activity.put("IsTestbed", false);
+            ShowToastMessage("The data is uploaded successfully, but System shows this rated place is not in the research list. Thus 0 point is credited.");
+        }
+
             try {
                 JsonGenerator_activity.put("UserID", this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
                 JsonGenerator_activity.put("Nickname", PreferenceManager.getDefaultSharedPreferences(this).getString("display_name", ""));
@@ -393,6 +412,16 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
 
 
     }
+
+    public void ShowToastMessage(String i){
+        Toast toast = Toast.makeText(this, i, Toast.LENGTH_SHORT);
+        LinearLayout toastLayout = (LinearLayout) toast.getView();
+        TextView toastTV = (TextView) toastLayout.getChildAt(0);
+        toastTV.setTextSize(30);
+        toastTV.setBackgroundColor(Color.BLACK);
+        toast.show();
+    }
+
 
 
 }

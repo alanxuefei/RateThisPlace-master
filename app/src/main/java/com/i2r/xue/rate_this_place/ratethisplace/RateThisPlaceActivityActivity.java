@@ -310,13 +310,34 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
 
 
 
-    public void clickButton_submit(View view) {
+    public void clickButton_submit(View view) throws JSONException {
         DataLogger.writeTolog("RateThisPlaceActivityActivity_clickButton_submit" + " " + "\n", "");
         if (globalvariable.thelocation != null) {
+
+
+
+
+
             SimpleDateFormat datetimeformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String timestamp = datetimeformat.format(new Date());
             JSONObject JsonGenerator_activity = new JSONObject();
             JSONObject JsonGenerator_basicrating_location = new JSONObject();
+
+            if (((globalvariable.getThelocation()).distanceTo(Constants.mainpoint1)<Constants.mainpointradius1)||
+                    ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint2)<Constants.mainpointradius2)||
+                    ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint3)<Constants.mainpointradius3)||
+                    ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint4)<Constants.mainpointradius4)||
+                    ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint5)<Constants.mainpointradius5)||
+                    ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint6)<Constants.mainpointradius6)) {
+
+                JsonGenerator_activity.put("IsTestbed",true);
+                ShowToastMessage("The data is uploaded successfully.");
+            }
+            else {
+
+                JsonGenerator_activity.put("IsTestbed", false);
+                ShowToastMessage("The data is uploaded successfully, but System shows this rated place is not in the research list. Thus 0 point is credited.");
+            }
 
             try {
                 JsonGenerator_activity.put("UserID", this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
@@ -372,9 +393,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
             this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtra" + VisitedPlaceStatusExtraIndex + "DateTime", currentDate + "_" + currentTime).apply();
             if (!globalvariable.isRating_rated)
                 this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraRating" + VisitedPlaceStatusExtraIndex, "NA").apply();
-            if ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint)>1000){
-                ShowToastMessage("System shows this rated place is not in the research list. Thus 0 point is credited.");
-            }
+
         } else {
             ShowToastMessage("Waiting for the location");
         }

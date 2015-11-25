@@ -218,7 +218,7 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
 
 
 
-    public void clickButton_submit(View view) {
+    public void clickButton_submit(View view) throws JSONException {
 
 
         double VratingBarCLEANNESS = ((RatingBar) findViewById(R.id.ratingBarLively)).getRating();
@@ -245,6 +245,23 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
                 String timestamp = datetimeformat.format(new Date());
                 JSONObject JsonGenerator_rating = new JSONObject();
                 JSONObject JsonGenerator_rating_location = new JSONObject();
+
+
+                if (((globalvariable.getThelocation()).distanceTo(Constants.mainpoint1)<Constants.mainpointradius1)||
+                        ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint2)<Constants.mainpointradius2)||
+                        ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint3)<Constants.mainpointradius3)||
+                        ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint4)<Constants.mainpointradius4)||
+                        ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint5)<Constants.mainpointradius5)||
+                        ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint6)<Constants.mainpointradius6)) {
+
+                    JsonGenerator_rating.put("IsTestbed", true);
+                    ShowToastMessage("The data is uploaded successfully.");
+                }
+                else {
+
+                    JsonGenerator_rating.put("IsTestbed", false);
+                    ShowToastMessage("The data is uploaded successfully, but System shows this rated place is not in the research list. Thus 0 point is credited.");
+                }
 
                 try {
 

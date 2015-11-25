@@ -27,10 +27,12 @@ import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingEvent;
 import com.i2r.xue.rate_this_place.MainActivity;
+import com.i2r.xue.rate_this_place.utility.Constants;
 import com.i2r.xue.rate_this_place.utility.DataLogger;
 
 import java.text.SimpleDateFormat;
@@ -209,10 +211,16 @@ public class GeofenceTransitionsIntentService extends IntentService {
                         /*my code*/
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String currentDate = sdf.format(new Date());
-        sdf = new SimpleDateFormat("HH:mm:ss");
-        String currentTime = sdf.format(new Date());
-        this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName + "DateTime", currentDate + "\n" + currentTime).apply();
-        this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName+"RatingStatus", "NA").apply();
-        this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName+"ActivityStatus", "NA").apply();
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "DateTime", "NA")).split("\n");
+        Log.i("datearray", datearray[0]);
+        if  (!datearray[0].equals(currentDate)){
+            sdf = new SimpleDateFormat("HH:mm:ss");
+            String currentTime = sdf.format(new Date());
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName + "DateTime", currentDate + "\n" + currentTime).apply();
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName+"RatingStatus", "NA").apply();
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName+"ActivityStatus", "NA").apply();
+        }
+
+
     }
 }

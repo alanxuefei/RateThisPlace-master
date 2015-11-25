@@ -26,6 +26,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Handler;
 
 /**
  * Created by Xue Fei on 1/7/2015.
@@ -92,18 +93,15 @@ public class AsyncTaskUploadActivity extends AsyncTask {
         toastTV.setTextSize(30);
         toastTV.setBackgroundColor(Color.BLACK);
         toast.show();
+
+
     }
 
 
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-        if ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint)>Constants.mainpointradius){
-            ShowToastMessage("The data is uploaded successfully, but System shows this rated place is not in the research list. Thus 0 point is credited.");
-        }
-        else {
-            ShowToastMessage("The data is uploaded successfully.");
-        }
+
         barProgressDialog.dismiss();
 
         if (globalvariable.isRating_rated){

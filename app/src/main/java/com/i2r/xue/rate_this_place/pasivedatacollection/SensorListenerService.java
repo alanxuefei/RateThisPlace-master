@@ -377,9 +377,7 @@ public class SensorListenerService extends Service implements SensorEventListene
                     String currentTime = sdf.format(new Date());
 
                 if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(LocationName + "Status","NA")).equals("IN"))){
-                    this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName + "DateTime", currentDate + "\n" + currentTime).apply();
-                    this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName+"RatingStatus", "NA").apply();
-                    this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName+"ActivityStatus", "NA").apply();
+                    addDB(LocationName);
                     Log.i("GeoFencingSelf", "record " + LocationName);
                     sendNotification(LocationName);
                 };
@@ -606,7 +604,22 @@ public class SensorListenerService extends Service implements SensorEventListene
     }
 
 
+    private void addDB(String LocationName) {
+                        /*my code*/
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "DateTime", "NA")).split("\n");
+        Log.i("datearray", datearray[0]);
+        if  (!datearray[0].equals(currentDate)){
+            sdf = new SimpleDateFormat("HH:mm:ss");
+            String currentTime = sdf.format(new Date());
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName + "DateTime", currentDate + "\n" + currentTime).apply();
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName+"RatingStatus", "NA").apply();
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName+"ActivityStatus", "NA").apply();
+        }
 
+
+    }
 
 
 

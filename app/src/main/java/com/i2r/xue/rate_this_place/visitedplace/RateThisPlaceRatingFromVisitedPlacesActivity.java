@@ -1,6 +1,7 @@
 package com.i2r.xue.rate_this_place.visitedplace;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RatingBar;
@@ -189,13 +191,31 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
         });
     }
 
-    public void clickButton_submit(View view) {
+    public void clickButton_submit(View view) throws JSONException {
 
 
         SimpleDateFormat datetimeformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String timestamp = datetimeformat.format(new Date());
         JSONObject JsonGenerator_rating = new JSONObject();
         JSONObject JsonGenerator_rating_location = new JSONObject();
+
+        if (((globalvariable.getThelocation()).distanceTo(Constants.mainpoint1)<Constants.mainpointradius1)||
+                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint2)<Constants.mainpointradius2)||
+                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint3)<Constants.mainpointradius3)||
+                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint4)<Constants.mainpointradius4)||
+                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint5)<Constants.mainpointradius5)||
+                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint6)<Constants.mainpointradius6)) {
+
+            JsonGenerator_rating.put("IsTestbed",true);
+            ShowToastMessage("The data is uploaded successfully.");
+        }
+        else {
+
+            JsonGenerator_rating.put("IsTestbed", false);
+            ShowToastMessage("The data is uploaded successfully, but System shows this rated place is not in the research list. Thus 0 point is credited.");
+        }
+
+
         double VratingBarCLEANNESS = ((RatingBar) findViewById(R.id.ratingBarLively)).getRating();
         double VratingBarSAFTY = ((RatingBar) findViewById(R.id.ratingBarRelaxing)).getRating();
         double VratingBarBEAUTIFULNESS = ((RatingBar) findViewById(R.id.ratingBarCosy)).getRating();
@@ -275,6 +295,15 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
     public void ShowInfo(View i){
         infoDialogFragment AboutUs = new infoDialogFragment();
         AboutUs.show(getSupportFragmentManager(), "Info");
+    }
+
+    public void ShowToastMessage(String i){
+        Toast toast = Toast.makeText(this, i, Toast.LENGTH_SHORT);
+        LinearLayout toastLayout = (LinearLayout) toast.getView();
+        TextView toastTV = (TextView) toastLayout.getChildAt(0);
+        toastTV.setTextSize(30);
+        toastTV.setBackgroundColor(Color.BLACK);
+        toast.show();
     }
 
 
