@@ -148,24 +148,32 @@ public class SensorListenerService extends Service implements SensorEventListene
     private final Handler ActivityManagerhandler = new Handler();
     public final Runnable ActivityManager_runable = new Runnable() {
         public void run() {
+            try {
+                //App statistics
+                ActivityManager am = (ActivityManager) getApplication().getSystemService(ACTIVITY_SERVICE);
+                List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
+                // Log.d("topActivity", "CURRENT Activity ::" + taskInfo.get(0).topActivity.getClassName());
+                ComponentName componentInfo = taskInfo.get(0).topActivity;
 
-            //App statistics
-            ActivityManager am = (ActivityManager) getApplication().getSystemService(ACTIVITY_SERVICE);
-            List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
-           // Log.d("topActivity", "CURRENT Activity ::" + taskInfo.get(0).topActivity.getClassName());
-            ComponentName componentInfo = taskInfo.get(0).topActivity;
 
+                DataLogger.writeTolog("currentAPP: " + componentInfo.getPackageName() + " " + componentInfo.getClassName() + "\n", logswich);
+            }catch (Exception e){
 
-            DataLogger.writeTolog("currentAPP: "+  componentInfo.getPackageName()+" "+componentInfo.getClassName()+ "\n",logswich);
+            }
 
-            ActivityManagerhandler.postDelayed(ActivityManager_runable, CellInfo_APPStatics_Timeinterval);
-            //Cell Tower
-            TelephonyManager TM = (TelephonyManager) getApplication()
-                    .getSystemService(Context.TELEPHONY_SERVICE);
-            List<CellInfo> cellinfo = TM.getAllCellInfo();
-            Log.d("AA", Integer.toString(cellinfo.size()));
-            Log.d("AA", cellinfo.toString());
-            DataLogger.writeTolog("CellInfo " + cellinfo.toString() + "\n",logswich);
+            try {
+                ActivityManagerhandler.postDelayed(ActivityManager_runable, CellInfo_APPStatics_Timeinterval);
+                //Cell Tower
+                TelephonyManager TM = (TelephonyManager) getApplication()
+                        .getSystemService(Context.TELEPHONY_SERVICE);
+                List<CellInfo> cellinfo = TM.getAllCellInfo();
+
+                Log.d("AA", Integer.toString(cellinfo.size()));
+                Log.d("AA", cellinfo.toString());
+                DataLogger.writeTolog("CellInfo " + cellinfo.toString() + "\n", logswich);
+            }catch (Exception e){
+
+            }
         }
     };
 
@@ -223,10 +231,10 @@ public class SensorListenerService extends Service implements SensorEventListene
     public void startsensing() {
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-         sensorManager.registerListener(this,  sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), (int)(1/(float)ACCsamplingrate)*1000*1000);
+        sensorManager.registerListener(this,  sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), (int)(1/(float)ACCsamplingrate)*1000*1000);
         sensorManager.registerListener(this,  sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE), (int)(1/(float)GROsamplingrate)*1000*1000);
         sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT), (int) (1 / (float) Lightsamplingrate) * 1000 * 1000);
-       sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), 1000 * 1000);
+        sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), 1000 * 1000);
         sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY), 1000 * 1000);
         mlocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         // Register the listener with the Location Manager to receive location updates
@@ -237,14 +245,14 @@ public class SensorListenerService extends Service implements SensorEventListene
 
     public void stopsensing() {
 
-             sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
-           sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE));
-             sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT));
-            sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD));
-             sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY));
-           if (mlocationManager!=null){
-                 mlocationManager.removeUpdates(this);
-          }
+        sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
+        sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE));
+        sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT));
+        sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD));
+        sensorManager.unregisterListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY));
+        if (mlocationManager!=null){
+            mlocationManager.removeUpdates(this);
+        }
      //   Toast.makeText(this, "stop sensing", Toast.LENGTH_SHORT).show();
         removeActivityUpdates();
     }

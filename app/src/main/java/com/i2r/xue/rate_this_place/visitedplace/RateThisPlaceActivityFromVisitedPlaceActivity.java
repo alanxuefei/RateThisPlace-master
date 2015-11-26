@@ -408,7 +408,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
             AsyncTaskUploadActivityFromVisitedPlace Activityuploader = new AsyncTaskUploadActivityFromVisitedPlace(this, JsonGenerator_activity);
             Activityuploader.execute();
 
-            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(Locationname , Activities).apply();
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(Locationname+ "ActivityStatus", Activities).apply();
 
 
     }

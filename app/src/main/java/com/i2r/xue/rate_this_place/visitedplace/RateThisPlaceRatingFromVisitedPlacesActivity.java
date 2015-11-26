@@ -199,23 +199,6 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
         JSONObject JsonGenerator_rating = new JSONObject();
         JSONObject JsonGenerator_rating_location = new JSONObject();
 
-        if (((globalvariable.getThelocation()).distanceTo(Constants.mainpoint1)<Constants.mainpointradius1)||
-                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint2)<Constants.mainpointradius2)||
-                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint3)<Constants.mainpointradius3)||
-                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint4)<Constants.mainpointradius4)||
-                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint5)<Constants.mainpointradius5)||
-                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint6)<Constants.mainpointradius6)) {
-
-            JsonGenerator_rating.put("IsTestbed",true);
-            ShowToastMessage("The data is uploaded successfully.");
-        }
-        else {
-
-            JsonGenerator_rating.put("IsTestbed", false);
-            ShowToastMessage("The data is uploaded successfully, but System shows this rated place is not in the research list. Thus 0 point is credited.");
-        }
-
-
         double VratingBarCLEANNESS = ((RatingBar) findViewById(R.id.ratingBarLively)).getRating();
         double VratingBarSAFTY = ((RatingBar) findViewById(R.id.ratingBarRelaxing)).getRating();
         double VratingBarBEAUTIFULNESS = ((RatingBar) findViewById(R.id.ratingBarCosy)).getRating();
@@ -255,12 +238,32 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
 
                 if (detectedlocation_LatLng == null) {
                     JsonGenerator_rating_location = null;
-                    JsonGenerator_rating.put("LocationAccuracy", "Special");
+                    if (((globalvariable.getThelocation()).distanceTo(Constants.mainpoint1)<Constants.mainpointradius1)||
+                            ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint2)<Constants.mainpointradius2)||
+                            ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint3)<Constants.mainpointradius3)||
+                            ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint4)<Constants.mainpointradius4)||
+                            ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint5)<Constants.mainpointradius5)||
+                            ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint6)<Constants.mainpointradius6)) {
+
+                        JsonGenerator_rating.put("IsTestbed",true);
+                        ShowToastMessage("The data is uploaded successfully.");
+                    }
+                    else {
+
+                        JsonGenerator_rating.put("IsTestbed", false);
+                        ShowToastMessage("The data is uploaded successfully, but System shows this rated place is not in the research list. Thus 0 point is credited.");
+                    }
                 } else {
                     JsonGenerator_rating_location.put("longitude", detectedlocation_LatLng.longitude);
                     JsonGenerator_rating_location.put("latitude", detectedlocation_LatLng.latitude);
                     JsonGenerator_rating.put("LocationAccuracy", "Special");
+                    JsonGenerator_rating.put("IsTestbed", true);
                 }
+
+
+
+
+
 
                 JsonGenerator_rating.put("Datatime", timestamp);
                 JsonGenerator_rating.put("Location", JsonGenerator_rating_location);
@@ -269,6 +272,7 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
                 JsonGenerator_rating.put("Rating_Relaxingy", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRelaxing)).getRating());
                 JsonGenerator_rating.put("Rating_Cosy", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarCosy)).getRating());
                 JsonGenerator_rating.put("Rating_Rearrangeable", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRearrangeable)).getRating());
+                JsonGenerator_rating.put("Rating_Privacy", ((RatingBar) findViewById(R.id.ratingBarPRIVACY)).getRating());
                 JsonGenerator_rating.put("Rating_Sociable", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSociable)).getRating());
                 JsonGenerator_rating.put("Rating_Safe", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSafe)).getRating());
                 JsonGenerator_rating.put("Rating_Specialtome", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarSpecialtome)).getRating());
@@ -285,7 +289,7 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
             AsyncTaskUploadRatingFromVisitedPlace myfileuploader = new AsyncTaskUploadRatingFromVisitedPlace(this, JsonGenerator_rating);
             myfileuploader.execute();
 
-            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(Locationname1, df.format(avgrating)).apply();
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(Locationname1+ "RatingStatus", df.format(avgrating)).apply();
 
         } else {
             Toast.makeText(this, "Please at least input one rating", Toast.LENGTH_SHORT).show();

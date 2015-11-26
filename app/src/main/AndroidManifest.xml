@@ -88,12 +88,6 @@
         </activity>
 
         <activity
-            android:name="com.i2r.xue.rate_this_place.visitedplace.RateThisPlaceFromVistitedplaceActivity"
-            android:noHistory="true"
-            android:screenOrientation="portrait" >
-        </activity>
-
-        <activity
             android:name="com.i2r.xue.rate_this_place.ratethisplace.RateThisPlaceRatingActivity">
         </activity>
 

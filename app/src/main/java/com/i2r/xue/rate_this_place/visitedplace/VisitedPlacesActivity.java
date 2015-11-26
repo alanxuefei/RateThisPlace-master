@@ -161,7 +161,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
         Button bt = new Button(this,null, android.R.attr.buttonStyleSmall);
         bt.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-
+        String index= LocationName.replace("VisitedPlaceStatusExtraRating","");
         vi.addView(bt);
         bt.setText("RATING   ");
         bt.setOnClickListener(new View.OnClickListener() {
@@ -169,7 +169,13 @@ public class VisitedPlacesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent0 = new Intent(getApplication(), RateThisPlaceRatingFromVisitedPlacesActivity.class);
                 intent0.putExtra("From", LocationName);
-                //   Log.i("VisitedPlace", LocationName + "RatingStatus");
+                Log.i("VisitedPlace", LocationName + "RatingStatus");
+
+                Location targetLocation = new Location("");//provider name is unecessary
+                targetLocation.setLatitude(Double.parseDouble(((getApplication().getSharedPreferences("VisitedPlaceStatus", getApplication().MODE_PRIVATE).getString("VisitedPlaceStatusLatitude"+index, "NA")))));
+                targetLocation.setLongitude(Double.parseDouble(((getApplication().getSharedPreferences("VisitedPlaceStatus", getApplication().MODE_PRIVATE).getString("VisitedPlaceStatusLongitude" + index, "NA")))));//your coords of course
+                globalvariable.setThelocation(targetLocation);
+
                 finish();
                 startActivity(intent0);
 
@@ -181,7 +187,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
         Button bt = new Button(this,null, android.R.attr.buttonStyleSmall);
         bt.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-
+        String index= LocationName.replace("isitedPlaceStatusExtraRating","");
         vi.addView(bt);
         bt.setText("ACTIVITY");
 
@@ -246,16 +252,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-   /* public void clickthelistview(AdapterView<?> a, View v, int position, long id) {
 
-       String value = (String)a.getItemAtPosition(position);
-        Log.i(HumanActivityTAG, value);
-
-        Intent startRatingIntent = new Intent(this,  RateThisPlaceFromVistitedplaceActivity.class);
-        startActivity(startRatingIntent);
-
-
-    }*/
 
     public void ReturnButton(View v) {
         // Log.i("test", "return");
@@ -327,21 +324,16 @@ public class VisitedPlacesActivity extends AppCompatActivity {
             ((TextView)findViewById(R.id.location0_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "DateTime", "NA")).replace("_","\n")));
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "RatingStatus", "NA")).equals("NA"))){
                 addStar(((ViewGroup) findViewById(R.id.TableRow0)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "RatingStatus", "NA"));
-                // ((TableRow)findViewById(R.id.AllTableRow0)).setBackgroundColor(Color.GREEN);
-                // ((TextView)findViewById(R.id.location0)).setBackgroundColor(Color.GREEN);
-                // ((TextView)findViewById(R.id.location0_time)).setBackgroundColor(Color.GREEN);
-                //  ((LinearLayout)findViewById(R.id.TableRow0)).setBackgroundColor(Color.GREEN);
-
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow0)), Constants.Locations[0]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow0)), Constants.Locations[0]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow0)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow0)), Constants.Locations[0]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow0)), Constants.Locations[0]);
             }
 
         }
@@ -371,14 +363,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow1)), Constants.Locations[1]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow1)), Constants.Locations[1]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[1] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow1)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[1] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow1)), Constants.Locations[1]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow1)), Constants.Locations[1]);
             }
 
         }
@@ -404,14 +396,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow2)), Constants.Locations[2]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow2)), Constants.Locations[2]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[2] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow2)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[2] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow2)), Constants.Locations[2]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow2)), Constants.Locations[2]);
             }
 
         }
@@ -436,14 +428,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow3)), Constants.Locations[3]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow3)), Constants.Locations[3]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[3] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow3)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[3] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow3)), Constants.Locations[3]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow3)), Constants.Locations[3]);
             }
 
         }
@@ -469,14 +461,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow4)), Constants.Locations[4]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow4)), Constants.Locations[4]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[4] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow4)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[4] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow4)), Constants.Locations[4]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow4)), Constants.Locations[4]);
             }
 
         }
@@ -501,14 +493,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow5)), Constants.Locations[5]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow5)), Constants.Locations[5]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[5] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow5)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[5] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow5)), Constants.Locations[5]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow5)), Constants.Locations[5]);
             }
 
         }
@@ -533,14 +525,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow6)), Constants.Locations[6]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow6)), Constants.Locations[6]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[6] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow6)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[6] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow6)), Constants.Locations[6]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow6)), Constants.Locations[6]);
             }
 
         }
@@ -568,14 +560,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow7)), Constants.Locations[7]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow7)), Constants.Locations[7]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[7] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow7)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[7] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow7)), Constants.Locations[7]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow7)), Constants.Locations[7]);
             }
 
         }
@@ -601,14 +593,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow8)), Constants.Locations[8]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow8)), Constants.Locations[8]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[8] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow8)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[8] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow8)), Constants.Locations[8]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow8)), Constants.Locations[8]);
             }
 
         }
@@ -633,14 +625,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow9)), Constants.Locations[9]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow9)), Constants.Locations[9]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[9] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow9)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[9] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow9)), Constants.Locations[9]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow9)), Constants.Locations[9]);
             }
 
         }
@@ -667,14 +659,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow10)), Constants.Locations[10]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow10)), Constants.Locations[10]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[10] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow10)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[10] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow10)), Constants.Locations[10]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow10)), Constants.Locations[10]);
             }
 
         }
@@ -699,14 +691,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow11)), Constants.Locations[11]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow11)), Constants.Locations[11]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[11] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow11)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[11] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow11)), Constants.Locations[11]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow11)), Constants.Locations[11]);
             }
 
         }
@@ -731,14 +723,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow12)), Constants.Locations[12]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow12)), Constants.Locations[12]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[12] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow12)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[12] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow12)), Constants.Locations[12]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow12)), Constants.Locations[12]);
             }
 
         }
@@ -764,14 +756,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow13)), Constants.Locations[13]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow13)), Constants.Locations[13]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[13] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow13)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[13] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow13)), Constants.Locations[13]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow13)), Constants.Locations[13]);
             }
 
         }
@@ -797,14 +789,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow14)), Constants.Locations[14]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow14)), Constants.Locations[14]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[14] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow14)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[14] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow14)), Constants.Locations[14]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow14)), Constants.Locations[14]);
             }
 
         }
@@ -830,14 +822,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow15)), Constants.Locations[15]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow15)), Constants.Locations[15]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[15] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow15)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[15] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow15)), Constants.Locations[15]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow15)), Constants.Locations[15]);
             }
 
         }
@@ -864,14 +856,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow16)), Constants.Locations[16]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow16)), Constants.Locations[16]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[16] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow16)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[16] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow16)), Constants.Locations[16]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow16)), Constants.Locations[16]);
             }
 
         }
@@ -898,14 +890,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow17)), Constants.Locations[17]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow17)), Constants.Locations[17]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[17] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow17)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[17] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow17)), Constants.Locations[17]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow17)), Constants.Locations[17]);
             }
 
         }
@@ -931,14 +923,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow18)), Constants.Locations[18]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow18)), Constants.Locations[18]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[18] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow18)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[18] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow18)), Constants.Locations[18]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow18)), Constants.Locations[18]);
             }
 
         }
@@ -964,14 +956,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow19)), Constants.Locations[19]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow19)), Constants.Locations[19]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[19] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow19)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[19] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow19)), Constants.Locations[19]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow19)), Constants.Locations[19]);
             }
 
         }
@@ -997,14 +989,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow20)), Constants.Locations[20]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow20)), Constants.Locations[20]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[20] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow20)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[20] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow20)), Constants.Locations[20]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow20)), Constants.Locations[20]);
             }
 
         }
@@ -1030,14 +1022,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow21)), Constants.Locations[21]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow21)), Constants.Locations[21]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[21] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow21)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[21] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow21)), Constants.Locations[21]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow21)), Constants.Locations[21]);
             }
 
         }
@@ -1063,14 +1055,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow22)), Constants.Locations[22]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow22)), Constants.Locations[22]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[22] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow22)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[22] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow22)), Constants.Locations[22]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow22)), Constants.Locations[22]);
             }
 
         }
@@ -1096,14 +1088,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow23)), Constants.Locations[23]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow23)), Constants.Locations[23]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[23] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow23)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[23] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow23)), Constants.Locations[23]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow23)), Constants.Locations[23]);
             }
 
         }
@@ -1130,14 +1122,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow24)), Constants.Locations[24]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow24)), Constants.Locations[24]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[24] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow24)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[24] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow24)), Constants.Locations[24]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow24)), Constants.Locations[24]);
             }
 
         }
@@ -1164,14 +1156,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow25)), Constants.Locations[25]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow25)), Constants.Locations[25]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[25] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow25)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[25] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow25)), Constants.Locations[25]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow25)), Constants.Locations[25]);
             }
 
         }
@@ -1198,14 +1190,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow26)), Constants.Locations[26]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow26)), Constants.Locations[26]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[26] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow26)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[26] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow26)), Constants.Locations[26]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow26)), Constants.Locations[26]);
             }
 
         }
@@ -1231,14 +1223,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow27)), Constants.Locations[27]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow27)), Constants.Locations[27]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[27] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow27)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[27] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow27)), Constants.Locations[27]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow27)), Constants.Locations[27]);
             }
 
         }
@@ -1265,14 +1257,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow28)), Constants.Locations[28]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow28)), Constants.Locations[28]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[28] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow28)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[28] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow28)), Constants.Locations[28]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow28)), Constants.Locations[28]);
             }
 
         }
@@ -1298,14 +1290,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow29)), Constants.Locations[29]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow29)), Constants.Locations[29]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[29] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow29)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[29] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow29)), Constants.Locations[29]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow29)), Constants.Locations[29]);
             }
 
         }
@@ -1331,14 +1323,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow30)), Constants.Locations[30]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow30)), Constants.Locations[30]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[30] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow30)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[30] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow30)), Constants.Locations[30]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow30)), Constants.Locations[30]);
             }
 
         }
@@ -1364,14 +1356,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow31)), Constants.Locations[31]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow31)), Constants.Locations[31]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[31] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow31)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[31] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow31)), Constants.Locations[31]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow31)), Constants.Locations[31]);
             }
 
         }
@@ -1397,14 +1389,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow32)), Constants.Locations[32]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow32)), Constants.Locations[32]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[32] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow32)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[32] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow32)), Constants.Locations[32]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow32)), Constants.Locations[32]);
             }
 
         }
@@ -1431,14 +1423,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow33)), Constants.Locations[33]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow33)), Constants.Locations[33]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[33] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow33)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[33] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow33)), Constants.Locations[33]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow33)), Constants.Locations[33]);
             }
 
         }
@@ -1464,14 +1456,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow34)), Constants.Locations[34]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow34)), Constants.Locations[34]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[34] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow34)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[34] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow34)), Constants.Locations[34]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow34)), Constants.Locations[34]);
             }
 
         }
@@ -1497,14 +1489,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow35)), Constants.Locations[35]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow35)), Constants.Locations[35]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[35] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow35)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[35] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow35)), Constants.Locations[35]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow35)), Constants.Locations[35]);
             }
 
         }
@@ -1530,14 +1522,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow36)), Constants.Locations[36]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow36)), Constants.Locations[36]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[36] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow36)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[36] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow36)), Constants.Locations[36]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow36)), Constants.Locations[36]);
             }
 
         }
@@ -1563,14 +1555,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow37)), Constants.Locations[37]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow37)), Constants.Locations[37]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[37] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow37)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[37] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow37)), Constants.Locations[37]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow37)), Constants.Locations[37]);
             }
 
         }
@@ -1596,14 +1588,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow38)), Constants.Locations[38]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow38)), Constants.Locations[38]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[38] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow38)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[38] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow38)), Constants.Locations[38]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow38)), Constants.Locations[38]);
             }
 
         }
@@ -1628,14 +1620,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow39)), Constants.Locations[39]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow39)), Constants.Locations[39]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[39] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow39)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[39] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow39)), Constants.Locations[39]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow39)), Constants.Locations[39]);
             }
 
         }
@@ -1661,14 +1653,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow40)), Constants.Locations[40]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow40)), Constants.Locations[40]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[40] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow40)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[40] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow40)), Constants.Locations[40]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow40)), Constants.Locations[40]);
             }
 
         }
@@ -1694,14 +1686,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow41)), Constants.Locations[41]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow41)), Constants.Locations[41]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[41] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow41)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[41] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow41)), Constants.Locations[41]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow41)), Constants.Locations[41]);
             }
 
         }
@@ -1727,14 +1719,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow42)), Constants.Locations[42]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow42)), Constants.Locations[42]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[42] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow42)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[42] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow42)), Constants.Locations[42]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow42)), Constants.Locations[42]);
             }
 
         }
@@ -1761,14 +1753,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow43)), Constants.Locations[43]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow43)), Constants.Locations[43]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[43] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow43)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[43] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow43)), Constants.Locations[43]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow43)), Constants.Locations[43]);
             }
 
         }
@@ -1792,14 +1784,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow44)), Constants.Locations[44]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow44)), Constants.Locations[44]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[44] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow44)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[44] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow44)), Constants.Locations[44]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow44)), Constants.Locations[44]);
             }
 
         }
@@ -1824,14 +1816,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow45)), Constants.Locations[45]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow45)), Constants.Locations[45]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[45] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow45)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[45] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow45)), Constants.Locations[45]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow45)), Constants.Locations[45]);
             }
 
         }
@@ -1857,14 +1849,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow46)), Constants.Locations[46]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow46)), Constants.Locations[46]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[46] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow46)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[46] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow46)), Constants.Locations[46]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow46)), Constants.Locations[46]);
             }
 
         }
@@ -1890,14 +1882,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow47)), Constants.Locations[47]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow47)), Constants.Locations[47]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[47] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow47)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[47] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow47)), Constants.Locations[47]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow47)), Constants.Locations[47]);
             }
 
         }
@@ -1924,14 +1916,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow48)), Constants.Locations[48]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow48)), Constants.Locations[48]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[48] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow48)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[48] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow48)), Constants.Locations[48]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow48)), Constants.Locations[48]);
             }
 
         }
@@ -1958,14 +1950,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow49)), Constants.Locations[49]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow49)), Constants.Locations[49]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[49] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow49)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[49] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow49)), Constants.Locations[49]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow49)), Constants.Locations[49]);
             }
 
         }
@@ -1991,14 +1983,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow50)), Constants.Locations[50]+"RatingStatus");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow50)), Constants.Locations[50]);
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[50] + "ActivityStatus", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow50)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[50] + "ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow50)), Constants.Locations[50]+ "ActivityStatus");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow50)), Constants.Locations[50]);
             }
 
         }
