@@ -108,7 +108,8 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         buildTableRow47();
         buildTableRow48();
         buildTableRow49();
-       // buildTableRow50();
+
+        //Non-Special Places
         buildTableRow100();
         buildTableRow101();
         buildTableRow102();
@@ -1892,36 +1893,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
 
 
-    public void buildTableRow50() {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String currentDate = sdf.format(new Date());
-        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[50] + "DateTime", "NA")).split("\n");
-
-        if  (datearray[0].equals(currentDate)){
-            ((TableRow)findViewById(R.id.AllTableRow50)).setVisibility(TableRow.VISIBLE);
-            ((TextView)findViewById(R.id.location50_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[50] + "DateTime", "NA")).replace("_","\n")));
-            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[50] + "RatingStatus", "NA")).equals("NA"))){
-                addStar(((ViewGroup) findViewById(R.id.TableRow50)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[50] + "RatingStatus", "NA"));
-
-            }
-            else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow50)), Constants.Locations[50]);
-            }
-
-            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[50] + "ActivityStatus", "NA")).equals("NA"))){
-                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow50)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[50] + "ActivityStatus", "NA"));
-            }
-            else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow50)), Constants.Locations[50]);
-            }
-
-        }
-        else{
-            // ((TextView)findViewById(R.id.location50_time)).setText("Wait for your visit");
-            // ((TableRow)findViewById(R.id.AllTableRow50)).setVisibility(TableRow.GONE);
-        };
-    }
 
 
 
