@@ -211,7 +211,7 @@ public class GeofenceTransitionsIntentService extends IntentService {
                         /*my code*/
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String currentDate = sdf.format(new Date());
-        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(Constants.Locations[0] + "DateTime", "NA")).split("\n");
+        String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(LocationName + "DateTime", "NA")).split("\n");
         Log.i("datearray", datearray[0]);
         if  (!datearray[0].equals(currentDate)){
             sdf = new SimpleDateFormat("HH:mm:ss");

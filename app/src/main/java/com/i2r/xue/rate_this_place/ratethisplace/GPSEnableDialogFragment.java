@@ -28,11 +28,11 @@ public class GPSEnableDialogFragment extends DialogFragment {
                         globalvariable.setFromGPSsetting(true);
                     }
                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                     public void onClick(DialogInterface dialog, int id) {
-                         Intent intent = new Intent(getActivity(), RateThisPlaceActivity.class);
-                         intent.putExtra("from", "MainActivity");
-                         intent.putExtra("environment", "Indoor");
-                         startActivity(intent);
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(getActivity(), RateThisPlaceActivity.class);
+                intent.putExtra("from", "MainActivity");
+                intent.putExtra("environment", "Indoor");
+                startActivity(intent);
 
             }
         });

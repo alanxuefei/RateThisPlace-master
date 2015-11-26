@@ -2,6 +2,10 @@ package com.i2r.xue.rate_this_place.utility;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.i2r.xue.rate_this_place.pasivedatacollection.SensorListenerService;
 import com.i2r.xue.rate_this_place.visitedplace.GeofencingService;
@@ -16,6 +20,8 @@ public class Commonfunctions {
         context.startService(startServiceIntent);
         context.startService(new Intent(context, GeofencingService.class));
     }
+
+
 }
 
 

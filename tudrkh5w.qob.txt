@@ -1,0 +1,45 @@
+﻿Revert "fix the bugs of No points about visited places"
+
+This reverts commit 6529889050d69457b8e5a22fe4d87ab3a1ad6d96.
+
+# Conflicts:
+#	app/src/main/java/com/i2r/xue/rate_this_place/visitedplace/RateThisPlaceRatingFromVisitedPlacesActivity.java
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# Explicit paths specified without -i or -o; assuming --only paths...
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# You are currently reverting commit 6529889.
+#
+# Changes to be committed:
+#	modified:   .gitignore
+#	new file:   app/app-release - 200.apk
+#	new file:   app/app-release -100.apk
+#	renamed:    app/app-release - 100 meters -0.91.apk -> app/app-release- 50.apk
+#	new file:   app/app-release-30.apk
+#	modified:   app/src/main/AndroidManifest.xml
+#	modified:   app/src/main/java/com/i2r/xue/rate_this_place/MainActivity.java
+#	modified:   app/src/main/java/com/i2r/xue/rate_this_place/myrewards/AsyncTaskGetDataToMyReward.java
+#	modified:   app/src/main/java/com/i2r/xue/rate_this_place/pasivedatacollection/SensorListenerService.java
+#	modified:   app/src/main/java/com/i2r/xue/rate_this_place/ratethisplace/AsyncTaskUploadActivity.java
+#	modified:   app/src/main/java/com/i2r/xue/rate_this_place/ratethisplace/AsyncTaskUploadRating.java
+#	modified:   app/src/main/java/com/i2r/xue/rate_this_place/ratethisplace/GPSEnableDialogFragment.java
+#	modified:   app/src/main/java/com/i2r/xue/rate_this_place/ratethisplace/RateThisPlaceActivity.java
+#	modified:   app/src/main/java/com/i2r/xue/rate_this_place/ratethisplace/RateThisPlaceActivityActivity.java
+#	modified:   app/src/main/java/com/i2r/xue/rate_this_place/ratethisplace/RateThisPlaceRatingActivity.java
+#	modified:   app/src/main/java/com/i2r/xue/rate_this_place/usersetting/UserAgreementDialogFragment.java
+#	modified:   app/src/main/java/com/i2r/xue/rate_this_place/utility/Commonfunctions.java
+#	modified:   app/src/main/java/com/i2r/xue/rate_this_place/utility/Constants.java
+#	modified:   app/src/main/java/com/i2r/xue/rate_this_place/visitedplace/GeofenceTransitionsIntentService.java
+#	modified:   app/src/main/java/com/i2r/xue/rate_this_place/visitedplace/RateThisPlaceActivityFromVisitedPlaceActivity.java
+#	modified:   app/src/main/java/com/i2r/xue/rate_this_place/visitedplace/RateThisPlaceRatingFromVisitedPlacesActivity.java
+#	modified:   app/src/main/java/com/i2r/xue/rate_this_place/visitedplace/VisitedPlacesActivity.java
+#	modified:   app/src/main/res/layout/activity_activity_fromvisitedplaces.xml
+#
+# Untracked files:
+#	app/app-release0.99.apk
+#
+

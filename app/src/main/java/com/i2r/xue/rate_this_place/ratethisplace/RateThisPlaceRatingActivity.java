@@ -46,45 +46,6 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
         setContentView(com.i2r.xue.rate_this_place.R.layout.activity_rating);
 
 
-       // final EditText mAutoCompleteTextView_Commentary= (EditText) findViewById(com.i2r.alan.rate_this_place.R.id.AutoCompleteTextView_Commentary);
-
-  /*      mAutoCompleteTextView_Commentary.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            public void afterTextChanged(Editable s) {
-
-                // you can call or do what you want with your EditText here
-                final Button mbutton_editdone = (Button) findViewById(com.i2r.alan.rate_this_place.R.id.button_editdone);
-                mbutton_editdone.setVisibility(View.VISIBLE);
-                mbutton_editdone.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-
-                    public void onClick(View view) {
-
-
-                        mbutton_editdone.setVisibility(View.GONE);
-                        //release the focus
-                        InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                    }
-
-                });
-
-            }
-
-
-        });*/
-
         addListenerOnRatingBar();
     }
 
@@ -221,20 +182,24 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
     public void clickButton_submit(View view) throws JSONException {
 
 
-        double VratingBarCLEANNESS = ((RatingBar) findViewById(R.id.ratingBarLively)).getRating();
-        double VratingBarSAFTY = ((RatingBar) findViewById(R.id.ratingBarRelaxing)).getRating();
-        double VratingBarBEAUTIFULNESS = ((RatingBar) findViewById(R.id.ratingBarCosy)).getRating();
-        double VratingBarFRIENDLINESS = ((RatingBar) findViewById(R.id.ratingBarRearrangeable)).getRating();
-        double VratingBarCONVENIENCE = ((RatingBar) findViewById(R.id.ratingBarSociable)).getRating();
-        double VratingBarGREENNESS = ((RatingBar) findViewById(R.id.ratingBarSafe)).getRating();
+        double VratingBar1 = ((RatingBar) findViewById(R.id.ratingBarLively)).getRating();
+        double VratingBar2 = ((RatingBar) findViewById(R.id.ratingBarRelaxing)).getRating();
+        double VratingBar3 = ((RatingBar) findViewById(R.id.ratingBarCosy)).getRating();
+        double VratingBar4 = ((RatingBar) findViewById(R.id.ratingBarRearrangeable)).getRating();
+        double VratingBar5 = ((RatingBar) findViewById(R.id.ratingBarSociable)).getRating();
+        double VratingBar6 = ((RatingBar) findViewById(R.id.ratingBarSafe)).getRating();
+        double VratingBar7 = ((RatingBar) findViewById(R.id.ratingBarSpecialtome)).getRating();
+        double VratingBar8 = ((RatingBar) findViewById(R.id.ratingBarPRIVACY)).getRating();
 
         int usedratingbar = 0;
-        if (VratingBarCLEANNESS != 0) usedratingbar++;
-        if (VratingBarSAFTY != 0) usedratingbar++;
-        if (VratingBarBEAUTIFULNESS != 0) usedratingbar++;
-        if (VratingBarFRIENDLINESS != 0) usedratingbar++;
-        if (VratingBarCONVENIENCE != 0) usedratingbar++;
-        if (VratingBarGREENNESS != 0) usedratingbar++;
+        if (VratingBar1 != 0) usedratingbar++;
+        if (VratingBar2 != 0) usedratingbar++;
+        if (VratingBar3 != 0) usedratingbar++;
+        if (VratingBar4 != 0) usedratingbar++;
+        if (VratingBar5 != 0) usedratingbar++;
+        if (VratingBar6 != 0) usedratingbar++;
+        if (VratingBar7 != 0) usedratingbar++;
+        if (VratingBar8 != 0) usedratingbar++;
 
         if (globalvariable.thelocation != null) {
             if (usedratingbar> 0) {
@@ -245,7 +210,6 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
                 String timestamp = datetimeformat.format(new Date());
                 JSONObject JsonGenerator_rating = new JSONObject();
                 JSONObject JsonGenerator_rating_location = new JSONObject();
-
 
                 if (((globalvariable.getThelocation()).distanceTo(Constants.mainpoint1)<Constants.mainpointradius1)||
                         ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint2)<Constants.mainpointradius2)||
@@ -262,6 +226,9 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
                     JsonGenerator_rating.put("IsTestbed", false);
                     ShowToastMessage("The data is uploaded successfully, but System shows this rated place is not in the research list. Thus 0 point is credited.");
                 }
+
+
+
 
                 try {
 
@@ -282,7 +249,7 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
                     JsonGenerator_rating.put("Location", JsonGenerator_rating_location);
                     JsonGenerator_rating.put("Feeling", usermood.toString());
                     JsonGenerator_rating.put("Rating_Lively", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarLively)).getRating());
-                    JsonGenerator_rating.put("Rating_Relaxingy", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRelaxing)).getRating());
+                    JsonGenerator_rating.put("Rating_Relaxing", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRelaxing)).getRating());
                     JsonGenerator_rating.put("Rating_Privacy", ((RatingBar) findViewById(R.id.ratingBarPRIVACY)).getRating());
                     JsonGenerator_rating.put("Rating_Cosy", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarCosy)).getRating());
                     JsonGenerator_rating.put("Rating_Rearrangeable", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRearrangeable)).getRating());
@@ -306,7 +273,7 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
                 globalvariable.isRating_rated = true;
 
 
-                double avgrating = (VratingBarCLEANNESS + VratingBarSAFTY + VratingBarBEAUTIFULNESS + VratingBarFRIENDLINESS + VratingBarCONVENIENCE + VratingBarGREENNESS) / usedratingbar;
+                double avgrating = (VratingBar1+VratingBar2+VratingBar3+VratingBar4+VratingBar5+VratingBar6+VratingBar7+VratingBar8 ) / usedratingbar;
 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String currentDate = sdf.format(new Date());
@@ -314,9 +281,9 @@ public class RateThisPlaceRatingActivity extends AppCompatActivity {
                 String currentTime = sdf.format(new Date());
                 String VisitedPlaceStatusExtraIndex = (this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraIndex", "0"));
                 DecimalFormat df = new DecimalFormat("0.0");
-                this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusLongitude" + VisitedPlaceStatusExtraIndex, String.valueOf(globalvariable.thelocation.getLongitude())).apply();
-                this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusLatitude" + VisitedPlaceStatusExtraIndex, String.valueOf(globalvariable.thelocation.getLatitude())).apply();
-                this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraRating" + VisitedPlaceStatusExtraIndex, df.format(avgrating)).apply();
+                this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusLongitude10" + VisitedPlaceStatusExtraIndex, String.valueOf(globalvariable.thelocation.getLongitude())).apply();
+                this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusLatitude10" + VisitedPlaceStatusExtraIndex, String.valueOf(globalvariable.thelocation.getLatitude())).apply();
+                this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("Location10" + VisitedPlaceStatusExtraIndex+"RatingStatus", df.format(avgrating)).apply();
                 this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtra" + VisitedPlaceStatusExtraIndex + "DateTime", currentDate + "_" + currentTime).apply();
                 if (!globalvariable.isActivity_rated)
                     this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraActivity" + VisitedPlaceStatusExtraIndex, "NA").apply();

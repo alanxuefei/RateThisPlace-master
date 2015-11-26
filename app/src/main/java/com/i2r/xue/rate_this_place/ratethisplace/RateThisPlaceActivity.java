@@ -25,17 +25,10 @@ import com.i2r.xue.rate_this_place.myrewards.AsyncTaskGetDataToMyRewardBar;
 import com.i2r.xue.rate_this_place.usersetting.UserAgreementDialogFragment;
 import com.i2r.xue.rate_this_place.utility.globalvariable;
 
-import java.util.logging.Handler;
-
 public class RateThisPlaceActivity extends TabActivity implements TabHost.OnTabChangeListener, LocationListener {
-
-
-
     private android.os.Handler handler;
-
     private int SCAN_PERIOD =10*1000;
     private  LocationManager lm;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,9 +100,9 @@ public class RateThisPlaceActivity extends TabActivity implements TabHost.OnTabC
 
             }
 
+
         }
     }
-
     public void startnetworklocation() {
         lm.removeUpdates(this);
         lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);

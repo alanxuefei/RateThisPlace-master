@@ -88,7 +88,7 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
                         //release the focus
                         InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                         inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                        Activities = Activities + "Others_";
+                        Activities = Activities + "Others-"+mEdit_Activity_Others.getText()+"_";
                     }
 
                 });
@@ -305,23 +305,14 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
     public void clickButton_submit(View view) throws JSONException {
         DataLogger.writeTolog("RateThisPlaceActivityActivity_clickButton_submit" + " " + "\n", "");
         if (globalvariable.thelocation != null) {
-
-
-
-
-
             SimpleDateFormat datetimeformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String timestamp = datetimeformat.format(new Date());
             JSONObject JsonGenerator_activity = new JSONObject();
             JSONObject JsonGenerator_basicrating_location = new JSONObject();
+
 
             if (((globalvariable.getThelocation()).distanceTo(Constants.mainpoint1)<Constants.mainpointradius1)||
                     ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint2)<Constants.mainpointradius2)||
@@ -387,9 +378,9 @@ public class RateThisPlaceActivityActivity extends AppCompatActivity {
             sdf = new SimpleDateFormat("HH:mm:ss");
             String currentTime = sdf.format(new Date());
             String VisitedPlaceStatusExtraIndex = (this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraIndex", "0"));
-            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusLongitude" + VisitedPlaceStatusExtraIndex, String.valueOf(globalvariable.thelocation.getLongitude())).apply();
-            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusLatitude" + VisitedPlaceStatusExtraIndex, String.valueOf(globalvariable.thelocation.getLatitude())).apply();
-            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraActivity" + VisitedPlaceStatusExtraIndex, Activities).apply();
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusLongitude10" + VisitedPlaceStatusExtraIndex, String.valueOf(globalvariable.thelocation.getLongitude())).apply();
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusLatitude10" + VisitedPlaceStatusExtraIndex, String.valueOf(globalvariable.thelocation.getLatitude())).apply();
+            this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("Location10" + VisitedPlaceStatusExtraIndex+"ActivityStatus", Activities).apply();
             this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtra" + VisitedPlaceStatusExtraIndex + "DateTime", currentDate + "_" + currentTime).apply();
             if (!globalvariable.isRating_rated)
                 this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString("VisitedPlaceStatusExtraRating" + VisitedPlaceStatusExtraIndex, "NA").apply();

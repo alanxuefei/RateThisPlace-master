@@ -106,6 +106,7 @@ public class AsyncTaskUploadRating extends AsyncTask {
         super.onPostExecute(o);
 
 
+
         barProgressDialog.dismiss();
 
         if (globalvariable.isActivity_rated){

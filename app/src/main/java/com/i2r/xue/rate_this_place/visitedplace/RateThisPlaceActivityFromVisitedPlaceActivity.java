@@ -56,7 +56,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
 
     private enum AloneGroupSet {NA, Alone,Group};
     private AloneGroupSet  AloneGroup = AloneGroupSet.NA;
-
+    private String Activities = "";
 
 
     private ActionBar actionBar;
@@ -108,6 +108,7 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
                         //release the focus
                         InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                         inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                        Activities = Activities + "Others-"+mEdit_Activity_Others.getText()+"_";
                     }
 
                 });
@@ -336,25 +337,13 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
             String timestamp = datetimeformat.format(new Date());
             JSONObject JsonGenerator_activity = new JSONObject();
             JSONObject JsonGenerator_activity_location = new JSONObject();
-            String Activities = "";
 
-        if (((globalvariable.getThelocation()).distanceTo(Constants.mainpoint1)<Constants.mainpointradius1)||
-                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint2)<Constants.mainpointradius2)||
-                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint3)<Constants.mainpointradius3)||
-                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint4)<Constants.mainpointradius4)||
-                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint5)<Constants.mainpointradius5)||
-                ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint6)<Constants.mainpointradius6)) {
 
-            JsonGenerator_activity.put("IsTestbed",true);
-            ShowToastMessage("The data is uploaded successfully.");
-        }
-        else {
 
-            JsonGenerator_activity.put("IsTestbed", false);
-            ShowToastMessage("The data is uploaded successfully, but System shows this rated place is not in the research list. Thus 0 point is credited.");
-        }
 
-            try {
+
+
+        try {
                 JsonGenerator_activity.put("UserID", this.getSharedPreferences("UserInfo", this.MODE_PRIVATE).getString("UserID", null));
                 JsonGenerator_activity.put("Nickname", PreferenceManager.getDefaultSharedPreferences(this).getString("display_name", ""));
                 LatLng detectedlocation_LatLng = null;
@@ -367,13 +356,28 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
                 }
 
                 if (detectedlocation_LatLng==null){
-                    JsonGenerator_activity_location =null;
-                    JsonGenerator_activity.put("LocationAccuracy", "Special");
+
+                    if (((globalvariable.getThelocation()).distanceTo(Constants.mainpoint1)<Constants.mainpointradius1)||
+                            ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint2)<Constants.mainpointradius2)||
+                            ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint3)<Constants.mainpointradius3)||
+                            ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint4)<Constants.mainpointradius4)||
+                            ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint5)<Constants.mainpointradius5)||
+                            ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint6)<Constants.mainpointradius6)) {
+
+                        JsonGenerator_activity.put("IsTestbed",true);
+                        ShowToastMessage("The data is uploaded successfully.");
+                    }
+                    else {
+
+                        JsonGenerator_activity.put("IsTestbed", false);
+                        ShowToastMessage("The data is uploaded successfully, but System shows this rated place is not in the research list. Thus 0 point is credited.");
+                    }
                 }
                 else {
                     JsonGenerator_activity_location.put("longitude", detectedlocation_LatLng.longitude);
                     JsonGenerator_activity_location.put("latitude",  detectedlocation_LatLng.latitude);
-                     JsonGenerator_activity.put("LocationAccuracy", "Special");
+                    JsonGenerator_activity.put("LocationAccuracy", "Special");
+                    JsonGenerator_activity.put("IsTestbed", true);
                 }
 
                 JsonGenerator_activity.put("Datatime", timestamp);
@@ -412,7 +416,6 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
 
 
     }
-
     public void ShowToastMessage(String i){
         Toast toast = Toast.makeText(this, i, Toast.LENGTH_SHORT);
         LinearLayout toastLayout = (LinearLayout) toast.getView();
@@ -421,7 +424,5 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
         toastTV.setBackgroundColor(Color.BLACK);
         toast.show();
     }
-
-
 
 }

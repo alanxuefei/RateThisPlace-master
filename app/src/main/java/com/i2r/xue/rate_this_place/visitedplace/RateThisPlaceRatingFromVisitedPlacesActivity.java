@@ -34,10 +34,7 @@ import java.util.Date;
 
 public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActivity {
 
-    /*google activity detection*/
-
-
-
+ /*add*/
     private enum Mood { NOFEELING, HAPPY, UNHAPPY}
 
     private Mood  usermood = Mood.NOFEELING;
@@ -191,32 +188,38 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
         });
     }
 
-    public void clickButton_submit(View view) throws JSONException {
+    public void clickButton_submit(View view) {
 
 
-        SimpleDateFormat datetimeformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String timestamp = datetimeformat.format(new Date());
-        JSONObject JsonGenerator_rating = new JSONObject();
-        JSONObject JsonGenerator_rating_location = new JSONObject();
 
-        double VratingBarCLEANNESS = ((RatingBar) findViewById(R.id.ratingBarLively)).getRating();
-        double VratingBarSAFTY = ((RatingBar) findViewById(R.id.ratingBarRelaxing)).getRating();
-        double VratingBarBEAUTIFULNESS = ((RatingBar) findViewById(R.id.ratingBarCosy)).getRating();
-        double VratingBarFRIENDLINESS = ((RatingBar) findViewById(R.id.ratingBarRearrangeable)).getRating();
-        double VratingBarCONVENIENCE = ((RatingBar) findViewById(R.id.ratingBarSociable)).getRating();
-        double VratingBarGREENNESS = ((RatingBar) findViewById(R.id.ratingBarSafe)).getRating();
+
+        double VratingBar1 = ((RatingBar) findViewById(R.id.ratingBarLively)).getRating();
+        double VratingBar2 = ((RatingBar) findViewById(R.id.ratingBarRelaxing)).getRating();
+        double VratingBar3 = ((RatingBar) findViewById(R.id.ratingBarCosy)).getRating();
+        double VratingBar4 = ((RatingBar) findViewById(R.id.ratingBarRearrangeable)).getRating();
+        double VratingBar5 = ((RatingBar) findViewById(R.id.ratingBarSociable)).getRating();
+        double VratingBar6 = ((RatingBar) findViewById(R.id.ratingBarSafe)).getRating();
+        double VratingBar7 = ((RatingBar) findViewById(R.id.ratingBarSpecialtome)).getRating();
+        double VratingBar8 = ((RatingBar) findViewById(R.id.ratingBarPRIVACY)).getRating();
 
         int usedratingbar = 0;
-        if (VratingBarCLEANNESS != 0) usedratingbar++;
-        if (VratingBarSAFTY != 0) usedratingbar++;
-        if (VratingBarBEAUTIFULNESS != 0) usedratingbar++;
-        if (VratingBarFRIENDLINESS != 0) usedratingbar++;
-        if (VratingBarCONVENIENCE != 0) usedratingbar++;
-        if (VratingBarGREENNESS != 0) usedratingbar++;
+        if (VratingBar1 != 0) usedratingbar++;
+        if (VratingBar2 != 0) usedratingbar++;
+        if (VratingBar3 != 0) usedratingbar++;
+        if (VratingBar4 != 0) usedratingbar++;
+        if (VratingBar5 != 0) usedratingbar++;
+        if (VratingBar6 != 0) usedratingbar++;
+        if (VratingBar7 != 0) usedratingbar++;
+        if (VratingBar8 != 0) usedratingbar++;
 
         if (usedratingbar > 0) {
-            double avgrating = (VratingBarCLEANNESS + VratingBarSAFTY + VratingBarBEAUTIFULNESS + VratingBarFRIENDLINESS + VratingBarCONVENIENCE + VratingBarGREENNESS) / usedratingbar;
+            double avgrating = (VratingBar1+VratingBar2+VratingBar3+VratingBar4+VratingBar5+VratingBar6+VratingBar7+VratingBar8 ) / usedratingbar;
             DecimalFormat df = new DecimalFormat("0.0");
+
+            SimpleDateFormat datetimeformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String timestamp = datetimeformat.format(new Date());
+            JSONObject JsonGenerator_rating = new JSONObject();
+            JSONObject JsonGenerator_rating_location = new JSONObject();
 
             try {
 
@@ -261,15 +264,11 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
                 }
 
 
-
-
-
-
                 JsonGenerator_rating.put("Datatime", timestamp);
                 JsonGenerator_rating.put("Location", JsonGenerator_rating_location);
                 JsonGenerator_rating.put("Feeling", usermood.toString());
                 JsonGenerator_rating.put("Rating_Lively", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarLively)).getRating());
-                JsonGenerator_rating.put("Rating_Relaxingy", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRelaxing)).getRating());
+                JsonGenerator_rating.put("Rating_Relaxing", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRelaxing)).getRating());
                 JsonGenerator_rating.put("Rating_Cosy", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarCosy)).getRating());
                 JsonGenerator_rating.put("Rating_Rearrangeable", ((RatingBar) findViewById(com.i2r.xue.rate_this_place.R.id.ratingBarRearrangeable)).getRating());
                 JsonGenerator_rating.put("Rating_Privacy", ((RatingBar) findViewById(R.id.ratingBarPRIVACY)).getRating());
@@ -284,7 +283,7 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            // clickbuttonRecieve();
+
 
             AsyncTaskUploadRatingFromVisitedPlace myfileuploader = new AsyncTaskUploadRatingFromVisitedPlace(this, JsonGenerator_rating);
             myfileuploader.execute();
@@ -309,6 +308,7 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
         toastTV.setBackgroundColor(Color.BLACK);
         toast.show();
     }
+
 
 
 

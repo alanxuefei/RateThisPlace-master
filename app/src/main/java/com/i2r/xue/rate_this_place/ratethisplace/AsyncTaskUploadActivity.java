@@ -26,7 +26,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.logging.Handler;
 
 /**
  * Created by Xue Fei on 1/7/2015.
@@ -93,8 +92,6 @@ public class AsyncTaskUploadActivity extends AsyncTask {
         toastTV.setTextSize(30);
         toastTV.setBackgroundColor(Color.BLACK);
         toast.show();
-
-
     }
 
 

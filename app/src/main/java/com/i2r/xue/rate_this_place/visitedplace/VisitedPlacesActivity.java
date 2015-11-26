@@ -109,10 +109,6 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         buildTableRow48();
         buildTableRow49();
        // buildTableRow50();
-
-
-
-
         buildTableRow100();
         buildTableRow101();
         buildTableRow102();
@@ -127,41 +123,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-
-
-        //TableLayout t= (TableLayout)findViewById(R.id.AllTableRow0);
-
-
-
-        // t.removeView(t1);
-        // TableRow t6= (TableRow)findViewById(R.id.AllTableRow6);
-        // t6.setVisibility(View.INVISIBLE);
-
-
-        //  readDB(VisitedPlaceList);
-
-        //  HumanActivityListView = (ListView) findViewById(com.i2r.alan.rate_this_place.R.id.listView_HumanActivity);
-
-        // this-The current activity context.
-        // Second param is the resource Id for list layout row item
-        // Third param is input array
-        //  arrayAdapter = new ArrayAdapter(this, com.i2r.alan.rate_this_place.R.layout.visitedplaces_list_eachrow, com.i2r.alan.rate_this_place.R.id.thetheTextView, VisitedPlaceList.toArray());
-        //   HumanActivityListView.setAdapter(arrayAdapter);
-
-        //  HumanActivityListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        //     @Override
-        //   public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-        //         clickthelistview(a, v, position, id);
-        //      }
-        //  });
-
     }
 
     public void addRATINGButton(ViewGroup vi, final String LocationName) {
 
         Button bt = new Button(this,null, android.R.attr.buttonStyleSmall);
         bt.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        String index= LocationName.replace("VisitedPlaceStatusExtraRating","");
+        final int index= Integer.parseInt(LocationName.replace("Location", ""));
+
         vi.addView(bt);
         bt.setText("RATING   ");
         bt.setOnClickListener(new View.OnClickListener() {
@@ -171,10 +140,13 @@ public class VisitedPlacesActivity extends AppCompatActivity {
                 intent0.putExtra("From", LocationName);
                 Log.i("VisitedPlace", LocationName + "RatingStatus");
 
-                Location targetLocation = new Location("");//provider name is unecessary
-                targetLocation.setLatitude(Double.parseDouble(((getApplication().getSharedPreferences("VisitedPlaceStatus", getApplication().MODE_PRIVATE).getString("VisitedPlaceStatusLatitude"+index, "NA")))));
-                targetLocation.setLongitude(Double.parseDouble(((getApplication().getSharedPreferences("VisitedPlaceStatus", getApplication().MODE_PRIVATE).getString("VisitedPlaceStatusLongitude" + index, "NA")))));//your coords of course
-                globalvariable.setThelocation(targetLocation);
+                if (index > 100) {
+                    Location targetLocation = new Location("");//provider name is unecessary
+                    targetLocation.setLatitude(Double.parseDouble(((getApplication().getSharedPreferences("VisitedPlaceStatus", getApplication().MODE_PRIVATE).getString("VisitedPlaceStatusLatitude" + index, "NA")))));
+                    targetLocation.setLongitude(Double.parseDouble(((getApplication().getSharedPreferences("VisitedPlaceStatus", getApplication().MODE_PRIVATE).getString("VisitedPlaceStatusLongitude" + index, "NA")))));//your coords of course
+                    globalvariable.setThelocation(targetLocation);
+                }
+
 
                 finish();
                 startActivity(intent0);
@@ -187,7 +159,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
         Button bt = new Button(this,null, android.R.attr.buttonStyleSmall);
         bt.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        String index= LocationName.replace("isitedPlaceStatusExtraRating","");
+        final int index= Integer.parseInt(LocationName.replace("Location", ""));
         vi.addView(bt);
         bt.setText("ACTIVITY");
 
@@ -197,6 +169,13 @@ public class VisitedPlacesActivity extends AppCompatActivity {
                 Intent intent0 = new Intent(getApplication(), RateThisPlaceActivityFromVisitedPlaceActivity.class);
                 intent0.putExtra("From", LocationName);
                 //Log.i("VisitedPlace", LocationName + "RatingStatus"); finish();
+
+                if (index > 100) {
+                    Location targetLocation = new Location("");//provider name is unecessary
+                    targetLocation.setLatitude(Double.parseDouble(((getApplication().getSharedPreferences("VisitedPlaceStatus", getApplication().MODE_PRIVATE).getString("VisitedPlaceStatusLatitude" + index, "NA")))));
+                    targetLocation.setLongitude(Double.parseDouble(((getApplication().getSharedPreferences("VisitedPlaceStatus", getApplication().MODE_PRIVATE).getString("VisitedPlaceStatusLongitude" + index, "NA")))));//your coords of course
+                    globalvariable.setThelocation(targetLocation);
+                }
                 finish();
                 startActivity(intent0);
             }
@@ -260,59 +239,6 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         startActivity(new Intent(getApplication(), MainActivity.class));
     }
 
-
-
-    /*  public void readDB(List<String> VisitedPlaceList) {
-
-          DBHelper mDbHelper = new DBHelper(this);
-          SQLiteDatabase db = mDbHelper.getReadableDatabase();
-
-
-  // Define a projection that specifies which columns from the database
-  // you will actually use after this query.
-          String[] projection = {
-                  DBContract.FeedEntry.COLUMN_NAME_DATE,
-                  DBContract.FeedEntry.COLUMN_NAME_TIME,
-                  DBContract.FeedEntry.COLUMN_LOCATION_LONGITUDE,
-                  DBContract.FeedEntry.COLUMN_LOCATION_LATITUDE,
-                  DBContract.FeedEntry.COLUMN_LOCATION_NAME
-          };
-
-  // How you want the results sorted in the resulting Cursor
-
-
-          Cursor c = db.query(
-                  DBContract.FeedEntry.TABLE_NAME,  // The table to query
-                  projection,                               // The columns to return
-                  null,                                // The columns for the WHERE clause
-                  null,                            // The values for the WHERE clause
-                  null,                                     // don't group the rows
-                  null,                                     // don't filter by row groups
-                  null                                 // The sort order
-          );
-
-
-          Boolean rowExists=c.moveToFirst();
-          if (rowExists){
-              while (!c.isLast()) {
-                  String vLOCATION_NAME = c.getString(
-                          c.getColumnIndexOrThrow(DBContract.FeedEntry.COLUMN_LOCATION_NAME)
-                  );
-
-                  String vTIME = c.getString(
-                          c.getColumnIndexOrThrow(DBContract.FeedEntry.COLUMN_NAME_TIME)
-                  );
-
-                  VisitedPlaceList.add(vTIME + "\r\n" + vLOCATION_NAME);
-                  c.moveToNext();
-
-              }
-          }
-
-      }
-
-
-  */
     public void buildTableRow0() {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -338,10 +264,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
         }
         else{
-            //  ((TextView)findViewById(R.id.location0_time)).setText("Wait for your visit");
 
-
-            //  ((TableRow)findViewById(R.id.AllTableRow0)).setVisibility(TableRow.GONE);
 
 
 
@@ -2226,18 +2149,18 @@ public class VisitedPlacesActivity extends AppCompatActivity {
             String Image_Path= Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/ActiveData/" + "MapScreen0"+ ".png";
             ((ImageView)findViewById(R.id.location100_imageView)).setImageBitmap(BitmapFactory.decodeFile(Image_Path));
             ((TextView) findViewById(R.id.location100_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtra0DateTime", "NA")).replace("_", "\n")));
-            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating0", "NA")).equals("NA"))){
-                addStar(((ViewGroup) findViewById(R.id.TableRow100)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating0", "NA"));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location100RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow100)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location100RatingStatus", "NA"));
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow100)), "VisitedPlaceStatusExtraRating0");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow100)), "Location100");
             }
 
-            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity0", "NA")).equals("NA"))){
-                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow100)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity0", "NA"));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location100ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow100)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location100ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow100)), "VisitedPlaceStatusExtraActivity0");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow100)), "Location100");
             }
 
         }
@@ -2255,28 +2178,24 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
         if  (datearray[0].equals(currentDate)){
             ((TableRow)findViewById(R.id.AllTableRow101)).setVisibility(TableRow.VISIBLE);
-           /* ((TextView)findViewById(R.id.location101)).setText(
-                    ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLongitude1", "NA"))) + "\n" +
-                            ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLatitude1", "NA"))));*/
-            //  GoogleMap mMap101=  ((MapView)(findViewById(R.id.map101))).getMap();
-            //    mMap101.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(1.348551, 103.813059), 10));
-
-            String Image_Path= Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/ActiveData/" + "MapScreen1"+ ".png";
+            /*((TextView)findViewById(R.id.location101)).setText(
+                    ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLongitude0", "NA")))+"\n"+
+                            ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLatitude0", "NA"))));*/
+            String Image_Path= Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/ActiveData/" + "MapScreen0"+ ".png";
             ((ImageView)findViewById(R.id.location101_imageView)).setImageBitmap(BitmapFactory.decodeFile(Image_Path));
-
-            ((TextView)findViewById(R.id.location101_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtra1DateTime", "NA")).replace("_", "\n")));
-            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating1", "NA")).equals("NA"))){
-                addStar(((ViewGroup) findViewById(R.id.TableRow101)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating1", "NA"));
+            ((TextView) findViewById(R.id.location101_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtra1DateTime", "NA")).replace("_", "\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location101RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow101)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location101RatingStatus", "NA"));
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow101)), "VisitedPlaceStatusExtraRating1");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow101)), "Location101");
             }
 
-            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity1", "NA")).equals("NA"))){
-                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow101)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity1", "NA"));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location101ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow101)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location101ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow101)), "VisitedPlaceStatusExtraActivity1");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow101)), "Location101");
             }
 
         }
@@ -2294,22 +2213,24 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
         if  (datearray[0].equals(currentDate)){
             ((TableRow)findViewById(R.id.AllTableRow102)).setVisibility(TableRow.VISIBLE);
-            String Image_Path= Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/ActiveData/" + "MapScreen2"+ ".png";
+            /*((TextView)findViewById(R.id.location102)).setText(
+                    ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLongitude0", "NA")))+"\n"+
+                            ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLatitude0", "NA"))));*/
+            String Image_Path= Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/ActiveData/" + "MapScreen0"+ ".png";
             ((ImageView)findViewById(R.id.location102_imageView)).setImageBitmap(BitmapFactory.decodeFile(Image_Path));
-
-            ((TextView)findViewById(R.id.location102_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtra2DateTime", "NA")).replace("_","\n")));
-            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating2", "NA")).equals("NA"))){
-                addStar(((ViewGroup) findViewById(R.id.TableRow102)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating2", "NA"));
+            ((TextView) findViewById(R.id.location102_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtra2DateTime", "NA")).replace("_", "\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location102RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow102)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location102RatingStatus", "NA"));
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow102)), "VisitedPlaceStatusExtraRating2");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow102)), "Location102");
             }
 
-            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity2", "NA")).equals("NA"))){
-                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow102)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity2", "NA"));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location102ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow102)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location102ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow102)), "VisitedPlaceStatusExtraActivity2");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow102)), "Location102");
             }
 
         }
@@ -2320,7 +2241,6 @@ public class VisitedPlacesActivity extends AppCompatActivity {
     }
 
 
-
     public void buildTableRow103() {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -2329,23 +2249,24 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
         if  (datearray[0].equals(currentDate)){
             ((TableRow)findViewById(R.id.AllTableRow103)).setVisibility(TableRow.VISIBLE);
-
-            String Image_Path= Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/ActiveData/" + "MapScreen3"+ ".png";
+            /*((TextView)findViewById(R.id.location103)).setText(
+                    ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLongitude0", "NA")))+"\n"+
+                            ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLatitude0", "NA"))));*/
+            String Image_Path= Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/ActiveData/" + "MapScreen0"+ ".png";
             ((ImageView)findViewById(R.id.location103_imageView)).setImageBitmap(BitmapFactory.decodeFile(Image_Path));
-
-            ((TextView)findViewById(R.id.location103_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtra3DateTime", "NA")).replace("_","\n")));
-            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating3", "NA")).equals("NA"))){
-                addStar(((ViewGroup) findViewById(R.id.TableRow103)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating3", "NA"));
+            ((TextView) findViewById(R.id.location103_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtra3DateTime", "NA")).replace("_", "\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location103RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow103)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location103RatingStatus", "NA"));
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow103)), "VisitedPlaceStatusExtraRating3");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow103)), "Location103");
             }
 
-            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity3", "NA")).equals("NA"))){
-                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow103)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity3", "NA"));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location103ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow103)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location103ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow103)), "VisitedPlaceStatusExtraActivity3");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow103)), "Location103");
             }
 
         }
@@ -2364,23 +2285,24 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
         if  (datearray[0].equals(currentDate)){
             ((TableRow)findViewById(R.id.AllTableRow104)).setVisibility(TableRow.VISIBLE);
-
-            String Image_Path= Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/ActiveData/" + "MapScreen4"+ ".png";
+            /*((TextView)findViewById(R.id.location104)).setText(
+                    ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLongitude0", "NA")))+"\n"+
+                            ((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLatitude0", "NA"))));*/
+            String Image_Path= Environment.getExternalStorageDirectory()+"/"+ "RateThisPlace"+"/ActiveData/" + "MapScreen0"+ ".png";
             ((ImageView)findViewById(R.id.location104_imageView)).setImageBitmap(BitmapFactory.decodeFile(Image_Path));
-
-            ((TextView)findViewById(R.id.location104_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtra4DateTime", "NA")).replace("_","\n")));
-            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating4", "NA")).equals("NA"))){
-                addStar(((ViewGroup) findViewById(R.id.TableRow104)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating4", "NA"));
+            ((TextView) findViewById(R.id.location104_time)).setText(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtra4DateTime", "NA")).replace("_", "\n")));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location104RatingStatus", "NA")).equals("NA"))){
+                addStar(((ViewGroup) findViewById(R.id.TableRow104)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location104RatingStatus", "NA"));
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow104)), "VisitedPlaceStatusExtraRating4");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow104)), "Location104");
             }
 
-            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity4", "NA")).equals("NA"))){
-                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow104)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity4", "NA"));
+            if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location104ActivityStatus", "NA")).equals("NA"))){
+                addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow104)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("Location104ActivityStatus", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow104)),"VisitedPlaceStatusExtraActivity4");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow104)), "Location104");
             }
 
         }
@@ -2406,14 +2328,14 @@ public class VisitedPlacesActivity extends AppCompatActivity {
                 addStar(((ViewGroup) findViewById(R.id.TableRow105)), this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraRating5", "NA"));
             }
             else{
-                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow105)), "VisitedPlaceStatusExtraRating5");
+                addRATINGButton(((ViewGroup) findViewById(R.id.TableRow105)), "Location105");
             }
 
             if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity5", "NA")).equals("NA"))){
                 addACTIVITYcontent(((ViewGroup) findViewById(R.id.TableRow105)),  this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusExtraActivity5", "NA"));
             }
             else{
-                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow105)), "VisitedPlaceStatusExtraActivity5");
+                addACTIVITYButton(((ViewGroup) findViewById(R.id.TableRow105)), "Location105");
             }
 
         }
