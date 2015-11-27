@@ -49,6 +49,7 @@
 
         <activity
             android:name="com.i2r.xue.rate_this_place.MainActivity"
+            android:noHistory="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

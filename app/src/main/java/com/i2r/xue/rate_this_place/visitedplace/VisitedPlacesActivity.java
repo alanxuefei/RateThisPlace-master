@@ -78,7 +78,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         buildTableRow17();
         buildTableRow18();
         buildTableRow19();
-        buildTableRow20();
+      /*  buildTableRow20();
         buildTableRow21();
         buildTableRow22();
         buildTableRow23();
@@ -107,7 +107,7 @@ public class VisitedPlacesActivity extends AppCompatActivity {
         buildTableRow46();
         buildTableRow47();
         buildTableRow48();
-        buildTableRow49();
+        buildTableRow49();*/
 
         //Non-Special Places
         buildTableRow100();
