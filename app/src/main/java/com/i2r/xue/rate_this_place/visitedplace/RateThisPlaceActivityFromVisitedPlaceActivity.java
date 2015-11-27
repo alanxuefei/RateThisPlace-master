@@ -372,6 +372,9 @@ public class RateThisPlaceActivityFromVisitedPlaceActivity extends AppCompatActi
                         JsonGenerator_activity.put("IsTestbed", false);
                         ShowToastMessage("The data is uploaded successfully, but System shows this rated place is not in the research list. Thus 0 point is credited.");
                     }
+
+                    JsonGenerator_activity_location.put("longitude", globalvariable.getThelocation().getLongitude());
+                    JsonGenerator_activity_location.put("latitude",  globalvariable.getThelocation().getLatitude());
                 }
                 else {
                     JsonGenerator_activity_location.put("longitude", detectedlocation_LatLng.longitude);

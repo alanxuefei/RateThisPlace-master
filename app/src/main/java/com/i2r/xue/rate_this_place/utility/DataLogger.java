@@ -31,7 +31,7 @@ public class DataLogger {
 
     public static void writeTolog(String content,String logswich)  {
 
-        SimpleDateFormat timeformat = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat timeformat = new SimpleDateFormat("HH:mm:ss:SSS");
         String timestamp = timeformat.format(new Date());
         content = timestamp+" "+" "+content;
         sBuffer.append(content);

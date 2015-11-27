@@ -1911,8 +1911,8 @@ public class VisitedPlacesActivity extends AppCompatActivity {
 
     public void startmap2(int i) {
         Location targetLocation = new Location("");//provider name is unecessary
-        targetLocation.setLatitude(Double.parseDouble(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLatitude"+Integer.toString(i), "NA")))));
-        targetLocation.setLongitude(Double.parseDouble(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLongitude"+Integer.toString(i), "NA")))));//your coords of course
+        targetLocation.setLatitude(Double.parseDouble(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLatitude10"+Integer.toString(i), "NA")))));
+        targetLocation.setLongitude(Double.parseDouble(((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString("VisitedPlaceStatusLongitude10"+Integer.toString(i), "NA")))));
         globalvariable.setThelocation(targetLocation);
         startActivity(new Intent(this, MapsActivity.class));
     }

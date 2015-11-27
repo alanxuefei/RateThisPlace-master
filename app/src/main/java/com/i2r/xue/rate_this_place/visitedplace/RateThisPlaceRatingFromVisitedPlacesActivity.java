@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -240,7 +241,7 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
                 }
 
                 if (detectedlocation_LatLng == null) {
-                    JsonGenerator_rating_location = null;
+
                     if (((globalvariable.getThelocation()).distanceTo(Constants.mainpoint1)<Constants.mainpointradius1)||
                             ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint2)<Constants.mainpointradius2)||
                             ((globalvariable.getThelocation()).distanceTo(Constants.mainpoint3)<Constants.mainpointradius3)||
@@ -256,6 +257,10 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
                         JsonGenerator_rating.put("IsTestbed", false);
                         ShowToastMessage("The data is uploaded successfully, but System shows this rated place is not in the research list. Thus 0 point is credited.");
                     }
+                    Log.i("location", String.valueOf(globalvariable.getThelocation().getLongitude()));
+                    JsonGenerator_rating_location.put("longitude", String.valueOf(globalvariable.getThelocation().getLongitude()));
+                    JsonGenerator_rating_location.put("latitude",  String.valueOf(globalvariable.getThelocation().getLatitude()));
+
                 } else {
                     JsonGenerator_rating_location.put("longitude", detectedlocation_LatLng.longitude);
                     JsonGenerator_rating_location.put("latitude", detectedlocation_LatLng.latitude);
@@ -291,7 +296,7 @@ public class RateThisPlaceRatingFromVisitedPlacesActivity extends AppCompatActiv
             this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(Locationname1+ "RatingStatus", df.format(avgrating)).apply();
 
         } else {
-            Toast.makeText(this, "Please at least input one rating", Toast.LENGTH_SHORT).show();
+            ShowToastMessage("Please at least input one rating");
         }
         //  Log.i("VisitedPlace", Locationname1+"RatingStatus");
     }

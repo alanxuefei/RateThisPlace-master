@@ -387,7 +387,7 @@ public class SensorListenerService extends Service implements SensorEventListene
                 if (!((this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(LocationName + "Status","NA")).equals("IN"))){
                     addDB(LocationName);
                     Log.i("GeoFencingSelf", "record " + LocationName);
-                    sendNotification(LocationName);
+                    //sendNotification(LocationName);
                 };
                 this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName + "Status", "IN").apply();
 
@@ -427,7 +427,7 @@ public class SensorListenerService extends Service implements SensorEventListene
         int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
         float batteryPct = level / (float) scale;
      //   Log.i("MyActivity",  " "+"battery level " + batteryPct);
-        DataLogger.writeTolog( " " + "B " + batteryPct + "\n",logswich);
+        DataLogger.writeTolog(   "B " + batteryPct + "\n",logswich);
         return batteryPct;
     }
 
@@ -620,6 +620,7 @@ public class SensorListenerService extends Service implements SensorEventListene
         String datearray[]=(this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).getString(LocationName + "DateTime", "NA")).split("\n");
         Log.i("datearray", datearray[0]);
         if  (!datearray[0].equals(currentDate)){
+            sendNotification(LocationName);
             sdf = new SimpleDateFormat("HH:mm:ss");
             String currentTime = sdf.format(new Date());
             this.getSharedPreferences("VisitedPlaceStatus", this.MODE_PRIVATE).edit().putString(LocationName + "DateTime", currentDate + "\n" + currentTime).apply();
