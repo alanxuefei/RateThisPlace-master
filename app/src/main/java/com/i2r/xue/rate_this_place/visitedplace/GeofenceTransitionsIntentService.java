@@ -101,7 +101,7 @@ public class GeofenceTransitionsIntentService extends IntentService {
 
 
             if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("notifications_new_message", true)){
-                sendNotification(geofenceTransitionDetails);
+               // sendNotification(geofenceTransitionDetails);
             }
 
 

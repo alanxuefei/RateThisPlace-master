@@ -563,7 +563,7 @@
                     android:paddingRight="5dp" />
 
                 <EditText
-                    android:layout_width="100dp"
+                    android:layout_width="152dp"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
                     android:ems="10"
@@ -572,8 +572,7 @@
                     android:hint=""
 
                     android:imeActionLabel="Done"
-                    android:layout_alignParentBottom="true"
-                    android:layout_weight="1.38" />
+                    android:layout_alignParentBottom="true" />
 
                 <Button
                     style="?android:attr/buttonStyleSmall"
